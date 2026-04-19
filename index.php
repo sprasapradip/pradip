@@ -4,7 +4,7 @@
 <html>
 <head>
 <title>Home</title>
-<link rel="stylesheet" href="stylse.css">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 <nav>
@@ -15,11 +15,13 @@
 <a href="contact.php">Contact</a>
 </nav>
 
-<section>
+<section class="hero">
 <h1><?php echo $profile['name']; ?></h1>
 <p><?php echo $profile['title']; ?></p>
 <p><?php echo $profile['bio']; ?></p>
-<a href="<?php echo $profile['cv']; ?>">Download CV</a>
+<a class="btn" href="<?php echo $profile['cv']; ?>">Download CV</a>
 </section>
+
+<footer>© <?php echo date("Y"); ?></footer>
 </body>
 </html>
