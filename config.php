@@ -1,4 +1,3 @@
-// ================= config.php =================
 <?php
 $profile = [
   "name" => "Sprasapradip",

@@ -1,4 +1,3 @@
-// ================= contact.php =================
 <?php
 $conn = new mysqli("localhost","root","","portfolio");
 $msg="";

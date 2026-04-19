@@ -1,4 +1,3 @@
-// ================= projects.php =================
 <?php include 'config.php'; ?>
 <?php
 $projects = [
