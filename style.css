@@ -117,23 +117,24 @@ section {
     color: #38bdf8
 }
 
-.grid {
+.grid{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 25px;
-    margin-top: 20px
+    max-width: 1100px;
+    margin: auto;
 }
 
-.card {
-    background: rgba(30, 41, 59, 0.9);
-    border-radius: 15px;
+.card{
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
     overflow: hidden;
-    transition: 0.4s;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3)
+    transition: 0.3s;
 }
 
-.card:hover {
-    transform: translateY(-10px)
+.card:hover{
+    transform: translateY(-8px);
 }
 
 .card img {
@@ -201,29 +202,25 @@ section {
 }
 
 /* MOBILE */
-@media (max-width: 768px) {
-    .service-grid {
+@media(max-width: 768px){
+
+    .hero h1{
+        font-size: 36px;
+    }
+
+    .grid{
         grid-template-columns: 1fr;
     }
-}
 
-/* CARD STYLE */
-.card {
-    border-radius: 12px;
-    padding: 25px;
-    border: 1px solid #e5e5e5;
-    font-size: 16px;
-    font-weight: 500;
-    transition: 0.3s ease;
-    cursor: pointer;
-}
+    .service-grid{
+        grid-template-columns: 1fr;
+    }
 
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-    border-color: #007bff;
+    nav{
+        gap: 15px;
+        font-size: 14px;
+    }
 }
-
 /* TABLET */
 @media (max-width: 768px) {
     .service-grid {
