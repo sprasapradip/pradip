@@ -5,7 +5,7 @@ $current = basename($_SERVER['PHP_SELF']);
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Portfolio</title>
+    <title>Pradip Subedi</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
