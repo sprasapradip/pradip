@@ -23,12 +23,18 @@
 <!-- HERO SECTION -->
 <section class="hero">
     <h1><?php echo $profile['name']; ?></h1>
-    <h2><?php echo $profile['title']; ?></h2>
-    <p><?php echo $profile['bio']; ?></p>
+
+    <h2>Electrical & Electronics Engineer</h2>
+
+    <p>
+        Working as Electrical Engineer at Maulakalika Cable Car.
+        Specialized in power systems, cable car operations, maintenance,
+        and industrial electrical engineering.
+    </p>
 
     <div class="hero-buttons">
-        <a class="btn" href="<?php echo $profile['cv']; ?>" download>Download CV</a>
-        <a class="btn secondary" href="contact.php">Hire Me</a>
+        <a class="btn" href="projects.php">Electrical Projects</a>
+        <a class="btn secondary" href="https://linkedin.com" target="_blank">LinkedIn Articles</a>
     </div>
 </section>
 
@@ -67,14 +73,33 @@
 
 <!-- SERVICES -->
 <section class="services">
-    <h2>Services</h2>
+    <h2>Core Expertise</h2>
+
     <div class="service-grid">
-    <div class="service-card">Website Development</div>
-    <div class="service-card">Hosting & Domain Setup</div>
-    <div class="service-card">SEO Optimization</div>
-    <div class="service-card">Technical Consulting</div>
-</div>
+        <div class="service-card">Cable Car Electrical Systems</div>
+        <div class="service-card">Power Distribution & Control Systems</div>
+        <div class="service-card">Industrial Maintenance</div>
+        <div class="service-card">Safety & Fault Analysis</div>
+    </div>
 </section>
+</section>
+
+<section class="timeline">
+    <h2>Professional Experience</h2>
+
+    <div>
+        <h3>Electrical Engineer</h3>
+        <p>Maulakalika Cable Car</p>
+        <p>Responsible for operation, maintenance, safety monitoring, and fault diagnosis of cable car electrical systems.</p>
+    </div>
+
+    <div>
+        <h3>Technical Instructor</h3>
+        <p>Kathmandu Technical School</p>
+        <p>Teaching cable car operation and electrical maintenance training.</p>
+    </div>
+</section>
+
 
 <!-- CALL TO ACTION -->
 <section class="cta">

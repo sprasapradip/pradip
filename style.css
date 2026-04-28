@@ -41,15 +41,25 @@ nav{
     z-index: 1000;
 }
 
-nav a {
+nav a{
     color: #38bdf8;
     text-decoration: none;
     font-weight: 500;
-    transition: 0.3s
+    transition: 0.3s;
+    padding: 6px 10px;
+    border-radius: 6px;
 }
 
-nav a:hover {
-    color: #fff
+/* ACTIVE PAGE */
+nav a.active{
+    color: #ffffff;
+    background: rgba(56,189,248,0.2);
+    border-bottom: 2px solid #38bdf8;
+}
+
+/* HOVER */
+nav a:hover{
+    color: #ffffff;
 }
 
 section {
@@ -233,6 +243,48 @@ section {
         font-size: 15px;
     }
 }
+
+.page{
+    padding: 100px 20px;
+    max-width: 900px;
+    margin: auto;
+}
+
+/* Reduce default spacing */
+h2{
+    margin-bottom: 20px;
+}
+
+h3{
+    margin-bottom: 5px;
+}
+
+p{
+    margin: 5px 0;
+    line-height: 1.6;
+}
+
+/* Timeline layout */
+.timeline{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Card style */
+.timeline-item{
+    background: rgba(255,255,255,0.05);
+    padding: 18px;
+    border-radius: 12px;
+    border-left: 3px solid #38bdf8;
+}
+
+.company{
+    color: #38bdf8;
+    font-weight: 500;
+}
+
+
 
 /* SMALL MOBILE */
 @media (max-width: 480px) {

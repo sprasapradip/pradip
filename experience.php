@@ -1,22 +1,28 @@
 <?php include 'header.php'; ?>
-<!DOCTYPE html>
-<html>
-<head><link rel="stylesheet" href="style.css"></head>
-<body>
-<nav>
-<a href="index.php">Home</a>
-<a href="projects.php">Projects</a>
-<a href="experience.php">Experience</a>
-<a href="services.php">Services</a>
-<a href="contact.php">Contact</a>
-</nav>
-<section>
-<h2>Experience</h2>
-<div class="timeline">
-<div>Electrical Work - Cable Car Project (2025)</div>
-<div>Industrial Electrical Work (2024)</div>
-</div>
+
+<section class="page">
+    <h2>Experience</h2>
+
+    <div class="timeline">
+
+        <div class="timeline-item">
+            <h3>Electrical Engineer</h3>
+            <p class="company">Maulakalika Cable Car</p>
+            <p>
+                Responsible for operation, maintenance, safety monitoring,
+                and fault diagnosis of cable car electrical systems.
+            </p>
+        </div>
+
+        <div class="timeline-item">
+            <h3>Technical Instructor</h3>
+            <p class="company">Kathmandu Technical School</p>
+            <p>
+                Teaching cable car operation and electrical maintenance training.
+            </p>
+        </div>
+
+    </div>
 </section>
-</body>
+
 <?php include 'footer.php'; ?>
-</html>
