@@ -1,4 +1,5 @@
 <?php include 'config.php'; ?>
+<?php include 'header.php'; ?>
 <?php
 $projects = [
  ["img"=>"images/linkedin1.jpg","title"=>"Cable Car Project","desc"=>"Maulakali Cable Car electrical work"],
@@ -35,5 +36,6 @@ $projects = [
 <?php endforeach; ?>
 </div>
 </section>
+<?php include 'footer.php'; ?>
 </body>
 </html>

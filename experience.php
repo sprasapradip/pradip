@@ -1,3 +1,4 @@
+<?php include 'header.php'; ?>
 <!DOCTYPE html>
 <html>
 <head><link rel="stylesheet" href="style.css"></head>
@@ -17,4 +18,5 @@
 </div>
 </section>
 </body>
+<?php include 'footer.php'; ?>
 </html>

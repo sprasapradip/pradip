@@ -1,5 +1,6 @@
+<?php include 'config.php'; ?>
+<?php include 'header.php'; ?>
 <?php
-$conn = new mysqli("localhost","root","","portfolio");
 $msg="";
 if(isset($_POST['send'])){
  $stmt=$conn->prepare("INSERT INTO messages(name,email,message) VALUES(?,?,?)");
@@ -13,7 +14,7 @@ require 'PHPMailer/src/Exception.php';
 require 'PHPMailer/src/PHPMailer.php';
 require 'PHPMailer/src/SMTP.php';
 
-$conn = new mysqli("localhost","root","","portfolio");
+
 
 if ($conn->connect_error) {
     die("DB Connection failed: " . $conn->connect_error);
@@ -89,4 +90,5 @@ if(isset($_POST['send'])){
 </form>
 </section>
 </body>
+<?php include 'footer.php'; ?>
 </html>

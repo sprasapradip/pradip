@@ -1,4 +1,5 @@
 <?php include 'config.php'; ?>
+<?php include 'header.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -83,9 +84,6 @@
 </section>
 
 <!-- FOOTER -->
-<footer>
-<p>© <?php echo date("Y"); ?> <?php echo $profile['name']; ?></p>
-</footer>
-
+<?php include 'footer.php'; ?>
 </body>
 </html>
