@@ -3,20 +3,13 @@ session_start();
 
 $msg = "";
 
-// Your credentials (change this)
-$admin_user = "admin";
-$admin_pass = "1234";
-
 if(isset($_POST['login'])){
-    $user = $_POST['username'];
-    $pass = $_POST['password'];
-
-    if($user === $admin_user && $pass === $admin_pass){
+    if($_POST['username']=="admin" && $_POST['password']=="1234"){
         $_SESSION['admin'] = true;
         header("Location: dashboard.php");
         exit;
     } else {
-        $msg = "Invalid Login Credentials";
+        $msg = "Invalid login";
     }
 }
 ?>
@@ -24,7 +17,6 @@ if(isset($_POST['login'])){
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Admin Login</title>
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>
@@ -34,8 +26,8 @@ if(isset($_POST['login'])){
     <p style="color:red;"><?php echo $msg; ?></p>
 
     <form method="POST">
-        <input type="text" name="username" placeholder="Username" required>
-        <input type="password" name="password" placeholder="Password" required>
+        <input name="username" placeholder="Username">
+        <input name="password" type="password" placeholder="Password">
         <button class="btn" name="login">Login</button>
     </form>
 </div>

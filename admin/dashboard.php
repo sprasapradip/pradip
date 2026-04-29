@@ -1,15 +1,4 @@
-<?php
-include 'auth.php';          // handles session + security
-include '../config.php';    // DB connection
-?>
-
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="../style.css">
-</head>
-<body>
+<?php include 'header.php'; ?>
 
 <h2>Admin Dashboard</h2>
 
@@ -19,7 +8,4 @@ include '../config.php';    // DB connection
     <a href="blog/index.php" class="card">Manage Blog</a>
 </div>
 
-<a href="logout.php" class="btn">Logout</a>
-
-</body>
-</html>
+<?php include 'footer.php'; ?>
