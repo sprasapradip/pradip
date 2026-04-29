@@ -9,7 +9,7 @@
 <body>
 
 <nav class="admin-nav">
-    <a href="dashboard.php">Dashboard</a>
+    <a href="index.php">Dashboard</a>
     <a href="projects/index.php">Projects</a>
     <a href="index.php">Messages</a>
     <a href="index.php">Blog</a>

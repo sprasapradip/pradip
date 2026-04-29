@@ -70,6 +70,29 @@ nav a{
     border-radius: 6px;
 }
 
+
+/* ADMIN PAGE */
+
+.admin-nav{
+    display:flex;
+    gap:20px;
+    padding:15px;
+    background:#020617;
+}
+
+.admin-nav a{
+    color:#38bdf8;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns: repeat(3,1fr);
+    gap:20px;
+    padding:20px;
+}
+
+
+
 /* ACTIVE PAGE */
 nav a.active{
     color: #ffffff;
