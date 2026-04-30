@@ -70,25 +70,51 @@ if(isset($_POST['send'])){
 ?>
 <!DOCTYPE html>
 <html>
-<head><link rel="stylesheet" href="style.css"></head>
+<head>
+<link rel="stylesheet" href="style.css">
+</head>
+
 <body>
+
 <nav>
 <a href="index.php">Home</a>
 <a href="projects.php">Projects</a>
 <a href="experience.php">Experience</a>
 <a href="services.php">Services</a>
-<a href="contact.php">Contact</a>
+<a href="contact.php" class="active">Contact</a>
 </nav>
-<section>
-<h2>Contact</h2>
-<p><?php echo $msg; ?></p>
-<form method="POST">
-<input name="name" placeholder="Name" required>
-<input name="email" placeholder="Email" required>
-<textarea name="message" placeholder="Message" required></textarea>
-<button class="btn" name="send">Send</button>
-</form>
+
+<section class="page">
+
+    <h1 class="page-title">Contact</h1>
+
+    <p class="text-block">
+        Feel free to reach out for electrical projects, technical consultation, or collaboration.
+    </p>
+
+    <!-- STATUS MESSAGE -->
+    <?php if(!empty($msg)): ?>
+        <p class="text-block" style="color:#38bdf8; font-weight:500;">
+            <?php echo $msg; ?>
+        </p>
+    <?php endif; ?>
+
+    <!-- FORM -->
+    <form method="POST">
+
+        <input name="name" placeholder="Full Name" required>
+
+        <input type="email" name="email" placeholder="Email Address" required>
+
+        <textarea name="message" placeholder="Write your message..." rows="5" required></textarea>
+
+        <button class="btn" name="send">Send Message</button>
+
+    </form>
+
 </section>
-</body>
+
 <?php include 'footer.php'; ?>
+
+</body>
 </html>
