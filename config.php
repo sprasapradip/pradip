@@ -13,7 +13,7 @@ if ($conn->connect_error) {
 // PROFILE DATA
 // ==========================
 $profile = [
-  "name"  => "Sprasapradip",
+  "name"  => "Pradip Subedi",
   "title" => "Electrical Engineer",
   "bio"   => "Specialized in electrical installation, solar systems & industrial maintenance.",
   "cv"    => "cv.pdf"
