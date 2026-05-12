@@ -1,7 +1,6 @@
 <?php
 define('APP_INIT', true);
 require_once '../../includes/config.php';
-require_once '../auth.php';
 
 // DELETE (POST SAFE)
 if(isset($_POST['delete_id'])){
@@ -30,7 +29,7 @@ include '../layout/header.php';
 ?>
 <link rel="stylesheet" href="<?= '/pradip/style.css' ?>">
 <section class="admin-page">
-
+<div style="margin-top:10px;">
 <h1>Messages</h1>
 
 <form method="GET">

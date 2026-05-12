@@ -4,11 +4,7 @@ session_start();
 $msg = "";
 
 if(isset($_POST['login'])){
-<<<<<<< HEAD
     if($_POST['username']=="operation" && $_POST['password']=="Operation@123"){
-=======
-    if($_POST['username']=="admin" && $_POST['password']=="1234"){
->>>>>>> fe19f5faa741cfcbb315602c1db3bd7e772eac19
         $_SESSION['admin'] = true;
         header("Location: index.php");
         exit;

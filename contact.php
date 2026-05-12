@@ -72,17 +72,6 @@ if(isset($_POST['send'])){
     }
 }
 ?>
-<<<<<<< HEAD
-=======
-<!DOCTYPE html>
-<html>
-<head>
-<link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-
->>>>>>> fe19f5faa741cfcbb315602c1db3bd7e772eac19
 <nav>
 <a href="index.php">Home</a>
 <a href="projects.php">Projects</a>
@@ -121,11 +110,4 @@ if(isset($_POST['send'])){
 
 </section>
 
-<<<<<<< HEAD
 <?php include 'footer.php'; ?>
-=======
-<?php include 'footer.php'; ?>
-
-</body>
-</html>
->>>>>>> fe19f5faa741cfcbb315602c1db3bd7e772eac19

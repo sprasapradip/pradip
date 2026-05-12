@@ -17,7 +17,6 @@ $current = basename($_SERVER['PHP_SELF']);
 
 </head>
 <body>
-
 <div class="app">
 
     <!-- TOP BAR -->
