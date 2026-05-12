@@ -29,7 +29,9 @@ $recentMessages = $conn->query("SELECT * FROM messages ORDER BY id DESC LIMIT 5"
 $recentProjects = $conn->query("SELECT * FROM projects ORDER BY id DESC LIMIT 5");
 
 include __DIR__ . '/layout/header.php';
+
 ?>
+<div style="margin-top:10px;">
 
 <section class="admin-page">
 
