@@ -128,6 +128,12 @@
     </p>
 
     <a class="btn" href="contact.php">Contact Me</a>
+<<<<<<< HEAD
 
 </section>
+=======
+
+</section>
+
+>>>>>>> fe19f5faa741cfcbb315602c1db3bd7e772eac19
 <?php include 'footer.php'; ?>

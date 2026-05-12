@@ -1,7 +1,25 @@
+<<<<<<< HEAD
 <?php include 'header.php'; ?>
 
 <link rel="stylesheet" href="style.css">
 
+=======
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<nav>
+<a href="index.php">Home</a>
+<a href="projects.php">Projects</a>
+<a href="experience.php">Experience</a>
+<a href="services.php" class="active">Services</a>
+<a href="contact.php">Contact</a>
+</nav>
+>>>>>>> fe19f5faa741cfcbb315602c1db3bd7e772eac19
 
 <section class="page">
 
@@ -36,4 +54,10 @@
     </div>
 
 </section>
+<<<<<<< HEAD
 <?php include 'footer.php'; ?>
+=======
+
+</body>
+</html>
+>>>>>>> fe19f5faa741cfcbb315602c1db3bd7e772eac19

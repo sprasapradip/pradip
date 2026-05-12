@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 define('APP_INIT', true);
 require_once __DIR__ . '/../../includes/config.php';
@@ -79,3 +80,24 @@ include __DIR__ . '/../layout/header.php';
 </section>
 
 <?php include __DIR__ . '/../layout/footer.php'; ?>
+=======
+<?php include '../header.php'; include '../../config.php'; ?>
+
+<h2>Projects</h2>
+<a href="add.php" class="btn">Add Project</a>
+
+<?php
+$res = $conn->query("SELECT * FROM projects ORDER BY id DESC");
+while($row = $res->fetch_assoc()):
+?>
+
+<div class="card">
+    <h3><?= $row['title'] ?></h3>
+    <p><?= $row['description'] ?></p>
+    <a href="delete.php?id=<?= $row['id'] ?>">Delete</a>
+</div>
+
+<?php endwhile; ?>
+
+<?php include '../footer.php'; ?>
+>>>>>>> fe19f5faa741cfcbb315602c1db3bd7e772eac19

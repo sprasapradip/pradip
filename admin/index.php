@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 define('APP_INIT', true);
 
@@ -149,3 +150,15 @@ include __DIR__ . '/layout/header.php';
 </section>
 
 <?php include __DIR__ . '/layout/footer.php'; ?>
+=======
+<?php include 'header.php'; ?>
+
+<h2>Admin Dashboard</h2>
+<div class="grid">
+    <a href="projects/index.php" class="card">Manage Projects</a>
+    <a href="messages/index.php" class="card">View Messages</a>
+    <a href="blog/index.php" class="card">Manage Blog</a>
+</div>
+
+<?php include 'footer.php'; ?>
+>>>>>>> fe19f5faa741cfcbb315602c1db3bd7e772eac19
