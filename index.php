@@ -1,114 +1,133 @@
-<?php include 'config.php'; ?>
 <?php include 'header.php'; ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title><?php echo $profile['name']; ?> | Portfolio</title>
-<link rel="stylesheet" href="style.css">
-</head>
 
-<body>
-
-<!-- NAVBAR -->
-<nav>
-<a href="index.php">Home</a>
-<a href="projects.php">Projects</a>
-<a href="experience.php">Experience</a>
-<a href="services.php">Services</a>
-<a href="contact.php">Contact</a>
-</nav>
-
-<!-- HERO SECTION -->
+<!-- HERO -->
 <section class="hero">
+
     <h1><?php echo $profile['name']; ?></h1>
 
-    <h2>Electrical & Electronics Engineer</h2>
-
-    <p>
-        Working as Electrical Engineer at Maulakalika Cable Car.
-        Specialized in power systems, cable car operations, maintenance,
-        and industrial electrical engineering.
+    <p class="text-block">
+        Electrical Engineer at Maulakalika Cable Car specializing in
+        power systems, industrial maintenance, and cable car operations.
     </p>
 
-    <div class="hero-buttons">
-        <a class="btn" href="projects.php">Electrical Projects</a>
-        <a class="btn secondary" href="https://linkedin.com" target="_blank">LinkedIn Articles</a>
+    <div>
+        <a class="btn" href="projects.php">View Projects</a>
+        <a class="btn secondary" href="https://linkedin.com" target="_blank">LinkedIn</a>
     </div>
+
 </section>
 
-<!-- SKILLS SECTION -->
-<section class="skills">
-    <h2>Skills</h2>
-    <div class="skills-grid">
-        <div>WordPress Development</div>
-        <div>PHP & MySQL</div>
-        <div>Website Design</div>
-        <div>SEO Optimization</div>
-        <div>Project Management</div>
-        <div>Electrical Engineering</div>
+<!-- SKILLS -->
+<section class="page">
+
+    <h1 class="page-title">Skills</h1>
+
+    <p class="text-block">
+        Technical and professional expertise across electrical engineering and digital systems.
+    </p>
+
+    <div class="grid">
+        <div class="card"><div class="card-body">Electrical Engineering</div></div>
+        <div class="card"><div class="card-body">Power Systems</div></div>
+        <div class="card"><div class="card-body">Industrial Maintenance</div></div>
+        <div class="card"><div class="card-body">Fault Diagnosis</div></div>
+        <div class="card"><div class="card-body">PLC / Control Systems</div></div>
+        <div class="card"><div class="card-body">Project Management</div></div>
     </div>
+
 </section>
 
-<!-- PROJECT PREVIEW -->
-<section class="projects">
-    <h2>Featured Projects</h2>
-    <div class="project-grid">
+<!-- FEATURED PROJECTS -->
+<section class="page">
+
+    <h1 class="page-title">Featured Projects</h1>
+
+    <div class="grid">
+
         <?php
         $projects = $conn->query("SELECT * FROM projects LIMIT 3");
-        while($row = $projects->fetch_assoc()){
-            echo "
-            <div class='card'>
-                <h3>{$row['title']}</h3>
-                <p>{$row['description']}</p>
-                <a href='{$row['link']}' target='_blank'>View Project</a>
-            </div>
-            ";
-        }
+        while($row = $projects->fetch_assoc()):
         ?>
+
+        <div class="card">
+            <div class="card-body">
+                <h3 class="section-title"><?php echo htmlspecialchars($row['title']); ?></h3>
+                <p class="text-block"><?php echo htmlspecialchars($row['description']); ?></p>
+                <a class="btn" href="<?php echo $row['link']; ?>" target="_blank">View</a>
+            </div>
+        </div>
+
+        <?php endwhile; ?>
+
     </div>
+
+    <br>
     <a class="btn" href="projects.php">View All Projects</a>
+
 </section>
 
 <!-- SERVICES -->
-<section class="services">
-    <h2>Core Expertise</h2>
+<section class="page">
+
+    <h1 class="page-title">Core Expertise</h1>
 
     <div class="service-grid">
-        <div class="service-card">Cable Car Electrical Systems</div>
-        <div class="service-card">Power Distribution & Control Systems</div>
-        <div class="service-card">Industrial Maintenance</div>
-        <div class="service-card">Safety & Fault Analysis</div>
+
+        <div class="service-card">
+            <h3 class="section-title">Cable Car Systems</h3>
+            <p>Operation and maintenance of ropeway electrical systems.</p>
+        </div>
+
+        <div class="service-card">
+            <h3 class="section-title">Power Systems</h3>
+            <p>Distribution, protection, and control system design.</p>
+        </div>
+
+        <div class="service-card">
+            <h3 class="section-title">Industrial Maintenance</h3>
+            <p>Preventive and corrective maintenance strategies.</p>
+        </div>
+
+        <div class="service-card">
+            <h3 class="section-title">Fault Analysis</h3>
+            <p>Diagnosis and troubleshooting of electrical systems.</p>
+        </div>
+
     </div>
-</section>
+
 </section>
 
-<section class="timeline">
-    <h2>Professional Experience</h2>
+<!-- EXPERIENCE PREVIEW -->
+<section class="page">
 
-    <div>
-        <h3>Electrical Engineer</h3>
-        <p>Maulakalika Cable Car</p>
-        <p>Responsible for operation, maintenance, safety monitoring, and fault diagnosis of cable car electrical systems.</p>
+    <h1 class="page-title">Experience</h1>
+
+    <div class="timeline">
+
+        <div class="timeline-item">
+            <h3>Electrical Engineer</h3>
+            <p class="company">Maulakalika Cable Car</p>
+        </div>
+
+        <div class="timeline-item">
+            <h3>Technical Instructor</h3>
+            <p class="company">Kathmandu Technical School</p>
+        </div>
+
     </div>
 
-    <div>
-        <h3>Technical Instructor</h3>
-        <p>Kathmandu Technical School</p>
-        <p>Teaching cable car operation and electrical maintenance training.</p>
-    </div>
 </section>
 
+<!-- CTA -->
+<section class="page">
 
-<!-- CALL TO ACTION -->
-<section class="cta">
-    <h2>Have a project in mind?</h2>
-    <p>Let’s build something great together.</p>
+    <h1 class="page-title">Have a Project?</h1>
+
+    <p class="text-block">
+        Let’s work together on electrical systems, automation, or engineering solutions.
+    </p>
+
     <a class="btn" href="contact.php">Contact Me</a>
-</section>
 
-<!-- FOOTER -->
+</section>
 <?php include 'footer.php'; ?>
-</body>
-</html>

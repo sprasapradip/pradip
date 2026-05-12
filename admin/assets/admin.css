@@ -1,0 +1,191 @@
+
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", sans-serif;
+    background: #f8fafc;
+    color: #1e293b;
+}
+
+/* APP STRUCTURE */
+
+.app {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.layout {
+    display: flex;
+    flex: 1;
+}
+
+/* TOP BAR */
+
+.topbar {
+    height: 60px;
+    background: #ffffff;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 25px;
+}
+
+.topbar .logo {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.top-actions a {
+    text-decoration: none;
+    background: #2563eb;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 6px;
+}
+
+/* SIDEBAR */
+
+.sidebar {
+    width: 220px;
+    background: #0f172a;
+    padding: 20px;
+}
+
+.sidebar a {
+    display: block;
+    color: #cbd5e1;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    transition: 0.2s;
+}
+
+.sidebar a:hover {
+    background: #1e293b;
+    color: #fff;
+}
+
+.sidebar a.active {
+    background: #2563eb;
+    color: #fff;
+}
+
+/* MAIN CONTENT */
+
+.content {
+    flex: 1;
+    padding: 30px;
+    overflow-y: auto;
+}
+
+/* HEADINGS */
+
+.content h1 {
+    margin-bottom: 25px;
+}
+
+/* GRID */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+/* CARDS */
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    transition: 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+}
+
+/* BUTTONS */
+
+.btn {
+    display: inline-block;
+    background: #2563eb;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #1d4ed8;
+}
+
+.btn-danger {
+    background: #ef4444;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-danger:hover {
+    background: #dc2626;
+}
+
+/* FORMS */
+
+form input,
+form textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 15px;
+}
+
+/* TABLE */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+table th,
+table td {
+    padding: 12px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+table th {
+    background: #f1f5f9;
+    text-align: left;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+
+    .layout {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+    }
+
+}

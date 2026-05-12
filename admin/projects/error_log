@@ -1,0 +1,463 @@
+[01-May-2026 03:05:20 UTC] PHP Warning:  include(../header.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:05:20 UTC] PHP Warning:  include(): Failed opening '../header.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:05:20 UTC] PHP Warning:  include(../../config.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:05:20 UTC] PHP Warning:  include(): Failed opening '../../config.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:05:20 UTC] PHP Warning:  Undefined variable $conn in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 7
+[01-May-2026 03:05:20 UTC] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home2/samikshya/public_html/pradip/admin/projects/index.php:7
+Stack trace:
+#0 {main}
+  thrown in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 7
+[01-May-2026 03:05:22 UTC] PHP Warning:  include(../header.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/add.php on line 1
+[01-May-2026 03:05:22 UTC] PHP Warning:  include(): Failed opening '../header.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/add.php on line 1
+[01-May-2026 03:05:22 UTC] PHP Warning:  include(../../config.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/add.php on line 1
+[01-May-2026 03:05:22 UTC] PHP Warning:  include(): Failed opening '../../config.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/add.php on line 1
+[01-May-2026 03:05:22 UTC] PHP Warning:  include(../footer.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/add.php on line 20
+[01-May-2026 03:05:22 UTC] PHP Warning:  include(): Failed opening '../footer.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/add.php on line 20
+[01-May-2026 03:32:20 UTC] PHP Warning:  include(../header.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:32:20 UTC] PHP Warning:  include(): Failed opening '../header.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:32:20 UTC] PHP Warning:  include(../../config.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:32:20 UTC] PHP Warning:  include(): Failed opening '../../config.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:32:20 UTC] PHP Warning:  Undefined variable $conn in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 7
+[01-May-2026 03:32:20 UTC] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home2/samikshya/public_html/pradip/admin/projects/index.php:7
+Stack trace:
+#0 {main}
+  thrown in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 7
+[01-May-2026 03:32:49 UTC] PHP Warning:  include(../header.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:32:49 UTC] PHP Warning:  include(): Failed opening '../header.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:32:49 UTC] PHP Warning:  include(../../config.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:32:49 UTC] PHP Warning:  include(): Failed opening '../../config.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:32:49 UTC] PHP Warning:  Undefined variable $conn in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 7
+[01-May-2026 03:32:49 UTC] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home2/samikshya/public_html/pradip/admin/projects/index.php:7
+Stack trace:
+#0 {main}
+  thrown in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 7
+[01-May-2026 03:33:20 UTC] PHP Warning:  include(../header.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:33:20 UTC] PHP Warning:  include(): Failed opening '../header.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:33:20 UTC] PHP Warning:  include(../../config.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:33:20 UTC] PHP Warning:  include(): Failed opening '../../config.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:33:20 UTC] PHP Warning:  Undefined variable $conn in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 7
+[01-May-2026 03:33:20 UTC] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home2/samikshya/public_html/pradip/admin/projects/index.php:7
+Stack trace:
+#0 {main}
+  thrown in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 7
+[01-May-2026 03:33:51 UTC] PHP Warning:  include(../header.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:33:51 UTC] PHP Warning:  include(): Failed opening '../header.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:33:51 UTC] PHP Warning:  include(../../config.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:33:51 UTC] PHP Warning:  include(): Failed opening '../../config.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:33:51 UTC] PHP Warning:  Undefined variable $conn in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 7
+[01-May-2026 03:33:51 UTC] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home2/samikshya/public_html/pradip/admin/projects/index.php:7
+Stack trace:
+#0 {main}
+  thrown in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 7
+[01-May-2026 03:33:54 UTC] PHP Warning:  include(../header.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:33:54 UTC] PHP Warning:  include(): Failed opening '../header.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:33:54 UTC] PHP Warning:  include(../../config.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:33:54 UTC] PHP Warning:  include(): Failed opening '../../config.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:33:54 UTC] PHP Warning:  Undefined variable $conn in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 7
+[01-May-2026 03:33:54 UTC] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home2/samikshya/public_html/pradip/admin/projects/index.php:7
+Stack trace:
+#0 {main}
+  thrown in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 7
+[01-May-2026 03:33:56 UTC] PHP Warning:  include(../header.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:33:56 UTC] PHP Warning:  include(): Failed opening '../header.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:33:56 UTC] PHP Warning:  include(../../config.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:33:56 UTC] PHP Warning:  include(): Failed opening '../../config.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:33:56 UTC] PHP Warning:  Undefined variable $conn in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 7
+[01-May-2026 03:33:56 UTC] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home2/samikshya/public_html/pradip/admin/projects/index.php:7
+Stack trace:
+#0 {main}
+  thrown in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 7
+[01-May-2026 03:36:18 UTC] PHP Warning:  include(../header.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:36:18 UTC] PHP Warning:  include(): Failed opening '../header.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:36:18 UTC] PHP Warning:  include(../../config.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:36:18 UTC] PHP Warning:  include(): Failed opening '../../config.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:36:18 UTC] PHP Warning:  Undefined variable $conn in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 7
+[01-May-2026 03:36:18 UTC] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home2/samikshya/public_html/pradip/admin/projects/index.php:7
+Stack trace:
+#0 {main}
+  thrown in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 7
+[01-May-2026 03:36:23 UTC] PHP Warning:  include(../header.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:36:23 UTC] PHP Warning:  include(): Failed opening '../header.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:36:23 UTC] PHP Warning:  include(../../config.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:36:23 UTC] PHP Warning:  include(): Failed opening '../../config.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:36:23 UTC] PHP Warning:  Undefined variable $conn in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 7
+[01-May-2026 03:36:23 UTC] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home2/samikshya/public_html/pradip/admin/projects/index.php:7
+Stack trace:
+#0 {main}
+  thrown in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 7
+[01-May-2026 03:36:28 UTC] PHP Warning:  include(../header.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:36:28 UTC] PHP Warning:  include(): Failed opening '../header.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:36:28 UTC] PHP Warning:  include(../../config.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:36:28 UTC] PHP Warning:  include(): Failed opening '../../config.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:36:28 UTC] PHP Warning:  Undefined variable $conn in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 7
+[01-May-2026 03:36:28 UTC] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home2/samikshya/public_html/pradip/admin/projects/index.php:7
+Stack trace:
+#0 {main}
+  thrown in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 7
+[01-May-2026 03:36:31 UTC] PHP Warning:  include(../header.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:36:31 UTC] PHP Warning:  include(): Failed opening '../header.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:36:31 UTC] PHP Warning:  include(../../config.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:36:31 UTC] PHP Warning:  include(): Failed opening '../../config.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:36:31 UTC] PHP Warning:  Undefined variable $conn in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 7
+[01-May-2026 03:36:31 UTC] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home2/samikshya/public_html/pradip/admin/projects/index.php:7
+Stack trace:
+#0 {main}
+  thrown in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 7
+[01-May-2026 03:41:04 UTC] PHP Warning:  include(../header.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:41:04 UTC] PHP Warning:  include(): Failed opening '../header.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:41:04 UTC] PHP Warning:  include(../../config.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:41:04 UTC] PHP Warning:  include(): Failed opening '../../config.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:41:04 UTC] PHP Warning:  Undefined variable $conn in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 7
+[01-May-2026 03:41:04 UTC] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home2/samikshya/public_html/pradip/admin/projects/index.php:7
+Stack trace:
+#0 {main}
+  thrown in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 7
+[01-May-2026 03:41:09 UTC] PHP Warning:  include(../header.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:41:09 UTC] PHP Warning:  include(): Failed opening '../header.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:41:09 UTC] PHP Warning:  include(../../config.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:41:09 UTC] PHP Warning:  include(): Failed opening '../../config.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:41:09 UTC] PHP Warning:  Undefined variable $conn in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 7
+[01-May-2026 03:41:09 UTC] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home2/samikshya/public_html/pradip/admin/projects/index.php:7
+Stack trace:
+#0 {main}
+  thrown in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 7
+[01-May-2026 03:41:15 UTC] PHP Warning:  include(../header.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:41:15 UTC] PHP Warning:  include(): Failed opening '../header.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:41:15 UTC] PHP Warning:  include(../../config.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:41:15 UTC] PHP Warning:  include(): Failed opening '../../config.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:41:15 UTC] PHP Warning:  Undefined variable $conn in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 7
+[01-May-2026 03:41:15 UTC] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home2/samikshya/public_html/pradip/admin/projects/index.php:7
+Stack trace:
+#0 {main}
+  thrown in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 7
+[01-May-2026 03:46:26 UTC] PHP Warning:  include(../header.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:46:26 UTC] PHP Warning:  include(): Failed opening '../header.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:46:26 UTC] PHP Warning:  include(../../config.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:46:26 UTC] PHP Warning:  include(): Failed opening '../../config.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:46:26 UTC] PHP Warning:  Undefined variable $conn in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 7
+[01-May-2026 03:46:26 UTC] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home2/samikshya/public_html/pradip/admin/projects/index.php:7
+Stack trace:
+#0 {main}
+  thrown in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 7
+[01-May-2026 03:46:29 UTC] PHP Warning:  include(../header.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:46:29 UTC] PHP Warning:  include(): Failed opening '../header.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:46:29 UTC] PHP Warning:  include(../../config.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:46:29 UTC] PHP Warning:  include(): Failed opening '../../config.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:46:29 UTC] PHP Warning:  Undefined variable $conn in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 7
+[01-May-2026 03:46:29 UTC] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home2/samikshya/public_html/pradip/admin/projects/index.php:7
+Stack trace:
+#0 {main}
+  thrown in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 7
+[01-May-2026 03:47:00 UTC] PHP Warning:  require_once(../../config.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:47:00 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../../config.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php:2
+Stack trace:
+#0 {main}
+  thrown in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:47:02 UTC] PHP Warning:  require_once(../../config.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:47:02 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../../config.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php:2
+Stack trace:
+#0 {main}
+  thrown in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:47:02 UTC] PHP Warning:  require_once(../../config.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:47:02 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../../config.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php:2
+Stack trace:
+#0 {main}
+  thrown in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:47:03 UTC] PHP Warning:  require_once(../../config.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:47:03 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../../config.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php:2
+Stack trace:
+#0 {main}
+  thrown in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:47:03 UTC] PHP Warning:  require_once(../../config.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:47:03 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../../config.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php:2
+Stack trace:
+#0 {main}
+  thrown in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:47:06 UTC] PHP Warning:  require_once(../../config.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:47:06 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../../config.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php:2
+Stack trace:
+#0 {main}
+  thrown in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:47:42 UTC] PHP Warning:  require_once(../../config.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:47:42 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../../config.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php:2
+Stack trace:
+#0 {main}
+  thrown in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:47:46 UTC] PHP Warning:  require_once(../../config.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:47:46 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../../config.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php:2
+Stack trace:
+#0 {main}
+  thrown in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:47:46 UTC] PHP Warning:  require_once(../../config.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:47:46 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../../config.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php:2
+Stack trace:
+#0 {main}
+  thrown in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:47:47 UTC] PHP Warning:  require_once(../../config.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:47:47 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../../config.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php:2
+Stack trace:
+#0 {main}
+  thrown in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:47:47 UTC] PHP Warning:  require_once(../../config.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:47:47 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../../config.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php:2
+Stack trace:
+#0 {main}
+  thrown in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:47:48 UTC] PHP Warning:  require_once(../../config.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:47:48 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../../config.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php:2
+Stack trace:
+#0 {main}
+  thrown in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:47:48 UTC] PHP Warning:  require_once(../../config.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:47:48 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../../config.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php:2
+Stack trace:
+#0 {main}
+  thrown in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:47:49 UTC] PHP Warning:  require_once(../../config.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:47:49 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../../config.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php:2
+Stack trace:
+#0 {main}
+  thrown in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:47:49 UTC] PHP Warning:  require_once(../../config.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:47:49 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../../config.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php:2
+Stack trace:
+#0 {main}
+  thrown in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:47:49 UTC] PHP Warning:  require_once(../../config.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:47:49 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../../config.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php:2
+Stack trace:
+#0 {main}
+  thrown in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:47:50 UTC] PHP Warning:  require_once(../../config.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:47:50 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../../config.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php:2
+Stack trace:
+#0 {main}
+  thrown in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:47:50 UTC] PHP Warning:  require_once(../../config.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:47:50 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../../config.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php:2
+Stack trace:
+#0 {main}
+  thrown in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:47:55 UTC] PHP Warning:  require_once(../../config.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:47:55 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../../config.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php:2
+Stack trace:
+#0 {main}
+  thrown in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:47:55 UTC] PHP Warning:  require_once(../../config.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:47:55 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../../config.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php:2
+Stack trace:
+#0 {main}
+  thrown in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:47:58 UTC] PHP Warning:  require_once(../../config.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:47:58 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../../config.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php:2
+Stack trace:
+#0 {main}
+  thrown in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:48:20 UTC] PHP Warning:  require_once(../../config.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:48:20 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../../config.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php:2
+Stack trace:
+#0 {main}
+  thrown in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:48:21 UTC] PHP Warning:  require_once(../../config.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:48:21 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../../config.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php:2
+Stack trace:
+#0 {main}
+  thrown in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:48:21 UTC] PHP Warning:  require_once(../../config.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:48:21 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../../config.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php:2
+Stack trace:
+#0 {main}
+  thrown in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:48:21 UTC] PHP Warning:  require_once(../../config.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:48:21 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../../config.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php:2
+Stack trace:
+#0 {main}
+  thrown in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:48:25 UTC] PHP Warning:  require_once(../../config.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:48:25 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../../config.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php:2
+Stack trace:
+#0 {main}
+  thrown in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:48:32 UTC] PHP Warning:  require_once(../../config.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:48:32 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../../config.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php:2
+Stack trace:
+#0 {main}
+  thrown in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:49:19 UTC] PHP Warning:  include(../header.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:49:19 UTC] PHP Warning:  include(): Failed opening '../header.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:49:19 UTC] PHP Warning:  include(../../config.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:49:19 UTC] PHP Warning:  include(): Failed opening '../../config.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:49:19 UTC] PHP Warning:  Undefined variable $conn in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 7
+[01-May-2026 03:49:19 UTC] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home2/samikshya/public_html/pradip/admin/projects/index.php:7
+Stack trace:
+#0 {main}
+  thrown in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 7
+[01-May-2026 03:50:52 UTC] PHP Warning:  include(../header.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:50:52 UTC] PHP Warning:  include(): Failed opening '../header.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:50:52 UTC] PHP Warning:  include(../../config.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:50:52 UTC] PHP Warning:  include(): Failed opening '../../config.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:50:52 UTC] PHP Warning:  Undefined variable $conn in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 7
+[01-May-2026 03:50:52 UTC] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home2/samikshya/public_html/pradip/admin/projects/index.php:7
+Stack trace:
+#0 {main}
+  thrown in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 7
+[01-May-2026 03:50:55 UTC] PHP Warning:  include(../header.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:50:55 UTC] PHP Warning:  include(): Failed opening '../header.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:50:55 UTC] PHP Warning:  include(../../config.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:50:55 UTC] PHP Warning:  include(): Failed opening '../../config.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:50:55 UTC] PHP Warning:  Undefined variable $conn in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 7
+[01-May-2026 03:50:55 UTC] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home2/samikshya/public_html/pradip/admin/projects/index.php:7
+Stack trace:
+#0 {main}
+  thrown in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 7
+[01-May-2026 03:50:56 UTC] PHP Warning:  include(../header.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:50:56 UTC] PHP Warning:  include(): Failed opening '../header.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:50:56 UTC] PHP Warning:  include(../../config.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:50:56 UTC] PHP Warning:  include(): Failed opening '../../config.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:50:56 UTC] PHP Warning:  Undefined variable $conn in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 7
+[01-May-2026 03:50:56 UTC] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home2/samikshya/public_html/pradip/admin/projects/index.php:7
+Stack trace:
+#0 {main}
+  thrown in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 7
+[01-May-2026 03:50:56 UTC] PHP Warning:  include(../header.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:50:56 UTC] PHP Warning:  include(): Failed opening '../header.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:50:56 UTC] PHP Warning:  include(../../config.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:50:56 UTC] PHP Warning:  include(): Failed opening '../../config.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 1
+[01-May-2026 03:50:56 UTC] PHP Warning:  Undefined variable $conn in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 7
+[01-May-2026 03:50:56 UTC] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home2/samikshya/public_html/pradip/admin/projects/index.php:7
+Stack trace:
+#0 {main}
+  thrown in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 7
+[01-May-2026 03:51:03 UTC] PHP Warning:  include(../../config.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:51:03 UTC] PHP Warning:  include(): Failed opening '../../config.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:51:03 UTC] PHP Warning:  include(../header.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 3
+[01-May-2026 03:51:03 UTC] PHP Warning:  include(): Failed opening '../header.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 3
+[01-May-2026 03:51:03 UTC] PHP Warning:  Undefined variable $conn in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 12
+[01-May-2026 03:51:03 UTC] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home2/samikshya/public_html/pradip/admin/projects/index.php:12
+Stack trace:
+#0 {main}
+  thrown in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 12
+[01-May-2026 03:51:04 UTC] PHP Warning:  include(../../config.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:51:04 UTC] PHP Warning:  include(): Failed opening '../../config.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:51:04 UTC] PHP Warning:  include(../header.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 3
+[01-May-2026 03:51:04 UTC] PHP Warning:  include(): Failed opening '../header.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 3
+[01-May-2026 03:51:04 UTC] PHP Warning:  Undefined variable $conn in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 12
+[01-May-2026 03:51:04 UTC] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home2/samikshya/public_html/pradip/admin/projects/index.php:12
+Stack trace:
+#0 {main}
+  thrown in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 12
+[01-May-2026 03:51:15 UTC] PHP Warning:  include(../../config.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:51:15 UTC] PHP Warning:  include(): Failed opening '../../config.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:51:15 UTC] PHP Warning:  include(../header.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 3
+[01-May-2026 03:51:15 UTC] PHP Warning:  include(): Failed opening '../header.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 3
+[01-May-2026 03:51:15 UTC] PHP Warning:  Undefined variable $conn in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 12
+[01-May-2026 03:51:15 UTC] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home2/samikshya/public_html/pradip/admin/projects/index.php:12
+Stack trace:
+#0 {main}
+  thrown in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 12
+[01-May-2026 03:52:10 UTC] PHP Warning:  include(../../config.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:52:10 UTC] PHP Warning:  include(): Failed opening '../../config.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:52:10 UTC] PHP Warning:  include(../header.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 3
+[01-May-2026 03:52:10 UTC] PHP Warning:  include(): Failed opening '../header.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 3
+[01-May-2026 03:52:10 UTC] PHP Warning:  Undefined variable $conn in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 12
+[01-May-2026 03:52:10 UTC] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home2/samikshya/public_html/pradip/admin/projects/index.php:12
+Stack trace:
+#0 {main}
+  thrown in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 12
+[01-May-2026 03:52:12 UTC] PHP Warning:  include(../../config.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:52:12 UTC] PHP Warning:  include(): Failed opening '../../config.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:52:12 UTC] PHP Warning:  include(../header.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 3
+[01-May-2026 03:52:12 UTC] PHP Warning:  include(): Failed opening '../header.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 3
+[01-May-2026 03:52:12 UTC] PHP Warning:  Undefined variable $conn in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 12
+[01-May-2026 03:52:12 UTC] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home2/samikshya/public_html/pradip/admin/projects/index.php:12
+Stack trace:
+#0 {main}
+  thrown in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 12
+[01-May-2026 03:52:12 UTC] PHP Warning:  include(../../config.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:52:12 UTC] PHP Warning:  include(): Failed opening '../../config.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:52:12 UTC] PHP Warning:  include(../header.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 3
+[01-May-2026 03:52:12 UTC] PHP Warning:  include(): Failed opening '../header.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 3
+[01-May-2026 03:52:12 UTC] PHP Warning:  Undefined variable $conn in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 12
+[01-May-2026 03:52:12 UTC] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home2/samikshya/public_html/pradip/admin/projects/index.php:12
+Stack trace:
+#0 {main}
+  thrown in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 12
+[01-May-2026 03:52:13 UTC] PHP Warning:  include(../../config.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:52:13 UTC] PHP Warning:  include(): Failed opening '../../config.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:52:13 UTC] PHP Warning:  include(../header.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 3
+[01-May-2026 03:52:13 UTC] PHP Warning:  include(): Failed opening '../header.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 3
+[01-May-2026 03:52:13 UTC] PHP Warning:  Undefined variable $conn in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 12
+[01-May-2026 03:52:13 UTC] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home2/samikshya/public_html/pradip/admin/projects/index.php:12
+Stack trace:
+#0 {main}
+  thrown in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 12
+[01-May-2026 03:52:13 UTC] PHP Warning:  include(../../config.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:52:13 UTC] PHP Warning:  include(): Failed opening '../../config.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 2
+[01-May-2026 03:52:13 UTC] PHP Warning:  include(../header.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 3
+[01-May-2026 03:52:13 UTC] PHP Warning:  include(): Failed opening '../header.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 3
+[01-May-2026 03:52:13 UTC] PHP Warning:  Undefined variable $conn in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 12
+[01-May-2026 03:52:13 UTC] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home2/samikshya/public_html/pradip/admin/projects/index.php:12
+Stack trace:
+#0 {main}
+  thrown in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 12
+[01-May-2026 09:37:19 Asia/Kathmandu] PHP Warning:  include(../footer.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 30
+[01-May-2026 09:37:19 Asia/Kathmandu] PHP Warning:  include(): Failed opening '../footer.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 30
+[01-May-2026 09:37:20 Asia/Kathmandu] PHP Warning:  include(../footer.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 30
+[01-May-2026 09:37:20 Asia/Kathmandu] PHP Warning:  include(): Failed opening '../footer.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 30
+[01-May-2026 09:37:55 Asia/Kathmandu] PHP Warning:  include(../footer.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 30
+[01-May-2026 09:37:55 Asia/Kathmandu] PHP Warning:  include(): Failed opening '../footer.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 30
+[01-May-2026 09:37:56 Asia/Kathmandu] PHP Warning:  include(../footer.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 30
+[01-May-2026 09:37:56 Asia/Kathmandu] PHP Warning:  include(): Failed opening '../footer.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 30
+[01-May-2026 04:03:09 UTC] PHP Warning:  require_once(/home2/samikshya/public_html/pradip/admin/projects/../includes/config.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 3
+[01-May-2026 04:03:09 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home2/samikshya/public_html/pradip/admin/projects/../includes/config.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php:3
+Stack trace:
+#0 {main}
+  thrown in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 3
+[01-May-2026 04:03:12 UTC] PHP Warning:  require_once(/home2/samikshya/public_html/pradip/admin/projects/../includes/config.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 3
+[01-May-2026 04:03:12 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home2/samikshya/public_html/pradip/admin/projects/../includes/config.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php:3
+Stack trace:
+#0 {main}
+  thrown in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 3
+[01-May-2026 04:03:13 UTC] PHP Warning:  require_once(/home2/samikshya/public_html/pradip/admin/projects/../includes/config.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 3
+[01-May-2026 04:03:13 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home2/samikshya/public_html/pradip/admin/projects/../includes/config.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php:3
+Stack trace:
+#0 {main}
+  thrown in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 3
+[01-May-2026 04:03:57 UTC] PHP Warning:  require_once(/home2/samikshya/public_html/pradip/admin/projects/../includes/config.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 3
+[01-May-2026 04:03:57 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home2/samikshya/public_html/pradip/admin/projects/../includes/config.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php:3
+Stack trace:
+#0 {main}
+  thrown in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 3
+[01-May-2026 04:03:57 UTC] PHP Warning:  require_once(/home2/samikshya/public_html/pradip/admin/projects/../includes/config.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 3
+[01-May-2026 04:03:57 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home2/samikshya/public_html/pradip/admin/projects/../includes/config.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php:3
+Stack trace:
+#0 {main}
+  thrown in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 3
+[01-May-2026 04:03:58 UTC] PHP Warning:  require_once(/home2/samikshya/public_html/pradip/admin/projects/../includes/config.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 3
+[01-May-2026 04:03:58 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home2/samikshya/public_html/pradip/admin/projects/../includes/config.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php:3
+Stack trace:
+#0 {main}
+  thrown in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 3
+[01-May-2026 04:04:00 UTC] PHP Warning:  require_once(/home2/samikshya/public_html/pradip/admin/projects/../includes/config.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 3
+[01-May-2026 04:04:00 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home2/samikshya/public_html/pradip/admin/projects/../includes/config.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php:3
+Stack trace:
+#0 {main}
+  thrown in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 3
+[01-May-2026 09:49:04 Asia/Kathmandu] PHP Warning:  include(/home2/samikshya/public_html/pradip/admin/projects/layout/footer.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 44
+[01-May-2026 09:49:04 Asia/Kathmandu] PHP Warning:  include(): Failed opening '/home2/samikshya/public_html/pradip/admin/projects/layout/footer.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 44
+[01-May-2026 09:49:58 Asia/Kathmandu] PHP Warning:  include(/home2/samikshya/public_html/pradip/admin/projects/layout/footer.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 44
+[01-May-2026 09:49:58 Asia/Kathmandu] PHP Warning:  include(): Failed opening '/home2/samikshya/public_html/pradip/admin/projects/layout/footer.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 44
+[01-May-2026 09:52:41 Asia/Kathmandu] PHP Warning:  include(/home2/samikshya/public_html/pradip/admin/projects/layout/footer.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 44
+[01-May-2026 09:52:41 Asia/Kathmandu] PHP Warning:  include(): Failed opening '/home2/samikshya/public_html/pradip/admin/projects/layout/footer.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 44
+[01-May-2026 09:52:43 Asia/Kathmandu] PHP Warning:  include(/home2/samikshya/public_html/pradip/admin/projects/layout/footer.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 44
+[01-May-2026 09:52:43 Asia/Kathmandu] PHP Warning:  include(): Failed opening '/home2/samikshya/public_html/pradip/admin/projects/layout/footer.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 44
+[01-May-2026 09:52:44 Asia/Kathmandu] PHP Warning:  include(/home2/samikshya/public_html/pradip/admin/projects/layout/footer.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 44
+[01-May-2026 09:52:44 Asia/Kathmandu] PHP Warning:  include(): Failed opening '/home2/samikshya/public_html/pradip/admin/projects/layout/footer.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 44
+[01-May-2026 09:52:44 Asia/Kathmandu] PHP Warning:  include(/home2/samikshya/public_html/pradip/admin/projects/layout/footer.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 44
+[01-May-2026 09:52:44 Asia/Kathmandu] PHP Warning:  include(): Failed opening '/home2/samikshya/public_html/pradip/admin/projects/layout/footer.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 44
+[01-May-2026 09:52:45 Asia/Kathmandu] PHP Warning:  include(/home2/samikshya/public_html/pradip/admin/projects/layout/footer.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 44
+[01-May-2026 09:52:45 Asia/Kathmandu] PHP Warning:  include(): Failed opening '/home2/samikshya/public_html/pradip/admin/projects/layout/footer.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 44
+[01-May-2026 09:52:45 Asia/Kathmandu] PHP Warning:  include(/home2/samikshya/public_html/pradip/admin/projects/layout/footer.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 44
+[01-May-2026 09:52:45 Asia/Kathmandu] PHP Warning:  include(): Failed opening '/home2/samikshya/public_html/pradip/admin/projects/layout/footer.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 44
+[01-May-2026 04:09:10 UTC] PHP Parse error:  syntax error, unexpected token "__DIR__" in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 6
+[01-May-2026 04:09:11 UTC] PHP Parse error:  syntax error, unexpected token "__DIR__" in /home2/samikshya/public_html/pradip/admin/projects/index.php on line 6
