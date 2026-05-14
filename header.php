@@ -76,12 +76,9 @@ $current = basename($_SERVER['PHP_SELF']);
         <a href="/pradip/experience.php" class="<?= ($current == 'experience.php') ? 'active' : '' ?>">
             Experience
         </a>
-<<<<<<< HEAD
         <a href="/pradip/blogs.php" class="<?= ($current == 'blogs.php') ? 'active' : '' ?>">
             Blogs
         </a>
-=======
->>>>>>> 914ae56c96e8b63aa2a5f0b619c3975a75381c3f
 
         <a href="/pradip/services.php" class="<?= ($current == 'services.php') ? 'active' : '' ?>">
             Services
