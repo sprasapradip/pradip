@@ -1,0 +1,8 @@
+ErrorDocument 404 /pradip/404.php
+
+RewriteEngine On
+
+# If file or folder doesn't exist → go to 404
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^.*$ /pradip/404.php [L]

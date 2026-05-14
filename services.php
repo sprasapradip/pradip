@@ -1,22 +1,55 @@
-<!DOCTYPE html>
-<html>
-<head><link rel="stylesheet" href="style.css"></head>
-<body>
-<nav>
-<a href="index.php">Home</a>
-<a href="projects.php">Projects</a>
-<a href="experience.php">Experience</a>
-<a href="services.php">Services</a>
-<a href="contact.php">Contact</a>
-</nav>
-<section>
-<h2>Services</h2>
-<div class="grid">
-<div class="service-box">Electrical Installation</div>
-<div class="service-box">Maintenance</div>
-<div class="service-box">Solar Setup</div>
-<div class="service-box">Troubleshooting</div>
-</div>
+<?php include 'config.php'; ?>
+<?php include 'header.php'; ?>
+<?php
+
+$stmt = $conn->prepare("
+    SELECT *
+    FROM services
+    ORDER BY id DESC
+");
+
+$stmt->execute();
+
+$result = $stmt->get_result();
+
+?>
+
+<section class="page">
+
+    <h1 class="page-title">Services</h1>
+
+    <p class="text-block">
+        Professional electrical engineering services including installation, maintenance, and system troubleshooting.
+    </p>
+
+    <div class="service-grid">
+
+        <?php if($result->num_rows > 0): ?>
+
+            <?php while($row = $result->fetch_assoc()): ?>
+
+                <div class="service-card">
+
+                    <h3 class="section-title">
+                        <?= htmlspecialchars($row['title']) ?>
+                    </h3>
+
+                    <p>
+                        <?= nl2br(htmlspecialchars($row['description'])) ?>
+                    </p>
+
+                </div>
+
+            <?php endwhile; ?>
+
+        <?php else: ?>
+
+            <p>No services available.</p>
+
+        <?php endif; ?>
+
+    </div>
+
 </section>
-</body>
-</html>
+
+<?php include 'footer.php'; ?>

@@ -36,59 +36,90 @@ if(isset($_POST['send'])){
     // SMTP Email
     $mail = new PHPMailer(true);
 
-    try {
-        // SMTP config
+   try {
+        // SMTP Settings
         $mail->isSMTP();
-        $mail->Host       = 'smtp.gmail.com';  // SMTP server
+        $mail->Host       = 'mail.pradipsubedi1.com.np';
         $mail->SMTPAuth   = true;
-        $mail->Username   = 'pradipsubedi9831@gmail.com'; // your email
-        $mail->Password   = 'jgmtoakqnkbeuvtp';   // NOT normal password
-        $mail->SMTPSecure = 'tls';
-        $mail->Port       = 587;
+        $mail->Username   = 'mail@pradipsubedi1.com.np';
+        $mail->Password   = 'Operation@123';
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; // SSL
+        $mail->Port       = 465;
+        $mail->Timeout    = 60;
 
-        // Sender & Receiver
-        $mail->setFrom('pradipsubedi9831@gmail.com', 'Portfolio Contact');
-        $mail->addAddress('pradipsubedi9831@gmail.com'); // where you receive
+        // Debug (remove after working)
+        $mail->SMTPDebug = 0;
+        $mail->Debugoutput = 'html';
 
-        // Content
+        // Sender and Receiver
+        $mail->setFrom('mail@pradipsubedi1.com.np', 'Portfolio Contact');
+        $mail->addAddress('mail@pradipsubedi1.com.np');
+
+        // Email Content
         $mail->isHTML(true);
         $mail->Subject = 'New Contact Message';
-        $mail->Body    = "
-            <h3>New Message</h3>
-            <b>Name:</b> $name <br>
-            <b>Email:</b> $email <br>
-            <b>Message:</b><br>$message
+        $mail->Body = "
+            <h2>New Contact Form Message</h2>
+            <p><strong>Name:</strong> $name</p>
+            <p><strong>Email:</strong> $email</p>
+            <p><strong>Message:</strong><br>$message</p>
         ";
 
         $mail->send();
-        $msg = "Message Sent + Email Delivered";
+        $msg = "Message Sent + Email Delivered Successfully";
 
     } catch (Exception $e) {
-        $msg = "Saved but Email Failed: {$mail->ErrorInfo}";
+        $msg = "Saved in DB but Email Failed: " . $mail->ErrorInfo;
     }
 }
 ?>
 <!DOCTYPE html>
 <html>
-<head><link rel="stylesheet" href="style.css"></head>
+<head>
+<link rel="stylesheet" href="style.css">
+</head>
+
 <body>
+
 <nav>
 <a href="index.php">Home</a>
 <a href="projects.php">Projects</a>
 <a href="experience.php">Experience</a>
 <a href="services.php">Services</a>
-<a href="contact.php">Contact</a>
+<a href="contact.php" class="active">Contact</a>
 </nav>
-<section>
-<h2>Contact</h2>
-<p><?php echo $msg; ?></p>
-<form method="POST">
-<input name="name" placeholder="Name" required>
-<input name="email" placeholder="Email" required>
-<textarea name="message" placeholder="Message" required></textarea>
-<button class="btn" name="send">Send</button>
-</form>
+
+<section class="page">
+
+    <h1 class="page-title">Contact</h1>
+
+    <p class="text-block">
+        Feel free to reach out for electrical projects, technical consultation, or collaboration.
+    </p>
+
+    <!-- STATUS MESSAGE -->
+    <?php if(!empty($msg)): ?>
+        <p class="text-block" style="color:#38bdf8; font-weight:500;">
+            <?php echo $msg; ?>
+        </p>
+    <?php endif; ?>
+
+    <!-- FORM -->
+    <form method="POST">
+
+        <input name="name" placeholder="Full Name" required>
+
+        <input type="email" name="email" placeholder="Email Address" required>
+
+        <textarea name="message" placeholder="Write your message..." rows="5" required></textarea>
+
+        <button class="btn" name="send">Send Message</button>
+
+    </form>
+
 </section>
-</body>
+
 <?php include 'footer.php'; ?>
+
+</body>
 </html>
