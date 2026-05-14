@@ -1885,6 +1885,7 @@ Stack trace:
 [12-May-2026 12:30:43 UTC] PHP Warning:  include(): Failed opening '/home2/samikshya/public_html/pradip/layout/header.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/404.php on line 1
 [12-May-2026 12:30:43 UTC] PHP Warning:  include(/home2/samikshya/public_html/pradip/layout/footer.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/404.php on line 10
 [12-May-2026 12:30:43 UTC] PHP Warning:  include(): Failed opening '/home2/samikshya/public_html/pradip/layout/footer.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/404.php on line 10
+<<<<<<< HEAD
 [13-May-2026 03:19:53 UTC] PHP Warning:  include(config.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/projects.php on line 1
 [13-May-2026 03:19:53 UTC] PHP Warning:  include(): Failed opening 'config.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/projects.php on line 1
 [13-May-2026 03:19:53 UTC] PHP Warning:  include(/home2/samikshya/public_html/pradip/layout/header.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/404.php on line 1
@@ -4784,3 +4785,5 @@ Stack trace:
 [14-May-2026 04:22:47 UTC] PHP Warning:  include(): Failed opening '/home2/samikshya/public_html/pradip/layout/header.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/404.php on line 1
 [14-May-2026 04:22:47 UTC] PHP Warning:  include(/home2/samikshya/public_html/pradip/layout/footer.php): Failed to open stream: No such file or directory in /home2/samikshya/public_html/pradip/404.php on line 10
 [14-May-2026 04:22:47 UTC] PHP Warning:  include(): Failed opening '/home2/samikshya/public_html/pradip/layout/footer.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/samikshya/public_html/pradip/404.php on line 10
+=======
+>>>>>>> 914ae56c96e8b63aa2a5f0b619c3975a75381c3f

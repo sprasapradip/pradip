@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php include 'config.php'; ?>
 <?php include 'header.php'; ?>
 <?php
@@ -13,6 +14,12 @@ $stmt->execute();
 $result = $stmt->get_result();
 
 ?>
+=======
+<?php include 'header.php'; ?>
+
+<link rel="stylesheet" href="style.css">
+
+>>>>>>> 914ae56c96e8b63aa2a5f0b619c3975a75381c3f
 
 <section class="page">
 

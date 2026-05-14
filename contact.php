@@ -1,4 +1,3 @@
-<?php include 'config.php'; ?>
 <?php include 'header.php'; ?>
 <?php
 $msg="";

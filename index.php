@@ -1,11 +1,15 @@
-<?php include 'config.php'; ?>
 <?php include 'header.php'; ?>
 
 <!-- HERO -->
+<!-- HERO -->
 <section class="hero">
+
 
     <h1><?php echo $profile['name']; ?></h1>
 
+    <p class="text-block">
+        Electrical Engineer at Maulakalika Cable Car specializing in
+        power systems, industrial maintenance, and cable car operations.
     <p class="text-block">
         Electrical Engineer at Maulakalika Cable Car specializing in
         power systems, industrial maintenance, and cable car operations.
@@ -14,7 +18,11 @@
     <div>
         <a class="btn" href="projects.php">View Projects</a>
         <a class="btn secondary" href="https://linkedin.com" target="_blank">LinkedIn</a>
+    <div>
+        <a class="btn" href="projects.php">View Projects</a>
+        <a class="btn secondary" href="https://linkedin.com" target="_blank">LinkedIn</a>
     </div>
+
 
 </section>
 
@@ -34,9 +42,33 @@
         <div class="card"><div class="card-body">Fault Diagnosis</div></div>
         <div class="card"><div class="card-body">PLC / Control Systems</div></div>
         <div class="card"><div class="card-body">Project Management</div></div>
+<!-- SKILLS -->
+<section class="page">
+
+    <h1 class="page-title">Skills</h1>
+
+    <p class="text-block">
+        Technical and professional expertise across electrical engineering and digital systems.
+    </p>
+
+    <div class="grid">
+        <div class="card"><div class="card-body">Electrical Engineering</div></div>
+        <div class="card"><div class="card-body">Power Systems</div></div>
+        <div class="card"><div class="card-body">Industrial Maintenance</div></div>
+        <div class="card"><div class="card-body">Fault Diagnosis</div></div>
+        <div class="card"><div class="card-body">PLC / Control Systems</div></div>
+        <div class="card"><div class="card-body">Project Management</div></div>
     </div>
 
+
 </section>
+
+<!-- FEATURED PROJECTS -->
+<section class="page">
+
+    <h1 class="page-title">Featured Projects</h1>
+
+    <div class="grid">
 
 <!-- FEATURED PROJECTS -->
 <section class="page">
@@ -54,6 +86,10 @@
             <div class="card-body">
                 <h3 class="section-title"><?php echo htmlspecialchars($row['title'] ) ; ?></h3>
             </div>
+        </div>
+
+        <?php endwhile; ?>
+
         </div>
 
         <?php endwhile; ?>
@@ -130,4 +166,5 @@
 
 </section>
 
+<!-- FOOTER -->
 <?php include 'footer.php'; ?>
