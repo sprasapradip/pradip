@@ -440,4 +440,3 @@ document.querySelectorAll('.delete-btn').forEach(button => {
 </style>
 
 <?php include '../layout/footer.php'; ?>
-```

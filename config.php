@@ -3,7 +3,7 @@
 // ==========================
 // DATABASE CONNECTION
 // ==========================
-$conn = new mysqli("localhost", "root", "", "portfolio");
+$conn = new mysqli("localhost", "root", "", "samikshya_portfolio2");
 
 if ($conn->connect_error) {
     die("Database Connection Failed: " . $conn->connect_error);
