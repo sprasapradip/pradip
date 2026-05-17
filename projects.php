@@ -44,11 +44,13 @@ $result = $stmt->get_result();
 
 <section class="page">
 
-        <h1 class="page-title">Projects</h1>
+    <h1 class="page-title">
+        Projects
+    </h1>
 
-        <p class="text-block">
-            Electrical engineering, power systems, and cable car maintenance projects based on real field experience.
-        </p>
+    <p class="text-block">
+        Electrical engineering, power systems, and cable car maintenance projects based on real field experience.
+    </p>
 
     <div class="project-grid">
 
@@ -61,10 +63,12 @@ $result = $stmt->get_result();
                     <?php if(!empty($row['image'])): ?>
 
                         <div class="project-image">
+
                             <img 
                                 src="uploads/<?= htmlspecialchars($row['image']) ?>" 
                                 alt="<?= htmlspecialchars($row['title']) ?>"
                             >
+
                         </div>
 
                     <?php endif; ?>
@@ -75,9 +79,29 @@ $result = $stmt->get_result();
                             <?= htmlspecialchars($row['title']) ?>
                         </h3>
 
-                        <p class="project-description">
-                            <?= nl2br(htmlspecialchars($row['description'])) ?>
-                        </p>
+                        <?php
+                        $plainText = strip_tags($row['description']);
+                        $shortText = mb_substr($plainText, 0, 150);
+                        ?>
+
+                        <div class="project-description">
+
+                            <?= nl2br(htmlspecialchars($shortText)) ?>...
+
+                        </div>
+
+                        <button 
+                            class="project-btn"
+                            onclick='openProjectModal(
+                                <?= json_encode($row["title"]) ?>,
+                                <?= json_encode($row["description"]) ?>,
+                                <?= json_encode($row["image"]) ?>
+                            )'
+                        >
+
+                            Read More
+
+                        </button>
 
                     </div>
 
@@ -102,9 +126,11 @@ $result = $stmt->get_result();
 
             <!-- Previous -->
             <?php if($page > 1): ?>
+
                 <a href="?page=<?= $page - 1 ?>" class="page-btn">
                     ← Prev
                 </a>
+
             <?php endif; ?>
 
             <!-- Page Numbers -->
@@ -121,9 +147,11 @@ $result = $stmt->get_result();
 
             <!-- Next -->
             <?php if($page < $totalPages): ?>
+
                 <a href="?page=<?= $page + 1 ?>" class="page-btn">
                     Next →
                 </a>
+
             <?php endif; ?>
 
         </div>
@@ -131,5 +159,124 @@ $result = $stmt->get_result();
     <?php endif; ?>
 
 </section>
+
+<!-- PROJECT MODAL -->
+<div id="projectModal" style="
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.7);
+    z-index:9999;
+    overflow:auto;
+">
+
+    <div style="
+        background:#fff;
+        width:90%;
+        max-width:900px;
+        margin:50px auto;
+        border-radius:12px;
+        overflow:hidden;
+        position:relative;
+    ">
+
+        <!-- CLOSE -->
+        <button onclick="closeProjectModal()" style="
+            position:absolute;
+            top:15px;
+            right:15px;
+            background:#2563eb;
+            color:#fff;
+            border:none;
+            width:40px;
+            height:40px;
+            border-radius:50%;
+            cursor:pointer;
+            font-size:20px;
+            z-index:10;
+        ">
+            ×
+        </button>
+
+        <!-- IMAGE -->
+        <div id="modalImageWrap"></div>
+
+        <!-- CONTENT -->
+        <div style="padding:30px;">
+
+            <h2 id="modalTitle"
+                style="
+                    margin-bottom:20px;
+                    color:#000;
+                    font-size:32px;
+                    line-height:1.4;
+                ">
+            </h2>
+
+            <div id="modalDescription"
+                 style="
+                    line-height:2;
+                    font-size:17px;
+                    color:#333;
+                 ">
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+function openProjectModal(title, description, image){
+
+    document.getElementById('modalTitle').innerHTML = title;
+
+    document.getElementById('modalDescription').innerHTML = description;
+
+    if(image){
+
+        document.getElementById('modalImageWrap').innerHTML = `
+            <img src="uploads/${image}"
+                 style="
+                    width:100%;
+                    max-height:450px;
+                    object-fit:cover;
+                 ">
+        `;
+
+    } else {
+
+        document.getElementById('modalImageWrap').innerHTML = '';
+    }
+
+    document.getElementById('projectModal').style.display = 'block';
+
+    document.body.style.overflow = 'hidden';
+}
+
+function closeProjectModal(){
+
+    document.getElementById('projectModal').style.display = 'none';
+
+    document.body.style.overflow = 'auto';
+}
+
+// CLOSE ON OUTSIDE CLICK
+window.onclick = function(event){
+
+    let modal = document.getElementById('projectModal');
+
+    if(event.target == modal){
+
+        closeProjectModal();
+    }
+}
+
+</script>
 
 <?php include 'footer.php'; ?>
