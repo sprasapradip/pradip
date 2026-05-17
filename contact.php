@@ -70,21 +70,8 @@ if(isset($_POST['send'])){
     }
 }
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-<link rel="stylesheet" href="style.css">
-</head>
-
 <body>
 
-<nav>
-<a href="index.php">Home</a>
-<a href="projects.php">Projects</a>
-<a href="experience.php">Experience</a>
-<a href="services.php">Services</a>
-<a href="contact.php" class="active">Contact</a>
-</nav>
 
 <section class="page">
 
@@ -117,6 +104,3 @@ if(isset($_POST['send'])){
 </section>
 
 <?php include 'footer.php'; ?>
-
-</body>
-</html>
