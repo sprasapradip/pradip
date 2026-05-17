@@ -73,3 +73,49 @@ document.querySelectorAll(".btn").forEach(btn=>{
         btn.style.transform = "translate(0,0)";
     });
 });
+
+
+function openProjectModal(title, description, image){
+
+    document.getElementById('modalTitle').innerHTML = title;
+
+    document.getElementById('modalDescription').innerHTML = description;
+
+    if(image){
+
+        document.getElementById('modalImageWrap').innerHTML = `
+            <img src="uploads/${image}"
+                 style="
+                    width:100%;
+                    max-height:450px;
+                    object-fit:cover;
+                 ">
+        `;
+
+    } else {
+
+        document.getElementById('modalImageWrap').innerHTML = '';
+    }
+
+    document.getElementById('projectModal').style.display = 'block';
+
+    document.body.style.overflow = 'hidden';
+}
+
+function closeProjectModal(){
+
+    document.getElementById('projectModal').style.display = 'none';
+
+    document.body.style.overflow = 'auto';
+}
+
+// CLOSE ON OUTSIDE CLICK
+window.onclick = function(event){
+
+    let modal = document.getElementById('projectModal');
+
+    if(event.target == modal){
+
+        closeProjectModal();
+    }
+}
