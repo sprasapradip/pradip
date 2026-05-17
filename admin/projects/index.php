@@ -1,5 +1,6 @@
 <?php
 define('APP_INIT', true);
+
 require_once __DIR__ . '/../../includes/config.php';
 require_once __DIR__ . '/../auth.php';
 require_once '../config/guard.php';
@@ -8,86 +9,34 @@ require_once '../config/guard.php';
    DELETE PROJECT
 ========================= */
 if(isset($_POST['delete_id'])){
+
     $id = (int) $_POST['delete_id'];
 
+    // GET IMAGE
+    $stmt = $conn->prepare("SELECT image FROM projects WHERE id=?");
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+
+    $result = $stmt->get_result();
+    $project = $result->fetch_assoc();
+
+    // DELETE IMAGE
+    if(!empty($project['image'])){
+
+        $imagePath = __DIR__ . '/../../uploads/' . $project['image'];
+
+        if(file_exists($imagePath)){
+            unlink($imagePath);
+        }
+    }
+
+    // DELETE PROJECT
     $stmt = $conn->prepare("DELETE FROM projects WHERE id=?");
     $stmt->bind_param("i", $id);
     $stmt->execute();
 
     header("Location: index.php?deleted=1");
     exit;
-}
-
-/* =========================
-   ADD OR UPDATE PROJECT
-========================= */
-if(isset($_POST['save'])){
-
-    $title = $_POST['title'];
-    $desc  = $_POST['description'];
-
-    // IMAGE UPLOAD
-    $imageName = null;
-
-    if(isset($_FILES['image']) && $_FILES['image']['error'] == 0){
-
-        $allowed = ['jpg','jpeg','png','webp'];
-        $fileExt = strtolower(pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION));
-
-        if(in_array($fileExt, $allowed)){
-
-            $imageName = time() . '_' . rand(1000,9999) . '.' . $fileExt;
-
-            move_uploaded_file(
-                $_FILES['image']['tmp_name'],
-                __DIR__ . '/../../uploads/' . $imageName
-            );
-        }
-    }
-
-    // UPDATE
-    if(!empty($_POST['id'])){
-
-        $id = (int) $_POST['id'];
-
-        if($imageName){
-            $stmt = $conn->prepare("UPDATE projects SET title=?, description=?, image=? WHERE id=?");
-            $stmt->bind_param("sssi", $title, $desc, $imageName, $id);
-        } else {
-            $stmt = $conn->prepare("UPDATE projects SET title=?, description=? WHERE id=?");
-            $stmt->bind_param("ssi", $title, $desc, $id);
-        }
-
-        $stmt->execute();
-        header("Location: index.php?updated=1");
-        exit;
-    }
-
-    // INSERT
-    else{
-
-        $stmt = $conn->prepare("INSERT INTO projects(title, description, image) VALUES(?,?,?)");
-        $stmt->bind_param("sss", $title, $desc, $imageName);
-        $stmt->execute();
-
-        header("Location: index.php?added=1");
-        exit;
-    }
-}
-
-/* =========================
-   EDIT DATA
-========================= */
-$edit = null;
-
-if(isset($_GET['edit'])){
-    $id = (int) $_GET['edit'];
-
-    $stmt = $conn->prepare("SELECT * FROM projects WHERE id=?");
-    $stmt->bind_param("i", $id);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $edit = $result->fetch_assoc();
 }
 
 /* =========================
@@ -100,84 +49,170 @@ include __DIR__ . '/../layout/header.php';
 
 <section class="admin-page">
 
-<h1>Projects</h1>
+    <h1>Projects</h1>
 
-<h2><?= $edit ? "Edit Project" : "Add Project" ?></h2>
-
-<form method="POST" enctype="multipart/form-data">
-
-    <?php if($edit): ?>
-        <input type="hidden" name="id" value="<?= $edit['id'] ?>">
-    <?php endif; ?>
-
-    <input type="text"
-           name="title"
-           placeholder="Title"
-           value="<?= htmlspecialchars($edit['title'] ?? '') ?>"
-           required>
+    <a href="create.php" class="btn">
+        Add New Project
+    </a>
 
     <br><br>
 
-    <textarea name="description"
-              placeholder="Description"
-              required><?= htmlspecialchars($edit['description'] ?? '') ?></textarea>
+    <div class="grid">
 
-    <br><br>
+        <?php while($row = $res->fetch_assoc()): ?>
 
-    <input type="file" name="image" accept="image/*">
+            <div class="card">
 
-    <br><br>
+                <?php if(!empty($row['image'])): ?>
 
-    <button type="submit" name="save" class="btn">
-        <?= $edit ? "Update" : "Save" ?>
-    </button>
+                    <img src="../../uploads/<?= htmlspecialchars($row['image']) ?>"
+                         style="
+                            width:100%;
+                            border-radius:8px;
+                            margin-bottom:10px;
+                         ">
 
-    <?php if($edit): ?>
-        <a href="index.php" class="btn">Cancel</a>
-    <?php endif; ?>
+                <?php endif; ?>
 
-</form>
+                <h3>
+                    <?= htmlspecialchars($row['title']) ?>
+                </h3>
 
-<hr>
+                <p>
+                    <?= htmlspecialchars($row['description']) ?>
+                </p>
 
-<div class="grid">
+                <div style="
+                    margin-top:15px;
+                    display:flex;
+                    align-items:center;
+                    justify-content:center;
+                    gap:10px;
+                    flex-wrap:wrap;
+                ">
 
-<?php while($row = $res->fetch_assoc()): ?>
+                    <a href="edit.php?id=<?= $row['id'] ?>"
+                       class="btn">
 
-    <div class="card">
+                        Edit
 
-        <?php if(!empty($row['image'])): ?>
-            <img src="../../uploads/<?= htmlspecialchars($row['image']) ?>"
-                 style="width:100%; border-radius:8px; margin-bottom:10px;">
-        <?php endif; ?>
+                    </a>
 
-        <h3><?= htmlspecialchars($row['title']) ?></h3>
+                    <form method="POST"
+                          style="
+                            display:inline-flex;
+                            align-items:center;
+                            justify-content:center;
+                            margin:0;
+                          ">
 
-        <p><?= htmlspecialchars($row['description']) ?></p>
+                        <input type="hidden"
+                               name="delete_id"
+                               value="<?= $row['id'] ?>">
 
-        <div style="margin-top:10px;">
+                        <button type="submit"
+                                class="btn-danger"
+                                onclick="return openDeleteModal(this.form)">
 
-            <a href="index.php?edit=<?= $row['id'] ?>" class="btn">
-                Edit
-            </a>
+                            Delete
 
-            <form method="POST" style="display:inline;">
-                <input type="hidden" name="delete_id" value="<?= $row['id'] ?>">
-                <button type="submit"
-                        class="btn-danger"
-                        onclick="return confirm('Are you sure?')">
-                    Delete
-                </button>
-            </form>
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        <?php endwhile; ?>
+
+    </div>
+
+</section>
+
+<!-- DELETE MODAL -->
+<div id="deleteModal" style="
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.5);
+    z-index:9999;
+    justify-content:center;
+    align-items:center;
+">
+
+    <div style="
+        background:#fff;
+        padding:30px;
+        border-radius:12px;
+        width:90%;
+        max-width:400px;
+        text-align:center;
+        box-shadow:0 10px 30px rgba(0,0,0,0.2);
+    ">
+
+        <h3 style="margin-bottom:15px;">
+            Delete Project
+        </h3>
+
+        <p style="margin-bottom:25px;">
+            Are you sure you want to delete this project?
+        </p>
+
+        <div style="
+            display:flex;
+            justify-content:center;
+            gap:10px;
+        ">
+
+            <button onclick="closeDeleteModal()"
+                    class="btn">
+
+                Cancel
+
+            </button>
+
+            <button onclick="confirmDelete()"
+                    class="btn-danger">
+
+                Delete
+
+            </button>
 
         </div>
 
     </div>
 
-<?php endwhile; ?>
-
 </div>
 
-</section>
+<script>
+
+let deleteForm = null;
+
+function openDeleteModal(form){
+
+    deleteForm = form;
+
+    document.getElementById('deleteModal').style.display = 'flex';
+
+    return false;
+}
+
+function closeDeleteModal(){
+
+    document.getElementById('deleteModal').style.display = 'none';
+}
+
+function confirmDelete(){
+
+    if(deleteForm){
+        deleteForm.submit();
+    }
+}
+
+</script>
 
 <?php include __DIR__ . '/../layout/footer.php'; ?>

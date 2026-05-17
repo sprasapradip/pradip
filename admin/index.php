@@ -183,10 +183,9 @@ include __DIR__ . '/layout/header.php';
                     <?= htmlspecialchars(substr($row['description'], 0, 120)) ?>...
                 </p>
 
-                <a href="projects/edit.php?id=<?= $row['id'] ?>" class="btn">
+                <a href="projects/index.php?edit=<?= $row['id'] ?>" class="btn">
                     Edit Project
                 </a>
-
             </div>
 
         </div>
