@@ -92,12 +92,101 @@ if(isset($_POST['login'])){
 <title>Admin Login</title>
 
 <style>
-.admin
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
+body{
+    font-family:Arial, sans-serif;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:
+    linear-gradient(135deg,#020617,#0f172a);
+}
+
+.login-box{
+    width:100%;
+    max-width:400px;
+    background:rgba(255,255,255,0.06);
+    backdrop-filter:blur(12px);
+    border:1px solid rgba(255,255,255,0.1);
+    border-radius:18px;
+    padding:30px;
+    color:white;
+    box-shadow:0 10px 40px rgba(0,0,0,0.4);
+}
+
+.login-box h2{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.input-group{
+    margin-bottom:18px;
+}
+
+.input-group label{
+    display:block;
+    margin-bottom:8px;
+    font-size:14px;
+}
+
+.input-group input{
+    width:100%;
+    padding:14px;
+    border:none;
+    outline:none;
+    border-radius:10px;
+    background:rgba(255,255,255,0.08);
+    color:white;
+}
+
+.input-group input::placeholder{
+    color:#94a3b8;
+}
+
+.btn{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:10px;
+    background:#2563eb;
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.btn:hover{
+    background:#1d4ed8;
+}
+
+.error{
+    background:rgba(255,0,0,0.1);
+    color:#ffb4b4;
+    padding:10px;
+    border-radius:10px;
+    margin-bottom:15px;
+    text-align:center;
+}
+
+.home-btn{
+    margin-top:12px;
+    display:block;
+    text-align:center;
+    text-decoration:none;
+    color:#cbd5e1;
+}
+
+.home-btn:hover{
+    color:white;
+}
 
 </style>
-
-
 
 </head>
 <body>
