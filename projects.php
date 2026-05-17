@@ -89,9 +89,9 @@ $result = $stmt->get_result();
                             <?= nl2br(htmlspecialchars($shortText)) ?>...
 
                         </div>
-
-                        <button 
-                            class="project-btn"
+                      <div class="project-content">
+                         <a 
+                            class="btn"
                             onclick='openProjectModal(
                                 <?= json_encode($row["title"]) ?>,
                                 <?= json_encode($row["description"]) ?>,
@@ -101,9 +101,9 @@ $result = $stmt->get_result();
 
                             Read More
 
-                        </button>
-
-                    </div>
+                         </a>
+                       </div>
+                      </div>
 
                 </div>
 
