@@ -25,6 +25,7 @@
 body{
     background: radial-gradient(circle at top, #111827, var(--bg));
     color: var(--text);
+    padding-top: 80px; }
 }
 
 /* =========================

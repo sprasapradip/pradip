@@ -97,7 +97,7 @@ $current = basename($_SERVER['PHP_SELF']);
 </style>
 
 </head>
-<body>
+
 
 <nav class="navbar">
 
