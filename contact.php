@@ -13,8 +13,6 @@ require 'PHPMailer/src/Exception.php';
 require 'PHPMailer/src/PHPMailer.php';
 require 'PHPMailer/src/SMTP.php';
 
-
-
 if ($conn->connect_error) {
     die("DB Connection failed: " . $conn->connect_error);
 }
@@ -40,8 +38,8 @@ if(isset($_POST['send'])){
         $mail->isSMTP();
         $mail->Host       = 'mail.pradipsubedi1.com.np';
         $mail->SMTPAuth   = true;
-        $mail->Username   = 'mail@pradipsubedi1.com.np';
-        $mail->Password   = 'Operation@123';
+        $mail->Username   = '*****************';
+        $mail->Password   = '****************';
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; // SSL
         $mail->Port       = 465;
         $mail->Timeout    = 60;
@@ -51,7 +49,7 @@ if(isset($_POST['send'])){
         $mail->Debugoutput = 'html';
 
         // Sender and Receiver
-        $mail->setFrom('mail@pradipsubedi1.com.np', 'Portfolio Contact');
+        $mail->setFrom('******************', 'Portfolio Contact');
         $mail->addAddress('mail@pradipsubedi1.com.np');
 
         // Email Content
