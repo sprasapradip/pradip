@@ -78,9 +78,10 @@ include __DIR__ . '/../layout/header.php';
                     <?= htmlspecialchars($row['title']) ?>
                 </h3>
 
-                <p>
-                    <?= htmlspecialchars($row['description']) ?>
-                </p>
+                
+                <div class="project-description">
+                   <?= $row['description'] ?>
+                </div>
 
                 <div style="
                     margin-top:15px;

@@ -66,6 +66,7 @@ include __DIR__ . '/../layout/header.php';
     <br><br>
 
     <textarea name="description"
+              id="editor"
               placeholder="Description"
               required></textarea>
 
@@ -93,4 +94,13 @@ include __DIR__ . '/../layout/header.php';
 
 </section>
 
+<!-- CKEDITOR -->
+<script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
+
+<script>
+    CKEDITOR.replace('editor', {
+        height: 300,
+        removeButtons: '',
+    });
+</script>
 <?php include __DIR__ . '/../layout/footer.php'; ?>
