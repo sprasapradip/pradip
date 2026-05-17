@@ -80,9 +80,9 @@ include __DIR__ . '/../layout/header.php';
 
                 
                 <div class="project-description">
-                   <?= $row['description'] ?>
+                   <?= substr($row['description'],0,120) ?>...
                 </div>
-
+ 
                 <div style="
                     margin-top:15px;
                     display:flex;
