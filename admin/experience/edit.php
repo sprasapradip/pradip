@@ -54,7 +54,7 @@ include '../layout/header.php';
                value="<?= htmlspecialchars($data['company']) ?>"
                required>
 
-        <textarea name="description" rows="6" required><?= htmlspecialchars($data['description']) ?></textarea>
+        <textarea name="description"  id="editor" rows="6" required><?= htmlspecialchars($data['description']) ?></textarea>
 
         <button class="btn">Update</button>
 

@@ -35,7 +35,7 @@ include '../layout/header.php';
 
         <input type="text" name="company" placeholder="Company Name" required>
 
-        <textarea name="description" rows="6" placeholder="Description" required></textarea>
+        <textarea name="description"  id="editor" rows="6" placeholder="Description" required></textarea>
 
         <button class="btn">Save</button>
 
