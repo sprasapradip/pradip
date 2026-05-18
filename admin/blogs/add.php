@@ -28,12 +28,19 @@ include __DIR__ . '/../../layout/header.php';
 
     <input type="text" name="title" placeholder="Blog Title" required>
 
-    <textarea name="content" placeholder="Blog Content" rows="8" required></textarea>
+    <textarea name="content"  id="editor" placeholder="Blog Content" rows="8" required></textarea>
 
     <button type="submit" class="btn">Save</button>
 
 </form>
 
 </section>
+<script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
 
+<script>
+    CKEDITOR.replace('editor', {
+        height: 300,
+        removeButtons: '',
+    });
+</script>
 <?php include __DIR__ . '/../../layout/footer.php'; ?>

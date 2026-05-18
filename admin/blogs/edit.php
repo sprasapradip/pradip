@@ -65,7 +65,7 @@ include '../layout/header.php';
            value="<?= htmlspecialchars($blog['title']) ?>"
            required>
 
-    <textarea name="content" rows="8" required><?= htmlspecialchars($blog['content']) ?></textarea>
+    <textarea name="content"  id="editor" rows="8" required><?= htmlspecialchars($blog['content']) ?></textarea>
 
     <!-- CURRENT IMAGE -->
     <?php if(!empty($blog['image'])): ?>

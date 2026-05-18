@@ -47,7 +47,7 @@ include '../layout/header.php';
 
     <input type="text" name="title" placeholder="Title" required>
 
-    <textarea name="content" rows="8" placeholder="Content" required></textarea>
+    <textarea name="content"  id="editor" rows="8" placeholder="Content" required></textarea>
 
     <!-- IMAGE PREVIEW -->
     <input type="file" name="image" onchange="previewImage(event)">
@@ -59,17 +59,5 @@ include '../layout/header.php';
 </form>
 
 </section>
-
-<script>
-function previewImage(event){
-    let reader = new FileReader();
-    reader.onload = function(){
-        let img = document.getElementById('preview');
-        img.src = reader.result;
-        img.style.display = 'block';
-    }
-    reader.readAsDataURL(event.target.files[0]);
-}
-</script>
 
 <?php include '../layout/footer.php'; ?>
