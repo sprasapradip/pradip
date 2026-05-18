@@ -100,9 +100,9 @@ $current = basename($_SERVER['PHP_SELF']);
                💼 Experience
             </a>
 
-            <a href="/pradip/admin/skills/index.php"
-               class="<?= (strpos($_SERVER['REQUEST_URI'],'skills')!==false)?'active':'' ?>">
-               🛠 Skills
+            <a href="/pradip/admin/maintenance-settings.php"
+               class="<?= (strpos($_SERVER['REQUEST_URI'],'maintenance-settings')!==false)?'active':'' ?>">
+               🛠 Settings
             </a>
 
             <a href="/pradip/admin/profile/edit.php"

@@ -230,6 +230,4 @@ $result = $stmt->get_result();
 
 </div>
 
-
-
 <?php include 'footer.php'; ?>
