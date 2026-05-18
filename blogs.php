@@ -41,7 +41,7 @@ $result = $stmt->get_result();
                     </h3>
 
                     <p class="project-description">
-                        <?= substr(strip_tags($row['content']), 0, 150) ?>...
+                      <?= mb_substr(strip_tags($row['content']), 0, 150) ?>...
                     </p>
 
                     <a href="blog-single.php?id=<?= $row['id'] ?>" class="btn">

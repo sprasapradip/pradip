@@ -43,11 +43,10 @@ if(!$blog){
                  style="width:100%;max-height:420px;object-fit:cover;border-radius:12px;margin-bottom:20px;">
         <?php endif; ?>
 
-        <!-- CONTENT -->
-        <div style="line-height:1.9;font-size:16px;color:var(--text);">
-            <?= nl2br(htmlspecialchars($blog['content'])) ?>
-        </div>
-
+     <!-- CONTENT -->
+         <div style="line-height:1.9;font-size:16px;color:var(--text);">
+          <?= $blog['content']; ?>
+         </div>
         <!-- BACK BUTTON -->
         <div style="margin-top:30px;">
             <a href="blogs.php" class="btn">← Back to Blogs</a>
