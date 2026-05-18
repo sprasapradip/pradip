@@ -36,6 +36,7 @@ include '../layout/header.php';
                required>
 
         <textarea name="description"
+                  id="editor"
                   placeholder="Description"
                   rows="6"
                   required></textarea>

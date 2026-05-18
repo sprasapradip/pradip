@@ -54,6 +54,7 @@ include '../layout/header.php';
                required>
 
         <textarea name="description"
+                  id="editor"
                   rows="6"
                   required><?= htmlspecialchars($service['description']) ?></textarea>
 
