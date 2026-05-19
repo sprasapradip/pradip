@@ -21,9 +21,9 @@ $current_page = basename($_SERVER['PHP_SELF']);
 
 // ALLOWED PAGES
 $allowed_pages = [
-    'admin-login.php',
-    'admin-dashboard.php',
-    'maintenance-settings.php',
+    'admin/login.php',
+    'admin/index.php',
+    'admin/maintenance-settings.php',
     'maintenance.php'
 ];
 
