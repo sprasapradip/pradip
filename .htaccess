@@ -7,3 +7,18 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^.*$ /pradip/404.php [L]
 
+# ─── Protect mail-config.php from direct browser access ───
+<Files "mail-config.php">
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+# ─── Security headers ─────────────────────────────────────
+<IfModule mod_headers.c>
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-XSS-Protection "1; mode=block"
+</IfModule>
+
+# ─── Prevent directory listing ────────────────────────────
+Options -Indexes
