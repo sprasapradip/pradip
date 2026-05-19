@@ -17,11 +17,50 @@ if(isset($_POST['import'])){
 
         $ext = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
 
-        $allowed = ['txt'];
+        $allowed = ['txt', 'pdf', 'docx'];
 
         if(in_array($ext, $allowed)){
 
-            $content = file_get_contents($file['tmp_name']);
+            if($ext == 'txt'){
+
+    $content = file_get_contents($file['tmp_name']);
+
+}
+
+elseif($ext == 'pdf'){
+
+    require '../../vendor/autoload.php';
+
+    $parser = new \Smalot\PdfParser\Parser();
+    $pdf = $parser->parseFile($file['tmp_name']);
+
+    $content = $pdf->getText();
+
+}
+
+elseif($ext == 'docx'){
+
+    require '../../vendor/autoload.php';
+
+    $phpWord = \PhpOffice\PhpWord\IOFactory::load($file['tmp_name']);
+
+    $content = '';
+
+    foreach($phpWord->getSections() as $section){
+
+        $elements = $section->getElements();
+
+        foreach($elements as $element){
+
+            if(method_exists($element, 'getText')){
+
+                $content .= $element->getText() . "\n";
+
+            }
+
+        }
+    }
+}
 
         }
     }

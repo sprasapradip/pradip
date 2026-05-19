@@ -6,6 +6,7 @@
 $stmt = $conn->prepare("
     SELECT *
     FROM blogs
+    WHERE status='published'
     ORDER BY id DESC
 ");
 
@@ -29,9 +30,14 @@ $result = $stmt->get_result();
             <div class="project-card">
 
                 <?php if(!empty($row['image'])): ?>
+
                     <div class="project-image">
-                        <img src="uploads/<?= htmlspecialchars($row['image']) ?>" alt="blog">
+
+                        <img src="uploads/<?= htmlspecialchars($row['image']) ?>"
+                             alt="<?= htmlspecialchars($row['title']) ?>">
+
                     </div>
+
                 <?php endif; ?>
 
                 <div class="project-content">
@@ -41,10 +47,20 @@ $result = $stmt->get_result();
                     </h3>
 
                     <p class="project-description">
-                      <?= mb_substr(strip_tags($row['content']), 0, 150) ?>...
+
+                        <?= mb_substr(strip_tags($row['content']), 0, 150) ?>...
+
                     </p>
 
-                    <a href="blog-single.php?id=<?= $row['id'] ?>" class="btn">
+                    <div style="margin-bottom:15px;color:gray;font-size:14px;">
+
+                        <?= date('d M Y', strtotime($row['created_at'])) ?>
+                        •
+                        <?= (int)$row['views'] ?> views
+
+                    </div>
+
+                    <a href="blog/<?= urlencode($row['slug']) ?>" class="btn">
                         Read More
                     </a>
 

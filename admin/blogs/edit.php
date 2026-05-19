@@ -5,14 +5,22 @@ require_once '../../includes/config.php';
 require_once '../auth.php';
 
 function createSlug($string){
-    return trim(preg_replace('/[^a-z0-9]+/', '-', strtolower($string)), '-');
+
+    return trim(
+        preg_replace('/[^a-z0-9]+/', '-', strtolower($string)),
+        '-'
+    );
 }
 
 $id = (int) $_GET['id'];
 
-$stmt = $conn->prepare("SELECT * FROM blogs WHERE id=?");
+$stmt = $conn->prepare("
+    SELECT * FROM blogs WHERE id=?
+");
+
 $stmt->bind_param("i", $id);
 $stmt->execute();
+
 $blog = $stmt->get_result()->fetch_assoc();
 
 if(!$blog){
@@ -23,28 +31,78 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
     $title = trim($_POST['title']);
     $content = trim($_POST['content']);
+
+    $meta_title = trim($_POST['meta_title']);
+    $meta_description = trim($_POST['meta_description']);
+    $keywords = trim($_POST['keywords']);
+
+    $status = $_POST['status'];
+    $featured = isset($_POST['featured']) ? 1 : 0;
+
     $slug = createSlug($title);
+
+    $wordCount = str_word_count(strip_tags($content));
+    $reading_time = ceil($wordCount / 200) . ' min read';
 
     $imageName = $blog['image'];
 
+    /* IMAGE */
+
     if(!empty($_FILES['image']['name'])){
 
-        $imageName = time().'_'.$_FILES['image']['name'];
+        $allowed = ['jpg','jpeg','png','webp'];
 
-        move_uploaded_file($_FILES['image']['tmp_name'], "../../uploads/".$imageName);
+        $ext = strtolower(pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION));
 
-        if(!empty($blog['image']) && file_exists("../../uploads/".$blog['image'])){
-            unlink("../../uploads/".$blog['image']);
+        if(in_array($ext, $allowed)){
+
+            $imageName = time().'_'.uniqid().'.'.$ext;
+
+            move_uploaded_file(
+                $_FILES['image']['tmp_name'],
+                "../../uploads/".$imageName
+            );
+
+            if(!empty($blog['image']) &&
+               file_exists("../../uploads/".$blog['image'])){
+
+                unlink("../../uploads/".$blog['image']);
+            }
         }
     }
 
     $stmt = $conn->prepare("
         UPDATE blogs
-        SET title=?, slug=?, content=?, image=?
+        SET
+            title=?,
+            slug=?,
+            content=?,
+            image=?,
+            meta_title=?,
+            meta_description=?,
+            keywords=?,
+            status=?,
+            featured=?,
+            reading_time=?,
+            updated_at=NOW()
         WHERE id=?
     ");
 
-    $stmt->bind_param("ssssi", $title, $slug, $content, $imageName, $id);
+    $stmt->bind_param(
+        "ssssssssssi",
+        $title,
+        $slug,
+        $content,
+        $imageName,
+        $meta_title,
+        $meta_description,
+        $keywords,
+        $status,
+        $featured,
+        $reading_time,
+        $id
+    );
+
     $stmt->execute();
 
     header("Location: index.php");
@@ -58,42 +116,138 @@ include '../layout/header.php';
 
 <h1>Edit Blog</h1>
 
-<form method="POST" enctype="multipart/form-data">
+<form method="POST"
+      enctype="multipart/form-data"
+      class="card">
+
+    <label>Title</label>
 
     <input type="text"
            name="title"
            value="<?= htmlspecialchars($blog['title']) ?>"
            required>
 
-    <textarea name="content"  id="editor" rows="8" required><?= htmlspecialchars($blog['content']) ?></textarea>
+    <br><br>
 
-    <!-- CURRENT IMAGE -->
+    <label>Content</label>
+
+    <textarea name="content"
+              id="editor"
+              rows="10"
+              required><?= htmlspecialchars($blog['content']) ?></textarea>
+
+    <br><br>
+
     <?php if(!empty($blog['image'])): ?>
-        <img src="../../uploads/<?= $blog['image'] ?>"
-             style="width:200px;height:120px;object-fit:cover;border-radius:10px;margin-bottom:10px;">
+
+        <img src="../../uploads/<?= htmlspecialchars($blog['image']) ?>"
+             style="
+                width:220px;
+                height:140px;
+                object-fit:cover;
+                border-radius:12px;
+                margin-bottom:15px;
+             ">
+
     <?php endif; ?>
 
-    <!-- NEW IMAGE -->
-    <input type="file" name="image" onchange="previewImage(event)">
+    <input type="file"
+           name="image"
+           accept=".jpg,.jpeg,.png,.webp"
+           onchange="previewImage(event)">
 
-    <img id="preview" style="width:200px;margin-top:10px;border-radius:10px;display:none;">
+    <br>
 
-    <button class="btn">Update Blog</button>
+    <img id="preview"
+         style="
+            width:220px;
+            margin-top:15px;
+            border-radius:12px;
+            display:none;
+         ">
+
+    <br><br>
+
+    <label>Meta Title</label>
+
+    <input type="text"
+           name="meta_title"
+           value="<?= htmlspecialchars($blog['meta_title']) ?>">
+
+    <br><br>
+
+    <label>Meta Description</label>
+
+    <textarea name="meta_description"
+              rows="4"><?= htmlspecialchars($blog['meta_description']) ?></textarea>
+
+    <br><br>
+
+    <label>Keywords</label>
+
+    <input type="text"
+           name="keywords"
+           value="<?= htmlspecialchars($blog['keywords']) ?>">
+
+    <br><br>
+
+    <label>Status</label>
+
+    <select name="status">
+
+        <option value="published"
+            <?= $blog['status'] == 'published' ? 'selected' : '' ?>>
+            Published
+        </option>
+
+        <option value="draft"
+            <?= $blog['status'] == 'draft' ? 'selected' : '' ?>>
+            Draft
+        </option>
+
+    </select>
+
+    <br><br>
+
+    <label>
+
+        <input type="checkbox"
+               name="featured"
+               <?= $blog['featured'] ? 'checked' : '' ?>>
+
+        Featured Blog
+
+    </label>
+
+    <br><br>
+
+    <button class="btn">
+
+        Update Blog
+
+    </button>
 
 </form>
 
 </section>
 
 <script>
+
 function previewImage(event){
+
     let reader = new FileReader();
+
     reader.onload = function(){
+
         let img = document.getElementById('preview');
+
         img.src = reader.result;
         img.style.display = 'block';
     }
+
     reader.readAsDataURL(event.target.files[0]);
 }
+
 </script>
 
 <?php include '../layout/footer.php'; ?>
