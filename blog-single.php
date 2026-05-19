@@ -15,19 +15,15 @@ $stmt->bind_param("s", $slug);
 $stmt->execute();
 
 $result = $stmt->get_result();
-
 $blog = $result->fetch_assoc();
 
 if(!$blog){
-
-    die("
-        <h2 style='text-align:center;padding:50px;'>
-            Blog not found
-        </h2>
-    ");
+    die("<h2 style='text-align:center;padding:50px;'>Blog not found</h2>");
 }
 
-/* UPDATE VIEWS */
+/* =========================
+   UPDATE VIEWS (REAL FIX)
+========================= */
 
 $update = $conn->prepare("
     UPDATE blogs
@@ -38,35 +34,33 @@ $update = $conn->prepare("
 $update->bind_param("i", $blog['id']);
 $update->execute();
 
+/* increase locally also */
+$blog['views'] = (int)$blog['views'] + 1;
+
 include 'header.php';
 ?>
 
 <!-- SEO -->
-
 <title>
 <?= htmlspecialchars($blog['meta_title'] ?: $blog['title']) ?>
 </title>
 
 <meta name="description"
-      content="<?= htmlspecialchars($blog['meta_description']) ?>">
+      content="<?= htmlspecialchars($blog['meta_description'] ?? '') ?>">
 
 <meta name="keywords"
-      content="<?= htmlspecialchars($blog['keywords']) ?>">
+      content="<?= htmlspecialchars($blog['keywords'] ?? '') ?>">
 
 <section class="page">
 
     <div style="max-width:850px;margin:auto;">
 
         <!-- TITLE -->
-
         <h1 class="page-title">
-
             <?= htmlspecialchars($blog['title']) ?>
-
         </h1>
 
-        <!-- META -->
-
+        <!-- META INFO -->
         <div style="
             display:flex;
             gap:15px;
@@ -76,28 +70,18 @@ include 'header.php';
             font-size:14px;
         ">
 
-            <span>
-                📅 <?= date('d M Y', strtotime($blog['created_at'])) ?>
-            </span>
+            <span>📅 <?= date('d M Y', strtotime($blog['created_at'])) ?></span>
 
-            <span>
-                👁 <?= (int)$blog['views'] + 1 ?> Views
-            </span>
+            <span>👁 <?= $blog['views'] ?> Views</span>
 
             <?php if(!empty($blog['reading_time'])): ?>
-
-                <span>
-                    ⏱ <?= htmlspecialchars($blog['reading_time']) ?>
-                </span>
-
+                <span>⏱ <?= htmlspecialchars($blog['reading_time']) ?></span>
             <?php endif; ?>
 
         </div>
 
         <!-- IMAGE -->
-
         <?php if(!empty($blog['image'])): ?>
-
             <img
                 src="/pradip/uploads/<?= htmlspecialchars($blog['image']) ?>"
                 alt="<?= htmlspecialchars($blog['title']) ?>"
@@ -109,23 +93,19 @@ include 'header.php';
                     margin-bottom:25px;
                 "
             >
-
         <?php endif; ?>
 
         <!-- CONTENT -->
-
-        <div style="
+        <div class="blog-content" style="
             line-height:1.9;
+            text-align: left;
             font-size:17px;
             color:var(--text);
         ">
-
             <?= html_entity_decode($blog['content']) ?>
-
         </div>
 
         <!-- SHARE -->
-
         <div style="margin-top:50px;">
 
             <h3>Share Article</h3>
@@ -136,47 +116,34 @@ include 'header.php';
                 $title = urlencode($blog['title']);
             ?>
 
-            <div style="
-                display:flex;
-                gap:10px;
-                flex-wrap:wrap;
-                margin-top:15px;
-            ">
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:15px;">
 
-                <a class="btn"
-                   target="_blank"
+                <a class="btn" target="_blank"
                    href="https://www.facebook.com/sharer/sharer.php?u=<?= $url ?>">
                     Facebook
                 </a>
 
-                <a class="btn"
-                   target="_blank"
+                <a class="btn" target="_blank"
                    href="https://twitter.com/intent/tweet?url=<?= $url ?>&text=<?= $title ?>">
                     Twitter
                 </a>
 
-                <a class="btn"
-                   target="_blank"
+                <a class="btn" target="_blank"
                    href="https://www.linkedin.com/shareArticle?mini=true&url=<?= $url ?>">
                     LinkedIn
                 </a>
 
             </div>
-
         </div>
 
-        <!-- RELATED POSTS -->
-
+        <!-- RELATED -->
         <div style="margin-top:70px;">
 
-            <h2 style="margin-bottom:20px;">
-                Related Articles
-            </h2>
+            <h2 style="margin-bottom:20px;">Related Articles</h2>
 
             <div class="project-grid">
 
                 <?php
-
                 $related = $conn->prepare("
                     SELECT *
                     FROM blogs
@@ -197,43 +164,31 @@ include 'header.php';
                     <div class="project-card">
 
                         <?php if(!empty($r['image'])): ?>
-
                             <div class="project-image">
-
                                 <img
                                     src="/pradip/uploads/<?= htmlspecialchars($r['image']) ?>"
                                     alt="<?= htmlspecialchars($r['title']) ?>"
                                 >
-
                             </div>
-
                         <?php endif; ?>
 
                         <div class="project-content">
 
                             <h3 class="project-title">
-
                                 <?= htmlspecialchars($r['title']) ?>
-
                             </h3>
 
                             <p class="project-description">
-
                                 <?= mb_substr(
-                                    trim(strip_tags(
-                                        html_entity_decode($r['content'])
-                                    )),
+                                    strip_tags(html_entity_decode($r['content'])),
                                     0,
                                     90
                                 ) ?>...
-
                             </p>
 
                             <a href="/pradip/blog/<?= urlencode($r['slug']) ?>"
                                class="btn">
-
                                 Read More
-
                             </a>
 
                         </div>
@@ -243,20 +198,13 @@ include 'header.php';
                 <?php endwhile; ?>
 
             </div>
-
         </div>
 
         <!-- BACK -->
-
         <div style="margin-top:60px;">
-
-            <a href="/pradip/blogs.php"
-               class="btn">
-
+            <a href="/pradip/blogs.php" class="btn">
                 ← Back to Blogs
-
             </a>
-
         </div>
 
     </div>

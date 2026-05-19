@@ -57,7 +57,7 @@ include '../layout/header.php';
 
                 <?php if(!empty($row['image'])): ?>
 
-                    <img src="../../uploads/blogs/<?= $row['image'] ?>"
+                    <img src="../../uploads/<?= htmlspecialchars($row['image']) ?>"
                          style="width:100%;height:180px;object-fit:cover;border-radius:10px;">
 
                 <?php endif; ?>
