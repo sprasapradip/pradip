@@ -27,6 +27,6 @@ define('SIG_NAME',       'Pradip Subedi');
 define('SIG_TITLE',      'Electrical Engineer | Power Systems Specialist');
 define('SIG_EMAIL',      'info@pradipsubedi1.com.np');
 define('SIG_WEBSITE',    'https://pradipsubedi1.com.np');
-define('SIG_PHONE',      '+977-98XX-XXXXXX');          // ← update your phone
+define('SIG_PHONE',      '+977-9843944252');          // ← update your phone
 define('SIG_LOCATION',   'Kathmandu, Nepal');
 define('SIG_LINKEDIN',   '#');                          // ← update LinkedIn URL
