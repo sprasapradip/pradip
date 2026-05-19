@@ -33,7 +33,7 @@ $result = $stmt->get_result();
 
                     <div class="project-image">
 
-                        <img src="uploads/<?= htmlspecialchars($row['image']) ?>"
+                        <img src="/pradip/uploads/<?= htmlspecialchars($row['image']) ?>"
                              alt="<?= htmlspecialchars($row['title']) ?>">
 
                     </div>
@@ -48,20 +48,33 @@ $result = $stmt->get_result();
 
                     <p class="project-description">
 
-                        <?= mb_substr(strip_tags($row['content']), 0, 150) ?>...
+                        <?= mb_substr(
+                            trim(strip_tags(html_entity_decode($row['content']))),
+                            0,
+                            150
+                        ) ?>...
 
                     </p>
 
-                    <div style="margin-bottom:15px;color:gray;font-size:14px;">
+                    <div style="
+                        margin-bottom:15px;
+                        color:gray;
+                        font-size:14px;
+                    ">
 
                         <?= date('d M Y', strtotime($row['created_at'])) ?>
+
                         •
-                        <?= (int)$row['views'] ?> views
+
+                        👁 <?= (int)$row['views'] ?> views
 
                     </div>
 
-                    <a href="blog/<?= urlencode($row['slug']) ?>" class="btn">
+                    <a href="blog/<?= urlencode($row['slug']) ?>"
+                       class="btn">
+
                         Read More
+
                     </a>
 
                 </div>

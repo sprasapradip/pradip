@@ -15,12 +15,16 @@ $stmt->bind_param("s", $slug);
 $stmt->execute();
 
 $result = $stmt->get_result();
+
 $blog = $result->fetch_assoc();
 
 if(!$blog){
 
-    die("<h2 style='text-align:center;padding:50px;'>Blog not found</h2>");
-
+    die("
+        <h2 style='text-align:center;padding:50px;'>
+            Blog not found
+        </h2>
+    ");
 }
 
 /* UPDATE VIEWS */
@@ -34,7 +38,10 @@ $update = $conn->prepare("
 $update->bind_param("i", $blog['id']);
 $update->execute();
 
+include 'header.php';
 ?>
+
+<!-- SEO -->
 
 <title>
 <?= htmlspecialchars($blog['meta_title'] ?: $blog['title']) ?>
@@ -45,12 +52,6 @@ $update->execute();
 
 <meta name="keywords"
       content="<?= htmlspecialchars($blog['keywords']) ?>">
-
-<?php include 'header.php'; ?>
-
-</head>
-
-<body>
 
 <section class="page">
 
@@ -76,12 +77,20 @@ $update->execute();
         ">
 
             <span>
-                <?= date('d M Y', strtotime($blog['created_at'])) ?>
+                📅 <?= date('d M Y', strtotime($blog['created_at'])) ?>
             </span>
 
             <span>
-                👁 <?= (int)$blog['views'] ?> Views
+                👁 <?= (int)$blog['views'] + 1 ?> Views
             </span>
+
+            <?php if(!empty($blog['reading_time'])): ?>
+
+                <span>
+                    ⏱ <?= htmlspecialchars($blog['reading_time']) ?>
+                </span>
+
+            <?php endif; ?>
 
         </div>
 
@@ -89,15 +98,17 @@ $update->execute();
 
         <?php if(!empty($blog['image'])): ?>
 
-            <img src="uploads/<?= htmlspecialchars($blog['image']) ?>"
-                 alt="<?= htmlspecialchars($blog['title']) ?>"
-                 style="
+            <img
+                src="/pradip/uploads/<?= htmlspecialchars($blog['image']) ?>"
+                alt="<?= htmlspecialchars($blog['title']) ?>"
+                style="
                     width:100%;
                     max-height:450px;
                     object-fit:cover;
                     border-radius:14px;
                     margin-bottom:25px;
-                 ">
+                "
+            >
 
         <?php endif; ?>
 
@@ -109,22 +120,28 @@ $update->execute();
             color:var(--text);
         ">
 
-            <?= nl2br($blog['content']) ?>
+            <?= html_entity_decode($blog['content']) ?>
 
         </div>
 
         <!-- SHARE -->
 
-        <div style="margin-top:40px;">
+        <div style="margin-top:50px;">
 
             <h3>Share Article</h3>
 
             <?php
-                $url = urlencode("https://yourdomain.com/blog/".$blog['slug']);
+                $site = "http://localhost/pradip";
+                $url = urlencode($site . "/blog/" . $blog['slug']);
                 $title = urlencode($blog['title']);
             ?>
 
-            <div style="display:flex;gap:10px;flex-wrap:wrap;">
+            <div style="
+                display:flex;
+                gap:10px;
+                flex-wrap:wrap;
+                margin-top:15px;
+            ">
 
                 <a class="btn"
                    target="_blank"
@@ -150,9 +167,11 @@ $update->execute();
 
         <!-- RELATED POSTS -->
 
-        <div style="margin-top:60px;">
+        <div style="margin-top:70px;">
 
-            <h2>Related Articles</h2>
+            <h2 style="margin-bottom:20px;">
+                Related Articles
+            </h2>
 
             <div class="project-grid">
 
@@ -181,7 +200,10 @@ $update->execute();
 
                             <div class="project-image">
 
-                                <img src="uploads/<?= htmlspecialchars($r['image']) ?>">
+                                <img
+                                    src="/pradip/uploads/<?= htmlspecialchars($r['image']) ?>"
+                                    alt="<?= htmlspecialchars($r['title']) ?>"
+                                >
 
                             </div>
 
@@ -195,8 +217,23 @@ $update->execute();
 
                             </h3>
 
-                            <a href="/blog/<?= $r['slug'] ?>" class="btn">
+                            <p class="project-description">
+
+                                <?= mb_substr(
+                                    trim(strip_tags(
+                                        html_entity_decode($r['content'])
+                                    )),
+                                    0,
+                                    90
+                                ) ?>...
+
+                            </p>
+
+                            <a href="/pradip/blog/<?= urlencode($r['slug']) ?>"
+                               class="btn">
+
                                 Read More
+
                             </a>
 
                         </div>
@@ -211,9 +248,10 @@ $update->execute();
 
         <!-- BACK -->
 
-        <div style="margin-top:50px;">
+        <div style="margin-top:60px;">
 
-            <a href="blogs.php" class="btn">
+            <a href="/pradip/blogs.php"
+               class="btn">
 
                 ← Back to Blogs
 
