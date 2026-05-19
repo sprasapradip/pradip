@@ -4,71 +4,164 @@ define('APP_INIT', true);
 require_once '../../includes/config.php';
 require_once '../auth.php';
 
-function createSlug($text) {
+/* =========================
+   SLUG
+========================= */
+function createSlug($text){
     return strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $text), '-'));
 }
 
+/* =========================
+   AI CLEAN ENGINE
+========================= */
+function cleanWordHtml($html)
+{
+    $html = preg_replace('/class="[^"]*"/i', '', $html);
+    $html = preg_replace('/style="[^"]*"/i', '', $html);
+
+    $html = preg_replace('/<p>\s*(&nbsp;)?\s*<\/p>/i', '', $html);
+    $html = preg_replace('/<span[^>]*>\s*<\/span>/i', '', $html);
+
+    $html = preg_replace('/\r|\n/', '', $html);
+    $html = preg_replace('/\s{2,}/', ' ', $html);
+
+    $html = str_replace(
+        ['“','”','‘','’'],
+        ['"','"',"'", "'"],
+        $html
+    );
+
+    return trim($html);
+}
+
+/* =========================
+   AUTO HEADINGS
+========================= */
+function autoHeadings($html)
+{
+    $html = preg_replace('/<p><strong>(.*?)<\/strong><\/p>/i', '<h2>$1</h2>', $html);
+    $html = preg_replace('/<p>([A-Z0-9\s]{8,})<\/p>/', '<h2>$1</h2>', $html);
+    $html = preg_replace('/<p>(\d+\..*?)<\/p>/', '<h3>$1</h3>', $html);
+
+    return $html;
+}
+
+/* =========================
+   SUMMARY ENGINE
+========================= */
+function generateSummary($html)
+{
+    $text = strip_tags($html);
+    $text = preg_replace('/\s+/', ' ', $text);
+
+    return substr($text, 0, 160);
+}
+
+/* =========================
+   DUPLICATE CHECK
+========================= */
+function isDuplicate($conn, $title)
+{
+    $stmt = $conn->prepare("
+        SELECT id FROM blogs
+        WHERE SOUNDEX(title) = SOUNDEX(?)
+        LIMIT 1
+    ");
+
+    $stmt->bind_param("s", $title);
+    $stmt->execute();
+
+    return $stmt->get_result()->num_rows > 0;
+}
+
+/* =========================
+   FEATURED IMAGE
+========================= */
+function getFeaturedImage($html)
+{
+    preg_match('/<img[^>]+src="([^"]+)"/i', $html, $m);
+
+    return $m[1] ?? 'default.jpg';
+}
+
+/* =========================
+   MAIN IMPORT
+========================= */
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    if (empty($_FILES['docx']['tmp_name'])) {
+    if (empty($_FILES['file']['tmp_name'])) {
         die("No file uploaded");
     }
 
-    $title = trim($_POST['title'] ?? 'Imported Blog');
+    $title = trim($_POST['title']);
 
-    $file = $_FILES['docx']['tmp_name'];
+    /* check duplicate */
+    if (isDuplicate($conn, $title)) {
+        die("Duplicate blog detected");
+    }
 
-    $outputFile = '../../uploads/import_' . time() . '.html';
+    $time = time();
+
+    $inputFile = $_FILES['file']['tmp_name'];
+    $outputFile = "../../uploads/import_$time.html";
+    $mediaDir   = "../../uploads/media_$time";
 
     $pandoc = '"C:\\Program Files\\Pandoc\\pandoc.exe"';
 
     $cmd = $pandoc . " " .
-        escapeshellarg($file) .
-        " -f docx -t html --extract-media=../../uploads/media -o " .
+        escapeshellarg($inputFile) .
+        " -f docx -t html --extract-media=" .
+        escapeshellarg($mediaDir) .
+        " -o " .
         escapeshellarg($outputFile);
 
-    exec($cmd, $out, $status);
+    exec($cmd);
 
-    if ($status !== 0) {
-        die("Import failed. Check Pandoc.");
+    if (!file_exists($outputFile)) {
+        die("Conversion failed");
     }
 
-    $content = file_get_contents($outputFile);
+    $html = file_get_contents($outputFile);
 
-    /* CLEAN HTML */
-    $content = preg_replace('/^.*?<body>/is', '', $content);
-    $content = preg_replace('/<\/body>.*$/is', '', $content);
+    /* remove body */
+    $html = preg_replace('/^.*?<body>/is', '', $html);
+    $html = preg_replace('/<\/body>.*$/is', '', $html);
 
-    $content = trim($content);
+    /* move images */
+    if (is_dir($mediaDir)) {
+        foreach (scandir($mediaDir) as $f) {
+            if ($f == '.' || $f == '..') continue;
+            rename($mediaDir.'/'.$f, '../../uploads/blogs/'.$f);
+        }
+    }
 
-    /* AUTO SEO */
+    /* replace paths */
+    $html = str_replace('media_', 'uploads/blogs', $html);
+
+    /* AI PIPELINE */
+    $html = cleanWordHtml($html);
+    $html = autoHeadings($html);
+
+    /* SEO */
     $meta_title = $title;
-    $meta_description = substr(strip_tags($content), 0, 160);
-    $keywords = implode(',', array_slice(explode(' ', strip_tags($title)), 0, 6));
+    $meta_description = generateSummary($html);
+    $keywords = implode(',', array_slice(explode(' ', strtolower($title)), 0, 6));
 
-    /* SLUG */
     $slug = createSlug($title);
+    $image = getFeaturedImage($html);
 
-    /* IMAGE (optional first image detection) */
-    preg_match('/<img[^>]+src="([^"]+)"/i', $content, $imgMatch);
-    $image = '';
-
-    if (!empty($imgMatch[1])) {
-        $image = basename($imgMatch[1]);
-    }
-
-    /* INSERT BLOG */
+    /* INSERT */
     $stmt = $conn->prepare("
         INSERT INTO blogs
-        (title, slug, content, meta_title, meta_description, keywords, image, status)
-        VALUES (?, ?, ?, ?, ?, ?, ?, 'published')
+        (title, slug, content, meta_title, meta_description, keywords, image, status, views)
+        VALUES (?,?,?,?,?,?,?, 'published', 0)
     ");
 
     $stmt->bind_param(
         "sssssss",
         $title,
         $slug,
-        $content,
+        $html,
         $meta_title,
         $meta_description,
         $keywords,
@@ -86,7 +179,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <section class="admin-page">
 
-<h1>Import Word Document</h1>
+<h1>🚀 AI CMS Import System</h1>
 
 <form method="POST" enctype="multipart/form-data" class="card">
 
@@ -96,11 +189,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <br><br>
 
     <label>Upload DOCX File</label>
-    <input type="file" name="docx" accept=".docx" required>
+    <input type="file" name="file" accept=".docx,.pdf" required>
 
     <br><br>
 
-    <button class="btn">Import Blog</button>
+    <button class="btn">
+        Import AI Blog
+    </button>
 
 </form>
 

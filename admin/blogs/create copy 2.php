@@ -5,7 +5,7 @@ require_once '../../includes/config.php';
 require_once '../auth.php';
 
 /* =========================
-   AI WRITER
+   AI WRITER INCLUDE
 ========================= */
 require_once 'includes/ai_writer.php';
 
@@ -39,9 +39,9 @@ function createSlug($conn, $string){
 }
 
 /* =========================
-   API KEY (optional)
+   OPENAI KEY
 ========================= */
-$apiKey = "YOUR_OPENAI_KEY_HERE";
+$apiKey = "api in word file safety ko";
 
 /* =========================
    POST HANDLER
@@ -51,25 +51,22 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $title = trim($_POST['title']);
 
     /* =========================
-       AI GENERATION BUTTON
+       🔥 AI BLOG GENERATION
     ========================== */
     if(isset($_POST['generate_ai'])){
 
         $content = generateAIArticle($title, $apiKey);
 
-        $meta_title = $title . " | Complete Guide";
-        $meta_description = substr(strip_tags($content), 0, 160);
-        $keywords = strtolower(str_replace(' ', ', ', $title));
-
     } else {
 
         $content = trim($_POST['content']);
-        $meta_title = trim($_POST['meta_title'] ?? $title);
-        $meta_description = trim($_POST['meta_description'] ?? '');
-        $keywords = trim($_POST['keywords'] ?? '');
     }
 
-    $status = $_POST['status'] ?? 'published';
+    $meta_title = trim($_POST['meta_title'] ?? $title);
+    $meta_description = trim($_POST['meta_description'] ?? '');
+    $keywords = trim($_POST['keywords'] ?? '');
+
+    $status = $_POST['status'];
     $featured = isset($_POST['featured']) ? 1 : 0;
 
     $slug = createSlug($conn, $title);
@@ -134,7 +131,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
     $stmt->execute();
 
-    header("Location: index.php?success=1");
+    header("Location: index.php");
     exit;
 }
 
@@ -143,31 +140,32 @@ include '../layout/header.php';
 
 <section class="admin-page">
 
-<h1>🚀 Create Blog (AI + Offline CMS)</h1>
+<h1>🚀 Create Blog (AI CMS)</h1>
 
 <form method="POST" enctype="multipart/form-data" class="card">
 
-    <!-- TITLE -->
     <label>Blog Title</label>
     <input type="text" name="title" required>
 
     <br><br>
 
-    <!-- AI BUTTON -->
+    <!-- 🔥 AI BUTTON -->
     <button type="submit" name="generate_ai" class="btn">
-        ✨ Generate AI Blog (ChatGPT + Offline Fallback)
+        ✨ Generate AI Blog
     </button>
 
     <br><br>
 
-    <!-- CONTENT -->
-    <label>Blog Content</label>
-    <textarea name="content" id="editor" rows="10"></textarea>
+    <label>Blog Content (Manual or AI Generated)</label>
+
+    <textarea name="content"
+              id="editor"
+              rows="10"></textarea>
 
     <br><br>
 
-    <!-- IMAGE -->
     <label>Featured Image</label>
+
     <input type="file"
            name="image"
            accept=".jpg,.jpeg,.png,.webp"
@@ -180,24 +178,26 @@ include '../layout/header.php';
 
     <br><br>
 
-    <!-- META -->
     <label>Meta Title</label>
+
     <input type="text" name="meta_title">
 
     <br><br>
 
     <label>Meta Description</label>
+
     <textarea name="meta_description" rows="4"></textarea>
 
     <br><br>
 
     <label>Keywords</label>
+
     <input type="text" name="keywords">
 
     <br><br>
 
-    <!-- STATUS -->
     <label>Status</label>
+
     <select name="status">
         <option value="published">Published</option>
         <option value="draft">Draft</option>
@@ -205,7 +205,6 @@ include '../layout/header.php';
 
     <br><br>
 
-    <!-- FEATURED -->
     <label>
         <input type="checkbox" name="featured">
         Featured Blog
