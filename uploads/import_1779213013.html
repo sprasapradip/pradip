@@ -1,0 +1,121 @@
+<p><strong>PLC-Based Industrial Automation System</strong></p>
+<p><em>Engineering Design &amp; Implementation Report</em></p>
+<p>Project Overview</p>
+<p>This project involved designing and commissioning a Programmable
+Logic Controller (PLC) system to fully automate the operation of
+industrial equipment at a manufacturing facility. The system replaced
+manual switching and analogue relay logic with a structured,
+programmable control architecture that handles equipment startup
+sequencing, continuous process monitoring, and emergency safety
+response.</p>
+<p>Prior to implementation, operators manually cycled equipment on and
+off based on visual gauges and shift-change checklists. That worked well
+enough for years, but as production volumes grew, so did the number of
+missed readings and near-miss safety events. The PLC system addressed
+all of this directly.</p>
+<p>Objectives</p>
+<p>The system was built to meet three core operational needs:</p>
+<ul>
+<li><p>Automate equipment startup, shutdown, and load-sequencing to
+reduce operator error and response time.</p></li>
+<li><p>Monitor process variables (temperature, pressure, flow rate, and
+motor current) in real time, with automatic fault detection and alarm
+generation.</p></li>
+<li><p>Enforce safety interlocks that shut down equipment immediately
+when sensor readings exceed predefined safe operating limits.</p></li>
+<li><p>Log operational data continuously for post-shift analysis and
+regulatory compliance reporting.</p></li>
+</ul>
+<p>System Architecture</p>
+<p>The control system is built around a Siemens S7-1200 series PLC,
+chosen for its compact footprint, integrated Ethernet port, and
+compatibility with the facility's existing PROFINET network
+infrastructure. The CPU handles all ladder logic and function block
+execution, while a distributed I/O rack at the machine floor picks up
+sensor signals and drives field devices.</p>
+<p>Control logic was developed in TIA Portal using a combination of
+Ladder Diagram (LD) for safety interlock routines and Structured Text
+(ST) for the PID loop calculations and data logging functions.
+Separating these kept the safety logic easy to audit while keeping the
+more complex math manageable.</p>
+<p>A touchscreen HMI panel (Siemens TP700 Comfort) sits at the operator
+station and provides a live process overview, manual override controls,
+and a fault history screen. Operators can acknowledge alarms, adjust
+setpoints within permitted ranges, and view the last 30 days of trend
+data without leaving the workstation.</p>
+<p>Key Features &amp; Functions</p>
+<p><strong>Automated Startup &amp; Shutdown Sequencing</strong></p>
+<p>Equipment powers up in a fixed sequence with built-in time delays
+between stages to prevent current surges and mechanical shock. The
+shutdown sequence mirrors this in reverse, ensuring actuators fully
+travel to safe positions before upstream equipment de-energises.</p>
+<p><strong>Real-Time Process Monitoring</strong></p>
+<p>Twelve analogue input channels feed process variable readings into
+the PLC every 100 ms. The system compares each reading against high and
+low setpoint limits and writes a fault flag if any value drifts outside
+range. Operators see this on the HMI instantly. A persistent log records
+every reading to an SD card in CSV format for shift-end review.</p>
+<p><strong>Safety Interlock System</strong></p>
+<p>Emergency stops, overtemperature switches, pressure relief signals,
+and motor overload contacts are all wired into hardwired safety circuits
+as well as read by the PLC. The ladder logic enforces a safety matrix:
+if any two critical conditions occur simultaneously, the full system
+trips to a safe state and cannot restart until faults are manually
+cleared and acknowledged.</p>
+<p>Implementation &amp; Commissioning</p>
+<p>The project ran over eight weeks from initial design to handover. The
+first two weeks were spent on I/O mapping, panel layout design, and
+writing the initial control logic offline. Weeks three and four covered
+panel build and factory acceptance testing using a simulated process
+signal generator.</p>
+<p>Site installation and live commissioning took place over two weeks,
+working alongside the facility's electrical team. The final two weeks
+involved operator training, setpoint tuning, and supervised production
+runs before formal sign-off.</p>
+<p>One challenge during commissioning was unexpected electrical noise on
+two analogue input channels from a nearby variable frequency drive. This
+was resolved by replacing single-ended wiring with shielded twisted-pair
+cable and adding a software averaging filter in the scan cycle. The fix
+eliminated false alarm trips that had appeared during initial
+testing.</p>
+<p>Results &amp; Outcomes</p>
+<p>After three months of live operation, the system performed
+consistently within design parameters. Equipment startup time dropped
+from an average of 14 minutes under manual operation to under 4 minutes
+with automatic sequencing. The facility recorded zero safety trips
+caused by missed operator readings in the post-commissioning period,
+compared with three recorded incidents in the previous quarter.</p>
+<ul>
+<li><p>Equipment startup time reduced from ~14 minutes (manual) to under
+4 minutes (automatic).</p></li>
+<li><p>Zero sensor-related safety incidents in the first 90 days
+post-commissioning.</p></li>
+<li><p>Shift-end reporting time cut by roughly 40% due to automatic data
+logging.</p></li>
+<li><p>Operators reported higher confidence in equipment status and
+alarm reliability.</p></li>
+</ul>
+<p>Technologies &amp; Tools Used</p>
+<ul>
+<li><p>PLC Hardware: Siemens S7-1200 (CPU 1214C) with ET 200SP
+distributed I/O</p></li>
+<li><p>HMI: Siemens TP700 Comfort Panel (WinCC Flexible)</p></li>
+<li><p>Programming Environment: TIA Portal V17</p></li>
+<li><p>Programming Languages: Ladder Diagram (LD), Structured Text (ST),
+Function Block Diagram (FBD)</p></li>
+<li><p>Communication Protocol: PROFINET / Ethernet</p></li>
+<li><p>Field Devices: RTD temperature sensors, pressure transducers,
+flow meters, motor contactors, solenoid valves</p></li>
+<li><p>Documentation: AutoCAD Electrical (panel schematics), Excel (I/O
+list and setpoint register)</p></li>
+</ul>
+<p>Reflection</p>
+<p>This project reinforced how much of industrial automation work
+happens before writing a single line of logic: the I/O mapping, the
+P&amp;ID review, the conversations with operators about what actually
+causes problems on shift. The PLC code itself was relatively
+straightforward once those inputs were clear.</p>
+<p>The noise issue during commissioning was also a good reminder that
+physical signal integrity often matters as much as the logic design. A
+system that works perfectly in simulation can behave differently the
+moment it's wired into a real plant environment.</p>
