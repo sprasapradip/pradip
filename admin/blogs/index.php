@@ -12,7 +12,7 @@ if(isset($_GET['delete'])){
 
     $id = (int) $_GET['delete'];
 
-    /* DELETE IMAGE ALSO */
+    /* GET IMAGE */
     $img = $conn->prepare("
         SELECT image
         FROM blogs
@@ -24,6 +24,7 @@ if(isset($_GET['delete'])){
 
     $imgResult = $img->get_result()->fetch_assoc();
 
+    /* DELETE IMAGE */
     if(!empty($imgResult['image'])){
 
         $imagePath = "../../uploads/" . $imgResult['image'];
@@ -47,30 +48,63 @@ if(isset($_GET['delete'])){
 }
 
 /* =========================
+   PAGINATION
+========================= */
+
+$limit = 10;
+
+$page = isset($_GET['page'])
+    ? (int) $_GET['page']
+    : 1;
+
+if($page < 1){
+    $page = 1;
+}
+
+$offset = ($page - 1) * $limit;
+
+/* =========================
+   TOTAL BLOGS
+========================= */
+
+$totalResult = $conn->query("
+    SELECT COUNT(*) as total
+    FROM blogs
+");
+
+$totalBlogs = $totalResult->fetch_assoc()['total'];
+
+$totalPages = ceil($totalBlogs / $limit);
+
+/* =========================
    FETCH BLOGS
 ========================= */
 
-$result = $conn->query("
+$stmt = $conn->prepare("
     SELECT *
     FROM blogs
     ORDER BY id DESC
+    LIMIT ?, ?
 ");
 
-$totalBlogs = $result->num_rows;
+$stmt->bind_param("ii", $offset, $limit);
+$stmt->execute();
+
+$result = $stmt->get_result();
 
 include '../layout/header.php';
 ?>
 
 <section class="admin-page">
 
-    <!-- PAGE HEADER -->
+    <!-- HEADER -->
     <div style="
         display:flex;
         justify-content:space-between;
         align-items:center;
         gap:20px;
         flex-wrap:wrap;
-        margin-bottom:35px;
+        margin-bottom:25px;
     ">
 
         <div>
@@ -109,202 +143,305 @@ include '../layout/header.php';
 
     </div>
 
-    <!-- SUCCESS MESSAGE -->
+    <!-- SUCCESS -->
     <?php if(isset($_GET['deleted'])): ?>
 
         <div style="
-            background:#d1fae5;
-            color:#065f46;
+            background:#dcfce7;
+            color:#166534;
             padding:14px 18px;
             border-radius:12px;
-            margin-bottom:25px;
+            margin-bottom:20px;
         ">
             Blog deleted successfully.
         </div>
 
     <?php endif; ?>
 
-    <!-- EMPTY -->
-    <?php if($totalBlogs == 0): ?>
+    <!-- TABLE -->
+    <div style="
+        overflow-x:auto;
+        background:var(--card-bg);
+        border-radius:18px;
+        box-shadow:0 5px 20px rgba(0,0,0,0.05);
+    ">
 
-        <div style="
-            background:var(--card-bg);
-            padding:50px;
-            border-radius:18px;
-            text-align:center;
+        <table style="
+            width:100%;
+            border-collapse:collapse;
+            min-width:1100px;
         ">
 
-            <h2>No Blogs Found</h2>
+            <!-- TABLE HEAD -->
+            <thead style="
+                background:#f8fafc;
+                border-bottom:1px solid #e5e7eb;
+            ">
 
-            <p style="color:gray;">
-                Create your first blog post.
-            </p>
+                <tr>
 
-            <a href="create.php"
-               class="btn"
-               style="margin-top:15px;">
-                Create Blog
-            </a>
+                    <th style="padding:18px;text-align:left;">
+                        SN
+                    </th>
 
-        </div>
+                    <th style="padding:18px;text-align:left;">
+                        Thumbnail
+                    </th>
 
-    <?php else: ?>
+                    <th style="padding:18px;text-align:left;">
+                        Post Title
+                    </th>
 
-        <!-- GRID -->
-        <div class="grid" style="
-            display:grid;
-            grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-            gap:25px;
-        ">
+                    <th style="padding:18px;text-align:left;">
+                        Keywords
+                    </th>
 
-            <?php while($row = $result->fetch_assoc()): ?>
+                    <th style="padding:18px;text-align:left;">
+                        Views
+                    </th>
+
+                    <th style="padding:18px;text-align:left;">
+                        Published Date
+                    </th>
+
+                    <th style="padding:18px;text-align:left;">
+                        Status
+                    </th>
+
+                    <th style="padding:18px;text-align:center;">
+                        Actions
+                    </th>
+
+                </tr>
+
+            </thead>
+
+            <!-- BODY -->
+            <tbody>
 
                 <?php
-
-                /* SLUG */
-                $slug = !empty($row['slug'])
-                    ? $row['slug']
-                    : strtolower(trim(
-                        preg_replace('/[^A-Za-z0-9-]+/', '-', $row['title'])
-                    ));
-
-                /* BLOG URL */
-                $blog_link = "../../blog/" . urlencode($slug);
-
-                /* IMAGE */
-                $image = !empty($row['image'])
-                    ? "../../uploads/" . htmlspecialchars($row['image'])
-                    : "../../assets/no-image.jpg";
-
-                /* CONTENT */
-                $excerpt = mb_substr(
-                    strip_tags(html_entity_decode($row['content'])),
-                    0,
-                    120
-                );
-
+                $sn = $offset + 1;
                 ?>
 
-                <!-- CARD -->
-                <div style="
-                    background:var(--card-bg);
-                    border-radius:18px;
-                    overflow:hidden;
-                    box-shadow:0 5px 20px rgba(0,0,0,0.06);
-                    transition:0.3s;
-                    display:flex;
-                    flex-direction:column;
-                ">
+                <?php while($row = $result->fetch_assoc()): ?>
 
-                    <!-- IMAGE -->
-                    <div style="
-                        height:220px;
-                        overflow:hidden;
+                    <?php
+
+                    $slug = !empty($row['slug'])
+                        ? $row['slug']
+                        : strtolower(trim(
+                            preg_replace('/[^A-Za-z0-9-]+/', '-', $row['title'])
+                        ));
+
+                    $blog_link = "../../blog/" . urlencode($slug);
+
+                    $image = !empty($row['image'])
+                        ? "../../uploads/" . htmlspecialchars($row['image'])
+                        : "../../assets/no-image.jpg";
+
+                    ?>
+
+                    <tr style="
+                        border-bottom:1px solid #f1f5f9;
+                        transition:0.3s;
                     ">
 
-                        <img
-                            src="<?= $image ?>"
-                            alt="<?= htmlspecialchars($row['title']) ?>"
-                            style="
-                                width:100%;
-                                height:100%;
-                                object-fit:cover;
-                                display:block;
-                            "
-                        >
+                        <!-- SN -->
+                        <td style="padding:18px;">
+                            <?= $sn++ ?>
+                        </td>
 
-                    </div>
+                        <!-- IMAGE -->
+                        <td style="padding:18px;">
 
-                    <!-- CONTENT -->
-                    <div style="
-                        padding:22px;
-                        flex:1;
-                        display:flex;
-                        flex-direction:column;
-                    ">
+                            <img
+                                src="<?= $image ?>"
+                                alt=""
+                                style="
+                                    width:80px;
+                                    height:60px;
+                                    object-fit:cover;
+                                    border-radius:10px;
+                                "
+                            >
+
+                        </td>
 
                         <!-- TITLE -->
-                        <h3 style="
-                            margin-top:0;
-                            margin-bottom:12px;
-                            line-height:1.5;
-                            font-size:24px;
-                        ">
-                            <?= htmlspecialchars($row['title']) ?>
-                        </h3>
-
-                        <!-- META -->
-                        <div style="
-                            display:flex;
-                            gap:15px;
-                            flex-wrap:wrap;
-                            color:gray;
-                            font-size:13px;
-                            margin-bottom:14px;
+                        <td style="
+                            padding:18px;
+                            max-width:320px;
                         ">
 
-                            <span>
-                                👁 <?= number_format($row['views'] ?? 0) ?>
-                            </span>
+                            <div style="
+                                font-weight:600;
+                                margin-bottom:6px;
+                                line-height:1.5;
+                            ">
+                                <?= htmlspecialchars($row['title']) ?>
+                            </div>
 
-                            <span>
-                                📅 <?= date('d M Y', strtotime($row['created_at'])) ?>
-                            </span>
+                            <div style="
+                                color:gray;
+                                font-size:13px;
+                            ">
+                                <?= mb_substr(
+                                    strip_tags(
+                                        html_entity_decode($row['content'])
+                                    ),
+                                    0,
+                                    70
+                                ) ?>...
+                            </div>
+
+                        </td>
+
+                        <!-- KEYWORDS -->
+                        <td style="
+                            padding:18px;
+                            max-width:200px;
+                            color:#555;
+                            font-size:14px;
+                        ">
+
+                            <?= !empty($row['keywords'])
+                                ? htmlspecialchars(
+                                    mb_substr($row['keywords'], 0, 60)
+                                )
+                                : '-'
+                            ?>
+
+                        </td>
+
+                        <!-- VIEWS -->
+                        <td style="padding:18px;">
+
+                            👁 <?= number_format($row['views'] ?? 0) ?>
+
+                        </td>
+
+                        <!-- DATE -->
+                        <td style="padding:18px;">
+
+                            <?= date(
+                                'd M Y',
+                                strtotime($row['created_at'])
+                            ) ?>
+
+                        </td>
+
+                        <!-- STATUS -->
+                        <td style="padding:18px;">
 
                             <span style="
-                                color:
+                                padding:6px 12px;
+                                border-radius:30px;
+                                font-size:13px;
+                                font-weight:600;
+                                color:white;
+                                background:
                                 <?= $row['status'] === 'published'
                                     ? '#16a34a'
                                     : '#f59e0b'
                                 ?>;
-                                font-weight:600;
                             ">
-                                ● <?= ucfirst($row['status']) ?>
+
+                                <?= ucfirst($row['status']) ?>
+
                             </span>
 
-                        </div>
-
-                        <!-- EXCERPT -->
-                        <p style="
-                            color:#666;
-                            line-height:1.8;
-                            flex:1;
-                        ">
-                            <?= $excerpt ?>...
-                        </p>
+                        </td>
 
                         <!-- ACTIONS -->
-                        <div style="
-                            display:flex;
-                            gap:10px;
-                            flex-wrap:wrap;
-                            margin-top:22px;
+                        <td style="
+                            padding:18px;
+                            text-align:center;
                         ">
 
-                            <a href="edit.php?id=<?= $row['id'] ?>"
-                               class="btn">
-                                Edit
-                            </a>
+                            <div style="
+                                display:flex;
+                                gap:8px;
+                                justify-content:center;
+                                flex-wrap:wrap;
+                            ">
 
-                            <a href="<?= $blog_link ?>"
-                               target="_blank"
-                               class="btn">
-                                View
-                            </a>
+                                <a href="edit.php?id=<?= $row['id'] ?>"
+                                   class="btn">
+                                    Edit
+                                </a>
 
-                            <a href="?delete=<?= $row['id'] ?>"
-                               class="btn-danger"
-                               onclick="return confirm('Delete this blog permanently?')">
-                                Delete
-                            </a>
+                                <a href="<?= $blog_link ?>"
+                                   target="_blank"
+                                   class="btn">
+                                    View
+                                </a>
 
-                        </div>
+                                <a href="?delete=<?= $row['id'] ?>"
+                                   class="btn-danger"
+                                   onclick="return confirm('Delete this blog permanently?')">
+                                    Delete
+                                </a>
 
-                    </div>
+                            </div>
 
-                </div>
+                        </td>
 
-            <?php endwhile; ?>
+                    </tr>
+
+                <?php endwhile; ?>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <!-- PAGINATION -->
+    <?php if($totalPages > 1): ?>
+
+        <div style="
+            display:flex;
+            justify-content:center;
+            gap:10px;
+            flex-wrap:wrap;
+            margin-top:35px;
+        ">
+
+            <!-- PREVIOUS -->
+            <?php if($page > 1): ?>
+
+                <a href="?page=<?= $page - 1 ?>"
+                   class="btn">
+                    ← Previous
+                </a>
+
+            <?php endif; ?>
+
+            <!-- PAGE NUMBERS -->
+            <?php for($i = 1; $i <= $totalPages; $i++): ?>
+
+                <a href="?page=<?= $i ?>"
+                   class="<?= $i == $page ? 'btn' : 'btn-secondary' ?>"
+                   style="
+                        min-width:45px;
+                        text-align:center;
+                   ">
+
+                    <?= $i ?>
+
+                </a>
+
+            <?php endfor; ?>
+
+            <!-- NEXT -->
+            <?php if($page < $totalPages): ?>
+
+                <a href="?page=<?= $page + 1 ?>"
+                   class="btn">
+                    Next →
+                </a>
+
+            <?php endif; ?>
 
         </div>
 
