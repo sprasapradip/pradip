@@ -2,7 +2,9 @@
 if (!defined('APP_INIT')) {
     die("Direct access not allowed.");
 }
-
+if(!isset($admin)){
+    $admin = $conn->query("SELECT * FROM admins LIMIT 1")->fetch_assoc();
+}
 $current = basename($_SERVER['PHP_SELF']);
 ?>
 
@@ -193,16 +195,71 @@ body.dark .topbar{
     position:relative;
 }
 
+
+
+.profile{
+    position:relative;
+    display:flex;
+    align-items:center;
+}
+
+/* AVATAR */
 .avatar{
-    width:35px;
-    height:35px;
-    background:var(--primary);
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    overflow:hidden;
+    background:#2563eb;
     color:white;
     display:flex;
     align-items:center;
     justify-content:center;
-    border-radius:50%;
     cursor:pointer;
+}
+
+/* MENU HIDDEN BY DEFAULT */
+.profile-menu{
+    position:absolute;
+    right:0;
+    top:120%;
+    min-width:180px;
+    background:#fff;
+    border-radius:12px;
+    box-shadow:0 12px 30px rgba(0,0,0,0.12);
+    overflow:hidden;
+
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(10px);
+    transition:0.2s ease;
+    z-index:999;
+}
+
+/* ACTIVE STATE */
+.profile.active .profile-menu{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+}
+
+/* LINKS */
+.profile-menu a{
+    display:block;
+    padding:12px 14px;
+    text-decoration:none;
+    color:#111827;
+    font-size:14px;
+}
+
+.profile-menu a:hover{
+    background:#f1f5f9;
+}
+
+
+.avatar img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
 }
 
 .profile-menu{
@@ -646,20 +703,62 @@ body.dark .topbar{
     margin-bottom:20px;
 }
 
-.avatar-large{
-    width:80px;
-    height:80px;
-    border-radius:50%;
-    background:#2563eb;
-    color:white;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:28px;
-    font-weight:700;
-    margin:0 auto 10px;
+.avatar-large img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+     border-radius:50%;
 }
 
+
+/* SIDEBAR BASE (DESKTOP) */
+.sidebar{
+    width:250px;
+    background:var(--card);
+    border-right:1px solid var(--border);
+    padding:15px;
+    overflow-y:auto;
+    transition:0.3s;
+}
+
+/* ================= MOBILE ================= */
+@media(max-width:900px){
+
+    /* hidden by default */
+    .sidebar{
+        position:fixed;
+        left:-260px;
+        top:65px;
+        height:calc(100% - 65px);
+        z-index:9999;
+        box-shadow:10px 0 30px rgba(0,0,0,0.2);
+    }
+
+    /* when active */
+    .sidebar.show{
+        left:0;
+    }
+
+    /* dark overlay */
+    body.sidebar-open::before{
+        content:"";
+        position:fixed;
+        top:65px;
+        left:0;
+        width:100%;
+        height:calc(100% - 65px);
+        background:rgba(0,0,0,0.4);
+        z-index:9998;
+    }
+}
+
+/* DESKTOP ALWAYS VISIBLE */
+@media(min-width:901px){
+    .sidebar{
+        position:relative;
+        left:0 !important;
+    }
+}
 /* ================= PROFILE INFO ================= */
 .profile-info p{
     margin:10px 0;
@@ -692,6 +791,62 @@ body.dark .topbar{
 }
 
 
+/* WRAPPER */
+.profile{
+    position:relative;
+    display:flex;
+    align-items:center;
+}
+
+/* AVATAR */
+.avatar{
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    overflow:hidden;
+    background:#2563eb;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+}
+
+/* MENU HIDDEN */
+.profile-menu{
+    position:absolute;
+    right:0;
+    top:120%;
+    min-width:180px;
+    background:#fff;
+    border-radius:12px;
+    box-shadow:0 12px 30px rgba(0,0,0,0.12);
+
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(10px);
+    transition:0.2s ease;
+    z-index:999;
+}
+
+/* ACTIVE (VISIBLE) */
+.profile.active .profile-menu{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+}
+
+/* LINKS */
+.profile-menu a{
+    display:block;
+    padding:12px 14px;
+    text-decoration:none;
+    color:#111827;
+}
+
+.profile-menu a:hover{
+    background:#f1f5f9;
+}
 
 
 
@@ -710,7 +865,7 @@ body.dark .topbar{
             <i class="fa fa-bars"></i>
         </button>
 
-        <div class="brand">⚡ Admin Pro</div>
+        <div class="brand">Admin Dashboard</div>
     </div>
 
     <div class="search-box">
@@ -732,14 +887,23 @@ body.dark .topbar{
         </div>
 
         <div class="profile">
-            <div class="avatar">P</div>
+            <div class="profile" id="profileBox">
 
-            <div class="profile-menu">
-                <a href="/pradip/admin/profile/index.php">Profile</a>
-                <a href="/pradip/admin/maintenance-settings.php">Settings</a>
-                <a href="/pradip/admin/logout.php">Logout</a>
-            </div>
-        </div>
+    <div class="avatar" id="avatarBtn">
+        <?php if(!empty($admin['image'])): ?>
+            <img src="/pradip/uploads/<?= htmlspecialchars($admin['image']) ?>">
+        <?php else: ?>
+            <?= strtoupper(substr($admin['username'] ?? 'A', 0, 1)) ?>
+        <?php endif; ?>
+    </div>
+
+    <div class="profile-menu">
+        <a href="/pradip/admin/profile/index.php">Profile</a>
+        <a href="/pradip/admin/maintenance-settings.php">Settings</a>
+        <a href="/pradip/admin/logout.php">Logout</a>
+    </div>
+
+</div>
 
     </div>
 
@@ -805,4 +969,61 @@ document.getElementById("darkToggle").onclick = function(){
 if(localStorage.getItem("dark") === "true"){
     document.body.classList.add("dark");
 }
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+
+    const profile = document.getElementById("profileBox");
+    const avatar = document.getElementById("avatarBtn");
+
+    // CLICK TO TOGGLE
+    avatar.addEventListener("click", function(e){
+        e.stopPropagation(); // prevent immediate close
+        profile.classList.toggle("active");
+    });
+
+    // CLICK OUTSIDE → CLOSE
+    document.addEventListener("click", function(){
+        profile.classList.remove("active");
+    });
+
+});
+</script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+
+    const sidebar = document.getElementById("sidebar");
+    const toggleBtn = document.getElementById("menuToggle");
+
+    // OPEN / CLOSE SIDEBAR
+    toggleBtn.addEventListener("click", function(e){
+        e.stopPropagation();
+        sidebar.classList.toggle("show");
+        document.body.classList.toggle("sidebar-open");
+    });
+
+    // CLICK OUTSIDE → CLOSE
+    document.addEventListener("click", function(e){
+
+        if(window.innerWidth <= 900){
+            if(!sidebar.contains(e.target) && !toggleBtn.contains(e.target)){
+                sidebar.classList.remove("show");
+                document.body.classList.remove("sidebar-open");
+            }
+        }
+
+    });
+
+    // CLOSE ON RESIZE (important fix)
+    window.addEventListener("resize", function(){
+        if(window.innerWidth > 900){
+            sidebar.classList.remove("show");
+            document.body.classList.remove("sidebar-open");
+        }
+    });
+
+});
 </script>
