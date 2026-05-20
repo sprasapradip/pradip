@@ -86,6 +86,26 @@ if(localStorage.getItem("dark") === "true"){
 
 
 
+<script>
+document.addEventListener("click", function(e){
+
+    // close all dropdowns when clicking outside
+    document.querySelectorAll(".actions").forEach(el => {
+        if(!el.contains(e.target)){
+            el.classList.remove("active");
+        }
+    });
+
+    // toggle dropdown when clicking button
+    if(e.target.classList.contains("action-btn")){
+
+        let parent = e.target.closest(".actions");
+
+        parent.classList.toggle("active");
+    }
+
+});
+</script>
 
 
 

@@ -542,7 +542,7 @@ body.dark .topbar{
     position:relative;
     display:inline-block;
 }
-
+/* KEEP BUTTON STYLE */
 .action-btn{
     background:#f1f5f9;
     border:none;
@@ -552,6 +552,7 @@ body.dark .topbar{
     font-weight:600;
 }
 
+/* HIDE BY DEFAULT */
 .action-menu{
     position:absolute;
     right:0;
@@ -560,16 +561,30 @@ body.dark .topbar{
     border-radius:12px;
     box-shadow:0 12px 30px rgba(0,0,0,0.1);
     min-width:160px;
-    display:none;
     overflow:hidden;
-    z-index:10;
+    z-index:100;
+    
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(10px);
+    transition:0.2s;
 }
 
-.actions:hover .action-menu{
-    display:block;
+
+
+/* SHOW ONLY WHEN ACTIVE CLASS */
+.actions.active .action-menu{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
 }
+
+
 
 .action-menu a,
+
+
+
 .action-menu button{
     display:block;
     padding:10px 12px;
@@ -615,6 +630,71 @@ body.dark .topbar{
     color:white;
 }
 
+
+
+/* ================= PROFILE LAYOUT ================= */
+.profile-grid{
+    display:grid;
+    grid-template-columns:1fr 2fr;
+    gap:20px;
+    margin-top:20px;
+}
+
+/* ================= AVATAR ================= */
+.avatar-box{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.avatar-large{
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    background:#2563eb;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:28px;
+    font-weight:700;
+    margin:0 auto 10px;
+}
+
+/* ================= PROFILE INFO ================= */
+.profile-info p{
+    margin:10px 0;
+    color:#374151;
+}
+
+/* ================= FORM ================= */
+.card form{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.card input{
+    padding:10px;
+    border:1px solid #e5e7eb;
+    border-radius:10px;
+}
+
+/* ================= PASSWORD CARD ================= */
+.password-card{
+    margin-top:20px;
+}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:768px){
+    .profile-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+
+
+
+
 </style>
 </head>
 
@@ -655,7 +735,7 @@ body.dark .topbar{
             <div class="avatar">P</div>
 
             <div class="profile-menu">
-                <a href="/pradip/admin/profile/edit.php">Profile</a>
+                <a href="/pradip/admin/profile/index.php">Profile</a>
                 <a href="/pradip/admin/maintenance-settings.php">Settings</a>
                 <a href="/pradip/admin/logout.php">Logout</a>
             </div>
@@ -699,7 +779,7 @@ body.dark .topbar{
 <i class="fa fa-briefcase"></i> Experience
 </a>
 
-<a class="<?= strpos($_SERVER['REQUEST_URI'],'profile')!==false?'active':'' ?>" href="/pradip/admin/profile/edit.php">
+<a class="<?= strpos($_SERVER['REQUEST_URI'],'profile')!==false?'active':'' ?>" href="/pradip/admin/profile/index.php">
 <i class="fa fa-user"></i> Profile
 </a>
 
