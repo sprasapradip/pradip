@@ -180,7 +180,7 @@ include __DIR__ . '/layout/header.php';
                 </h3>
 
                 <p>
-                    <?= htmlspecialchars(substr($row['description'], 0, 120)) ?>...
+                     <?= substr($row['description'],0,120) ?>...
                 </p>
 
                 <a href="projects/index.php?edit=<?= $row['id'] ?>" class="btn">
