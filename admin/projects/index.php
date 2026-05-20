@@ -3,217 +3,167 @@ define('APP_INIT', true);
 
 require_once __DIR__ . '/../../includes/config.php';
 require_once __DIR__ . '/../auth.php';
-require_once '../config/guard.php';
 
-/* =========================
-   DELETE PROJECT
-========================= */
+/* ================= DELETE ================= */
 if(isset($_POST['delete_id'])){
 
-    $id = (int) $_POST['delete_id'];
+    $id = (int)$_POST['delete_id'];
 
-    // GET IMAGE
+    // get image
     $stmt = $conn->prepare("SELECT image FROM projects WHERE id=?");
     $stmt->bind_param("i", $id);
     $stmt->execute();
+    $img = $stmt->get_result()->fetch_assoc();
 
-    $result = $stmt->get_result();
-    $project = $result->fetch_assoc();
-
-    // DELETE IMAGE
-    if(!empty($project['image'])){
-
-        $imagePath = __DIR__ . '/../../uploads/' . $project['image'];
-
-        if(file_exists($imagePath)){
-            unlink($imagePath);
-        }
+    if(!empty($img['image'])){
+        $path = __DIR__ . '/../../uploads/' . $img['image'];
+        if(file_exists($path)) unlink($path);
     }
 
-    // DELETE PROJECT
-    $stmt = $conn->prepare("DELETE FROM projects WHERE id=?");
-    $stmt->bind_param("i", $id);
-    $stmt->execute();
+    $del = $conn->prepare("DELETE FROM projects WHERE id=?");
+    $del->bind_param("i", $id);
+    $del->execute();
 
     header("Location: index.php?deleted=1");
     exit;
 }
 
-/* =========================
-   FETCH PROJECTS
-========================= */
-$res = $conn->query("SELECT * FROM projects ORDER BY id DESC");
+/* ================= PAGINATION ================= */
+$limit = 10;
+$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+if($page < 1) $page = 1;
+
+$offset = ($page - 1) * $limit;
+
+/* TOTAL */
+$total = $conn->query("SELECT COUNT(*) as t FROM projects")->fetch_assoc()['t'];
+$pages = ceil($total / $limit);
+
+/* FETCH */
+$stmt = $conn->prepare("
+    SELECT *
+    FROM projects
+    ORDER BY id DESC
+    LIMIT ?, ?
+");
+$stmt->bind_param("ii", $offset, $limit);
+$stmt->execute();
+$res = $stmt->get_result();
 
 include __DIR__ . '/../layout/header.php';
 ?>
 
+<style>
+.table{
+    width:100%;
+    border-collapse:collapse;
+}
+.table th, .table td{
+    padding:12px;
+    border-bottom:1px solid #eee;
+    font-size:14px;
+}
+.actions{
+    position:relative;
+}
+.menu{
+    display:none;
+    position:absolute;
+    right:0;
+    background:#fff;
+    box-shadow:0 10px 25px rgba(0,0,0,0.1);
+    border-radius:10px;
+    min-width:140px;
+    z-index:10;
+}
+.actions:hover .menu{
+    display:block;
+}
+.menu a, .menu button{
+    display:block;
+    padding:10px;
+    width:100%;
+    border:none;
+    background:none;
+    text-align:left;
+    cursor:pointer;
+}
+</style>
+
 <section class="admin-page">
 
-    <h1>Projects</h1>
+<h1>Projects</h1>
 
-    <a href="create.php" class="btn">
-        Add New Project
-    </a>
 
-    <br><br>
+<div class="table-wrapper">
 
-    <div class="grid">
+<table class="pro-table">
 
-        <?php while($row = $res->fetch_assoc()): ?>
+<thead>
+<tr>
+    <th>SN</th>
+    <th>Title</th>
+    <th>Date</th>
+    <th style="text-align:center;">Actions</th>
+</tr>
+</thead>
 
-            <div class="card">
+<tbody>
 
-                <?php if(!empty($row['image'])): ?>
+<?php $sn = $offset + 1; ?>
 
-                    <img src="../../uploads/<?= htmlspecialchars($row['image']) ?>"
-                         style="
-                            width:100%;
-                            border-radius:8px;
-                            margin-bottom:10px;
-                         ">
+<?php while($row = $res->fetch_assoc()): ?>
 
-                <?php endif; ?>
+<tr>
 
-                <h3>
-                    <?= htmlspecialchars($row['title']) ?>
-                </h3>
+<td><?= $sn++ ?></td>
 
-                
-                <div class="project-description">
-                   <?= substr($row['description'],0,120) ?>...
-                </div>
- 
-                <div style="
-                    margin-top:15px;
-                    display:flex;
-                    align-items:center;
-                    justify-content:center;
-                    gap:10px;
-                    flex-wrap:wrap;
-                ">
+<td>
+<div class="title-text">
+    <?= htmlspecialchars($row['title']) ?>
+</div>
+</td>
 
-                    <a href="edit.php?id=<?= $row['id'] ?>"
-                       class="btn">
+<td>
+<?= !empty($row['created_at']) ? date('d M Y', strtotime($row['created_at'])) : '-' ?>
+</td>
 
-                        Edit
+<td style="text-align:center;">
 
-                    </a>
+<div class="actions">
 
-                    <form method="POST"
-                          style="
-                            display:inline-flex;
-                            align-items:center;
-                            justify-content:center;
-                            margin:0;
-                          ">
+    <button class="action-btn">Manage</button>
 
-                        <input type="hidden"
-                               name="delete_id"
-                               value="<?= $row['id'] ?>">
+    <div class="action-menu">
 
-                        <button type="submit"
-                                class="btn-danger"
-                                onclick="return openDeleteModal(this.form)">
+        <a class="preview" href="/project-single.php?slug=<?= urlencode($row['slug'] ?? '') ?>" target="_blank">
+            Preview
+        </a>
 
-                            Delete
+        <a class="edit" href="edit.php?id=<?= $row['id'] ?>">
+            Edit
+        </a>
 
-                        </button>
-
-                    </form>
-
-                </div>
-
-            </div>
-
-        <?php endwhile; ?>
-
-    </div>
-
-</section>
-
-<!-- DELETE MODAL -->
-<div id="deleteModal" style="
-    display:none;
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background:rgba(0,0,0,0.5);
-    z-index:9999;
-    justify-content:center;
-    align-items:center;
-">
-
-    <div style="
-        background:#fff;
-        padding:30px;
-        border-radius:12px;
-        width:90%;
-        max-width:400px;
-        text-align:center;
-        box-shadow:0 10px 30px rgba(0,0,0,0.2);
-    ">
-
-        <h3 style="margin-bottom:15px;">
-            Delete Project
-        </h3>
-
-        <p style="margin-bottom:25px;">
-            Are you sure you want to delete this project?
-        </p>
-
-        <div style="
-            display:flex;
-            justify-content:center;
-            gap:10px;
-        ">
-
-            <button onclick="closeDeleteModal()"
-                    class="btn">
-
-                Cancel
-
-            </button>
-
-            <button onclick="confirmDelete()"
-                    class="btn-danger">
-
-                Delete
-
-            </button>
-
-        </div>
+        <form method="POST" onsubmit="return confirm('Delete project?')">
+            <input type="hidden" name="delete_id" value="<?= $row['id'] ?>">
+            <button class="delete" type="submit">Delete</button>
+        </form>
 
     </div>
 
 </div>
 
-<script>
+</td>
 
-let deleteForm = null;
+</tr>
 
-function openDeleteModal(form){
+<?php endwhile; ?>
 
-    deleteForm = form;
+</tbody>
+</table>
 
-    document.getElementById('deleteModal').style.display = 'flex';
+</div>
 
-    return false;
-}
-
-function closeDeleteModal(){
-
-    document.getElementById('deleteModal').style.display = 'none';
-}
-
-function confirmDelete(){
-
-    if(deleteForm){
-        deleteForm.submit();
-    }
-}
-
-</script>
+</section>
 
 <?php include __DIR__ . '/../layout/footer.php'; ?>

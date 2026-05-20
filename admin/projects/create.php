@@ -35,6 +35,27 @@ if(isset($_POST['save'])){
         }
     }
 
+
+
+
+function createSlug($text){
+
+    $text = strtolower($text);
+
+    // replace non letters/numbers with -
+    $text = preg_replace('/[^a-z0-9]+/', '-', $text);
+
+    // remove starting/ending -
+    $text = trim($text, '-');
+
+    return $text;
+}
+
+
+
+
+
+
     // INSERT
     $stmt = $conn->prepare("
         INSERT INTO projects(title, description, image)

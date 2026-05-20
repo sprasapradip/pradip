@@ -8,112 +8,721 @@ $current = basename($_SERVER['PHP_SELF']);
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Admin Dashboard</title>
-
-<link rel="stylesheet" href="/pradip/admin/assets/admin.css">
+<title>Admin Pro Panel</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
+<style>
+
+/* ================= ROOT ================= */
+:root{
+    --bg:#f4f6fb;
+    --card:#ffffff;
+    --text:#111827;
+    --muted:#6b7280;
+    --primary:#2563eb;
+    --border:#e5e7eb;
+}
+
+/* DARK MODE */
+body.dark{
+    --bg:#0b1220;
+    --card:#111827;
+    --text:#e5e7eb;
+    --muted:#9ca3af;
+    --border:#1f2937;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:var(--bg);
+    color:var(--text);
+}
+
+/* ================= APP ================= */
+.app{
+    display:flex;
+    flex-direction:column;
+    height:100vh;
+}
+
+.layout{
+    display:flex;
+    flex:1;
+}
+
+/* ================= TOPBAR ================= */
+.topbar{
+    height:65px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 15px;
+    background:rgba(255,255,255,0.7);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--border);
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+body.dark .topbar{
+    background:rgba(15,23,42,0.7);
+}
+
+.left,.right{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.brand{
+    font-weight:700;
+}
+
+/* BUTTON */
+.icon-btn{
+    background:var(--card);
+    border:1px solid var(--border);
+    padding:8px 10px;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+/* SEARCH */
+.search-box{
+    flex:1;
+    max-width:400px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:var(--card);
+    border:1px solid var(--border);
+    padding:8px 12px;
+    border-radius:10px;
+    margin:0 10px;
+}
+
+.search-box input{
+    border:none;
+    outline:none;
+    background:transparent;
+    width:100%;
+    color:var(--text);
+}
+
+/* ================= SIDEBAR ================= */
+.sidebar{
+    width:250px;
+    background:var(--card);
+    border-right:1px solid var(--border);
+    padding:15px;
+    overflow-y:auto;
+    transition:0.3s;
+}
+
+.sidebar-header{
+    font-size:12px;
+    color:var(--muted);
+    margin-bottom:10px;
+}
+
+.nav a{
+    display:flex;
+    gap:10px;
+    padding:10px;
+    text-decoration:none;
+    color:var(--muted);
+    border-radius:10px;
+    margin-bottom:5px;
+    transition:0.2s;
+}
+
+.nav a:hover{
+    background:var(--primary);
+    color:#fff;
+}
+
+.nav a.active{
+    background:var(--primary);
+    color:#fff;
+}
+
+/* ================= CONTENT ================= */
+.content{
+    flex:1;
+    padding:20px;
+    overflow-y:auto;
+}
+
+/* ================= DROPDOWN ================= */
+.dropdown{
+    position:relative;
+}
+
+.dropdown-menu{
+    display:none;
+    position:absolute;
+    right:0;
+    top:40px;
+    width:200px;
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:10px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+}
+
+.dropdown:hover .dropdown-menu{
+    display:block;
+}
+
+/* PROFILE */
+.profile{
+    position:relative;
+}
+
+.avatar{
+    width:35px;
+    height:35px;
+    background:var(--primary);
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    cursor:pointer;
+}
+
+.profile-menu{
+    display:none;
+    position:absolute;
+    right:0;
+    top:45px;
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:10px;
+    width:150px;
+}
+
+.profile:hover .profile-menu{
+    display:block;
+}
+
+.profile-menu a{
+    display:block;
+    padding:10px;
+    text-decoration:none;
+    color:var(--text);
+}
+
+.profile-menu a:hover{
+    background:var(--bg);
+}
+
+/* MOBILE */
+@media(max-width:900px){
+    .sidebar{
+        position:fixed;
+        left:-260px;
+        top:65px;
+        height:calc(100% - 65px);
+        z-index:999;
+    }
+
+    .sidebar.show{
+        left:0;
+    }
+}
+
+ 
+/* =========================
+   SERVICES PAGE (PRO STYLE)
+========================= */
+
+.admin-page{
+    padding:20px;
+}
+
+/* HEADER ROW */
+.admin-page > div:first-child{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+.admin-page h1{
+    font-size:24px;
+    font-weight:700;
+}
+
+/* ================= GRID ================= */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:20px;
+}
+
+/* ================= CARD ================= */
+.card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:18px;
+    transition:0.3s ease;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+}
+
+.card:hover{
+    transform:translateY(-6px);
+    border-color:var(--primary);
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+}
+
+.card h3{
+    font-size:18px;
+    margin-bottom:10px;
+    color:var(--text);
+}
+
+.card p{
+    font-size:14px;
+    color:var(--muted);
+    line-height:1.6;
+}
+
+/* ================= BUTTONS ================= */
+.btn{
+    display:inline-block;
+    background:var(--primary);
+    color:#fff;
+    padding:8px 12px;
+    border-radius:10px;
+    text-decoration:none;
+    font-size:13px;
+    transition:0.2s;
+}
+
+.btn:hover{
+    background:#1d4ed8;
+    transform:translateY(-2px);
+}
+
+/* DELETE BUTTON */
+.btn-danger{
+    display:inline-block;
+    background:#ef4444;
+    color:#fff;
+    padding:8px 12px;
+    border-radius:10px;
+    text-decoration:none;
+    font-size:13px;
+    transition:0.2s;
+}
+
+.btn-danger:hover{
+    background:#dc2626;
+    transform:translateY(-2px);
+}
+
+/* ================= CARD ACTION AREA ================= */
+.card div{
+    margin-top:15px;
+    display:flex;
+    gap:10px;
+}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:768px){
+    .card div{
+        flex-direction:column;
+    }
+}
+
+/* =========================
+   EXPERIENCE PAGE (PRO STYLE)
+========================= */
+
+.admin-page{
+    padding:20px;
+}
+
+/* HEADER */
+.admin-page > div:first-child{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+.admin-page h1{
+    font-size:24px;
+    font-weight:700;
+}
+
+/* ================= GRID ================= */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:20px;
+}
+
+/* ================= CARD ================= */
+.card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:18px;
+    transition:0.3s ease;
+    display:flex;
+    flex-direction:column;
+}
+
+.card:hover{
+    transform:translateY(-6px);
+    border-color:var(--primary);
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+}
+
+/* TITLE */
+.card h3{
+    font-size:18px;
+    margin-bottom:6px;
+    color:var(--text);
+}
+
+/* COMPANY */
+.card p strong{
+    color:var(--primary);
+    font-weight:600;
+}
+
+/* DESCRIPTION */
+.card p{
+    font-size:14px;
+    color:var(--muted);
+    line-height:1.6;
+    margin-top:6px;
+}
+
+/* ================= BUTTONS ================= */
+.btn{
+    display:inline-block;
+    background:var(--primary);
+    color:#fff;
+    padding:8px 12px;
+    border-radius:10px;
+    text-decoration:none;
+    font-size:13px;
+    transition:0.2s;
+}
+
+.btn:hover{
+    background:#1d4ed8;
+    transform:translateY(-2px);
+}
+
+/* DELETE BUTTON */
+.btn-danger{
+    display:inline-block;
+    background:#ef4444;
+    color:#fff;
+    padding:8px 12px;
+    border-radius:10px;
+    text-decoration:none;
+    font-size:13px;
+    transition:0.2s;
+}
+
+.btn-danger:hover{
+    background:#dc2626;
+    transform:translateY(-2px);
+}
+
+/* ACTION BUTTON AREA */
+.card div{
+    margin-top:auto;
+    display:flex;
+    gap:10px;
+}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:768px){
+    .card div{
+        flex-direction:column;
+    }
+}
+
+
+
+
+
+:root{
+    --primary:#2563eb;
+    --card:#ffffff;
+    --text:#111827;
+    --muted:#6b7280;
+    --border:#e5e7eb;
+    --bg:#f4f6fb;
+}
+
+/* ================= WRAPPER ================= */
+.table-wrapper{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:16px;
+    overflow:hidden;
+    box-shadow:0 8px 25px rgba(0,0,0,0.05);
+}
+
+/* ================= TABLE ================= */
+.pro-table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.pro-table th{
+    background:#f8fafc;
+    padding:14px 16px;
+    text-align:left;
+    font-size:13px;
+    color:#64748b;
+    border-bottom:1px solid var(--border);
+    white-space:nowrap;
+}
+
+.pro-table td{
+    padding:14px 16px;
+    border-bottom:1px solid #f1f5f9;
+    font-size:14px;
+    color:var(--text);
+    vertical-align:middle;
+}
+
+.pro-table tr:hover{
+    background:#fafafa;
+}
+
+/* ================= TITLE ================= */
+.title-text{
+    font-weight:600;
+    max-width:380px;
+    line-height:1.5;
+}
+
+/* ================= STATUS ================= */
+.status-select{
+    padding:7px 10px;
+    border-radius:8px;
+    border:1px solid #dbeafe;
+    font-size:13px;
+    outline:none;
+}
+
+/* ================= ACTION MENU ================= */
+.actions{
+    position:relative;
+    display:inline-block;
+}
+
+.action-btn{
+    background:#f1f5f9;
+    border:none;
+    padding:8px 12px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:600;
+}
+
+.action-menu{
+    position:absolute;
+    right:0;
+    top:110%;
+    background:white;
+    border-radius:12px;
+    box-shadow:0 12px 30px rgba(0,0,0,0.1);
+    min-width:160px;
+    display:none;
+    overflow:hidden;
+    z-index:10;
+}
+
+.actions:hover .action-menu{
+    display:block;
+}
+
+.action-menu a,
+.action-menu button{
+    display:block;
+    padding:10px 12px;
+    text-decoration:none;
+    border:none;
+    background:none;
+    text-align:left;
+    width:100%;
+    cursor:pointer;
+    color:var(--text);
+    font-size:13px;
+}
+
+.action-menu a:hover,
+.action-menu button:hover{
+    background:#f8fafc;
+}
+
+.action-menu .edit{ color:#16a34a; }
+.action-menu .delete{ color:#dc2626; }
+.action-menu .preview{ color:#2563eb; }
+
+/* ================= PAGINATION ================= */
+.pagination{
+    display:flex;
+    justify-content:center;
+    gap:8px;
+    margin-top:25px;
+    flex-wrap:wrap;
+}
+
+.pagination a{
+    padding:8px 12px;
+    border-radius:8px;
+    background:#f1f5f9;
+    text-decoration:none;
+    color:#111827;
+    font-weight:600;
+}
+
+.pagination a.active{
+    background:#111827;
+    color:white;
+}
+
+</style>
 </head>
 
 <body>
 
 <div class="app">
 
-    <!-- =========================
-         TOPBAR
-    ========================= -->
+<!-- TOPBAR -->
+<header class="topbar">
 
-    <header class="topbar">
+    <div class="left">
+        <button class="icon-btn" id="menuToggle">
+            <i class="fa fa-bars"></i>
+        </button>
 
-        <!-- LEFT -->
-        <div class="topbar-left">
+        <div class="brand">⚡ Admin Pro</div>
+    </div>
 
-            <!-- MOBILE MENU -->
-            <button class="menu-toggle" id="menuToggle">
-                ☰
-            </button><div class="logo">
-                Pradip Admin
+    <div class="search-box">
+        <i class="fa fa-search"></i>
+        <input type="text" placeholder="Search...">
+    </div>
+
+    <div class="right">
+
+        <button class="icon-btn" id="darkToggle">🌙</button>
+
+        <div class="dropdown">
+            <button class="icon-btn">🔔</button>
+            <div class="dropdown-menu">
+                <p>New Message</p>
+                <p>New Project</p>
+                <p>System Alert</p>
             </div>
         </div>
 
-        <!-- RIGHT -->
-        <div class="top-actions">
+        <div class="profile">
+            <div class="avatar">P</div>
 
-            <a href="/pradip" target="_blank" class="visit-btn">
-                Visit Site
-            </a>
-
-            <a href="/pradip/admin/logout.php" class="logout-btn">
-                Logout
-            </a>
-
+            <div class="profile-menu">
+                <a href="/pradip/admin/profile/edit.php">Profile</a>
+                <a href="/pradip/admin/maintenance-settings.php">Settings</a>
+                <a href="/pradip/admin/logout.php">Logout</a>
+            </div>
         </div>
 
-    </header>
+    </div>
 
-    <!-- =========================
-         LAYOUT
-    ========================= -->
+</header>
 
-    <div class="layout">
+<!-- LAYOUT -->
+<div class="layout">
 
-        <!-- =========================
-             SIDEBAR
-        ========================= -->
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
 
-        <aside class="sidebar" id="sidebar">
+<div class="sidebar-header">MENU</div>
 
-            <a href="/pradip/admin/index.php"
-               class="<?= ($current=='index.php')?'active':'' ?>">
-               🏠 Dashboard
-            </a>
+<nav class="nav">
 
-            <a href="/pradip/admin/messages/index.php"
-               class="<?= (strpos($_SERVER['REQUEST_URI'],'messages')!==false)?'active':'' ?>">
-               📩 Messages
-            </a>
+<a class="<?= ($current=='index.php')?'active':'' ?>" href="/pradip/admin/index.php">
+<i class="fa fa-gauge"></i> Dashboard
+</a>
 
-            <a href="/pradip/admin/projects/index.php"
-               class="<?= (strpos($_SERVER['REQUEST_URI'],'projects')!==false)?'active':'' ?>">
-               📁 Projects
-            </a>
+<a class="<?= strpos($_SERVER['REQUEST_URI'],'messages')!==false?'active':'' ?>" href="/pradip/admin/messages/index.php">
+<i class="fa fa-envelope"></i> Messages
+</a>
 
-            <a href="/pradip/admin/blogs/index.php"
-               class="<?= (strpos($_SERVER['REQUEST_URI'],'blogs')!==false)?'active':'' ?>">
-               ✍️ Blogs
-            </a>
+<a class="<?= strpos($_SERVER['REQUEST_URI'],'projects')!==false?'active':'' ?>" href="/pradip/admin/projects/index.php">
+<i class="fa fa-folder"></i> Projects
+</a>
 
-            <a href="/pradip/admin/services/index.php"
-               class="<?= (strpos($_SERVER['REQUEST_URI'],'services')!==false)?'active':'' ?>">
-               ⚡ Services
-            </a>
+<a class="<?= strpos($_SERVER['REQUEST_URI'],'blogs')!==false?'active':'' ?>" href="/pradip/admin/blogs/index.php">
+<i class="fa fa-pen"></i> Blogs
+</a>
 
-            <a href="/pradip/admin/experience/index.php"
-               class="<?= (strpos($_SERVER['REQUEST_URI'],'experience')!==false)?'active':'' ?>">
-               💼 Experience
-            </a>
+<a class="<?= strpos($_SERVER['REQUEST_URI'],'services')!==false?'active':'' ?>" href="/pradip/admin/services/index.php">
+<i class="fa fa-bolt"></i> Services
+</a>
 
-            <a href="/pradip/admin/maintenance-settings.php"
-               class="<?= (strpos($_SERVER['REQUEST_URI'],'maintenance-settings')!==false)?'active':'' ?>">
-               🛠 Settings
-            </a>
+<a class="<?= strpos($_SERVER['REQUEST_URI'],'experience')!==false?'active':'' ?>" href="/pradip/admin/experience/index.php">
+<i class="fa fa-briefcase"></i> Experience
+</a>
 
-            <a href="/pradip/admin/profile/edit.php"
-               class="<?= (strpos($_SERVER['REQUEST_URI'],'profile')!==false)?'active':'' ?>">
-               👤 CV Profile
-            </a>
+<a class="<?= strpos($_SERVER['REQUEST_URI'],'profile')!==false?'active':'' ?>" href="/pradip/admin/profile/edit.php">
+<i class="fa fa-user"></i> Profile
+</a>
 
-        </aside>
+</nav>
 
-        <!-- =========================
-             MAIN CONTENT
-        ========================= -->
+</aside>
 
-        <main class="content">
+<!-- CONTENT START -->
+<main class="content">
+
+<script>
+/* SIDEBAR TOGGLE */
+document.getElementById("menuToggle").onclick = function(){
+    document.getElementById("sidebar").classList.toggle("show");
+};
+
+/* DARK MODE */
+document.getElementById("darkToggle").onclick = function(){
+    document.body.classList.toggle("dark");
+    localStorage.setItem("dark", document.body.classList.contains("dark"));
+};
+
+if(localStorage.getItem("dark") === "true"){
+    document.body.classList.add("dark");
+}
+</script>
