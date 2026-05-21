@@ -11,7 +11,7 @@
 define('MAIL_HOST',      'mail.pradipsubedi1.com.np');
 define('MAIL_PORT',      993);                          // IMAP SSL
 define('MAIL_USER',      'info@pradipsubedi1.com.np');
-define('MAIL_PASS',      '50017501601@202103015651');         // ← set your password
+define('MAIL_PASS',      'CZ@TMS');         // ← set your password
 define('MAIL_SSL',       true);
 
 // ─── SMTP ─────────────────────────────────────────────────
