@@ -4,7 +4,7 @@ require_once __DIR__ . '/mail-config.php';
 
 // Already logged in → go to dashboard
 if (!empty($_SESSION['mail_auth'])) {
-    header('Location: mail/index.php');
+    header('Location: pradip/mail/index.php');
     exit;
 }
 
