@@ -171,7 +171,7 @@ function saveDraftIMAP(string $to, string $subject, string $body, string $cc = '
 
     $u   = MAIL_USER;
     $h   = MAIL_HOST;
-    $full = $body ;
+    $full = $body . sigHTML();
     $raw  = "Date: " . date('r') . "\r\n"
           . "From: " . SIG_NAME . " <$u>\r\n"
           . "To: $to\r\n"
@@ -193,7 +193,7 @@ function saveDraftIMAP(string $to, string $subject, string $body, string $cc = '
 function buildRaw(string $to, string $subject, string $body, string $cc, string $bcc): string {
     $u    = MAIL_USER;
     $h    = MAIL_HOST;
-    $full = $body ;
+    $full = $body . sigHTML();
     return "Date: " . date('r') . "\r\n"
          . "From: " . SIG_NAME . " <$u>\r\n"
          . "To: $to\r\n"

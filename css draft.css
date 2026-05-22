@@ -1,4 +1,3 @@
-<style>
     :root{--bg:#060a10;--panel:#0b1422;--panel2:#0f1c2e;--border:#1a3354;--accent:#00c8f0;--accent2:#ff9500;--green:#00ff88;--red:#ff4757;--yellow:#ffd700;--text:#c0d8ee;--muted:#3a5a7a;--glow:0 0 14px rgba(0,200,240,.35);--glow2:0 0 24px rgba(0,200,240,.6);}
     *{box-sizing:border-box;margin:0;padding:0}
     body{background:var(--bg);color:var(--text);font-family:'Exo 2',sans-serif;height:100vh;overflow:hidden;
@@ -159,4 +158,4 @@
     .bl{bottom:5px;left:5px;border-width:0 0 2px 2px}.br{bottom:5px;right:5px;border-width:0 2px 2px 0}
     ::-webkit-scrollbar{width:4px}::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
     ::-webkit-scrollbar-thumb:hover{background:var(--muted)}
-  </style>
+  

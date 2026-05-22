@@ -98,6 +98,14 @@ $current = basename($_SERVER['PHP_SELF']);
 
 </head>
 
+<?php
+$menuQuery = $conn->query("
+    SELECT *
+    FROM navigation_menu
+    WHERE status='active'
+    ORDER BY sort_order ASC
+");
+?>
 
 <nav class="navbar">
 
@@ -109,29 +117,20 @@ $current = basename($_SERVER['PHP_SELF']);
             <img src="/pradip/images/favicon.jpg" alt="Pradip Subedi">
         </a>
 
-        <a href="/pradip/index.php" class="<?= ($current == 'index.php') ? 'active' : '' ?>">
-            Home
-        </a>
+        <?php while($menu = $menuQuery->fetch_assoc()): ?>
 
-        <a href="/pradip/projects.php" class="<?= ($current == 'projects.php') ? 'active' : '' ?>">
-            Projects
-        </a>
+            <?php
+            $menuFile = basename($menu['url']);
+            ?>
 
-        <a href="/pradip/experience.php" class="<?= ($current == 'experience.php') ? 'active' : '' ?>">
-            Experience
-        </a>
+            <a href="<?= htmlspecialchars($menu['url']) ?>"
+               class="<?= ($current == $menuFile) ? 'active' : '' ?>">
 
-        <a href="/pradip/blogs.php" class="<?= ($current == 'blogs.php') ? 'active' : '' ?>">
-            Blogs
-        </a>
+                <?= htmlspecialchars($menu['title']) ?>
 
-        <a href="/pradip/services.php" class="<?= ($current == 'services.php') ? 'active' : '' ?>">
-            Services
-        </a>
+            </a>
 
-        <a href="/pradip/contact.php" class="<?= ($current == 'contact.php') ? 'active' : '' ?>">
-            Contact
-        </a>
+        <?php endwhile; ?>
 
     </div>
 
@@ -139,13 +138,17 @@ $current = basename($_SERVER['PHP_SELF']);
     <div class="nav-right">
 
         <?php if (!empty($_SESSION['admin'])): ?>
+
             <a href="/pradip/admin/index.php" class="admin-btn">
                 Dashboard
             </a>
+
         <?php else: ?>
+
             <a href="/pradip/admin/login.php" class="admin-btn">
                 Admin
             </a>
+
         <?php endif; ?>
 
     </div>
