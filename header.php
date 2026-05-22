@@ -18,7 +18,7 @@ $current = basename($_SERVER['PHP_SELF']);
 <title>Pradip Subedi</title>
 
 <link rel="icon" type="image/png" href="/pradip/images/favicon.jpg">
-<link rel="stylesheet" href="/pradip/style.css">
+<link rel="stylesheet" href="/pradip/assets/style.css">
 
 <meta name="description" content="Pradip Subedi, Electrical Engineer at Maulakalika Cable Car specializing in power systems and industrial maintenance.">
 
@@ -94,6 +94,9 @@ $current = basename($_SERVER['PHP_SELF']);
     text-decoration:none;
     font-weight:500;
 }
+
+
+
 </style>
 
 </head>

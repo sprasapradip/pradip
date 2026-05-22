@@ -41,7 +41,7 @@ function createSlug($conn, $string){
 /* =========================
    API KEY (optional)
 ========================= */
-$apiKey = "YOUR_OPENAI_KEY_HERE";
+$apiKey = "api safe";
 
 /* =========================
    POST HANDLER
@@ -232,5 +232,5 @@ function previewImage(event){
     reader.readAsDataURL(event.target.files[0]);
 }
 </script>
-
+<script src="pradip/admin/assets/js/admin.js"></script>
 <?php include '../layout/footer.php'; ?>

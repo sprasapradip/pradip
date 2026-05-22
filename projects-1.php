@@ -90,18 +90,12 @@ $result = $stmt->get_result();
 
                         </div>
                       <div class="project-content">
-                         <a 
-                            class="btn"
-                            onclick='openProjectModal(
-                                <?= json_encode($row["title"]) ?>,
-                                <?= json_encode($row["description"]) ?>,
-                                <?= json_encode($row["image"]) ?>
-                            )'
-                        >
 
-                            Read More
-
-                         </a>
+                      <a class="btn"
+   href="/pradip/project-single.php?slug=<?= urlencode($row['slug']) ?>">
+    Read More
+</a>
+ 
                        </div>
                       </div>
 

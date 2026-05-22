@@ -1,0 +1,251 @@
+/* =========================
+   MESSAGE MODAL
+========================= */
+
+.msg-modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.55);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:0.25s;
+    z-index:9999;
+}
+
+.msg-modal.show{
+    opacity:1;
+    visibility:visible;
+}
+
+.msg-modal-content{
+    width:95%;
+    max-width:650px;
+
+    background:var(--card);
+    border-radius:22px;
+
+    padding:28px;
+
+    border:1px solid var(--border);
+
+    box-shadow:0 20px 60px rgba(0,0,0,0.2);
+
+    animation:modalUp 0.25s ease;
+}
+
+@keyframes modalUp{
+    from{
+        transform:translateY(20px);
+        opacity:0;
+    }
+    to{
+        transform:translateY(0);
+        opacity:1;
+    }
+}
+
+.msg-modal-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:15px;
+}
+
+.msg-modal-header h2{
+    font-size:24px;
+}
+
+.close-modal{
+    border:none;
+    background:#ef4444;
+    color:white;
+
+    width:36px;
+    height:36px;
+
+    border-radius:50%;
+
+    cursor:pointer;
+    font-size:18px;
+}
+
+.modal-email{
+    color:var(--primary);
+    margin-bottom:20px;
+    font-weight:600;
+}
+
+.modal-message{
+    background:var(--bg);
+    border:1px solid var(--border);
+
+    padding:18px;
+    border-radius:16px;
+
+    line-height:1.8;
+    color:var(--text);
+
+    max-height:400px;
+    overflow:auto;
+    white-space:pre-wrap;
+}
+
+
+/* ================= MODAL ================= */
+
+.msg-modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.55);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:99999;
+    padding:20px;
+}
+
+.msg-modal.active{
+    display:flex;
+}
+
+.msg-modal-box{
+    width:100%;
+    max-width:700px;
+    background:#fff;
+    border-radius:20px;
+    padding:30px;
+    position:relative;
+    animation:popup 0.25s ease;
+    box-shadow:0 20px 60px rgba(0,0,0,0.2);
+}
+
+@keyframes popup{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.close-modal{
+    position:absolute;
+    top:15px;
+    right:15px;
+    width:40px;
+    height:40px;
+    border:none;
+    border-radius:50%;
+    background:#f1f5f9;
+    cursor:pointer;
+    font-size:22px;
+}
+
+.close-modal:hover{
+    background:#e2e8f0;
+}
+
+.modal-email{
+    color:#64748b;
+    margin-top:8px;
+    margin-bottom:20px;
+}
+
+.modal-message{
+    background:#f8fafc;
+    padding:18px;
+    border-radius:14px;
+    line-height:1.8;
+    color:#334155;
+    white-space:pre-wrap;
+}
+
+/* ================= ACTION MENU ================= */
+
+.action-menu button{
+    border:none;
+    background:none;
+    width:100%;
+    text-align:left;
+    cursor:pointer;
+    padding:10px 12px;
+}
+
+
+
+/* ================= MODAL ================= */
+
+.msg-modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.6);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    opacity:0;
+    visibility:hidden;
+    transition:0.25s;
+    z-index:9999;
+}
+
+.msg-modal.active{
+    opacity:1;
+    visibility:visible;
+}
+
+.msg-modal-box{
+    width:90%;
+    max-width:650px;
+    background:#fff;
+    border-radius:18px;
+    padding:25px;
+    position:relative;
+    box-shadow:0 20px 60px rgba(0,0,0,0.2);
+    animation:popup .25s ease;
+}
+
+@keyframes popup{
+    from{
+        transform:translateY(15px) scale(0.98);
+        opacity:0;
+    }
+    to{
+        transform:translateY(0) scale(1);
+        opacity:1;
+    }
+}
+
+.close-modal{
+    position:absolute;
+    right:15px;
+    top:12px;
+    border:none;
+    background:none;
+    font-size:28px;
+    cursor:pointer;
+}
+
+.modal-email{
+    color:#2563eb;
+    margin-top:5px;
+    margin-bottom:20px;
+}
+
+.modal-message{
+    background:#f8fafc;
+    padding:18px;
+    border-radius:12px;
+    line-height:1.8;
+    white-space:normal;
+    color:#374151;
+    max-height:400px;
+    overflow:auto;
+}

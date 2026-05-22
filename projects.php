@@ -30,30 +30,8 @@ if(!$stmt){
 $stmt->bind_param("ii", $limit, $offset);
 $stmt->execute();
 $result = $stmt->get_result();
-?>
 
-<style>
-.project-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:25px;
-}
-.project-card{
-    background:#fff;
-    border-radius:14px;
-    overflow:hidden;
-    box-shadow:0 5px 20px rgba(0,0,0,0.06);
-}
-.project-image img{
-    width:100%;
-    height:200px;
-    object-fit:cover;
-}
-.project-content{padding:16px}
-.project-title{font-size:18px;font-weight:600}
-.project-desc{font-size:14px;color:#6b7280;margin:10px 0}
-.btn{display:inline-block;padding:10px 14px;background:#2563eb;color:#fff;border-radius:8px;text-decoration:none}
-</style>
+?>
 
 <section class="page">
 
@@ -64,17 +42,17 @@ $result = $stmt->get_result();
 <?php while($row = $result->fetch_assoc()): ?>
 
 <?php
-    // IMPORTANT FIX: fallback slug
+    // SAFE SLUG (IMPORTANT FIX)
     $slug = !empty($row['slug'])
         ? $row['slug']
-        : strtolower(trim(preg_replace('/[^a-z0-9]+/','-',$row['title'])));
+        : strtolower(trim(preg_replace('/[^a-z0-9]+/', '-', $row['title'])));
 ?>
 
 <div class="project-card">
 
-    <?php if($row['image']): ?>
+    <?php if(!empty($row['image'])): ?>
         <div class="project-image">
-            <img src="uploads/<?= htmlspecialchars($row['image']) ?>">
+            <img src="/pradip/uploads/<?= htmlspecialchars($row['image']) ?>" alt="">
         </div>
     <?php endif; ?>
 
@@ -85,16 +63,14 @@ $result = $stmt->get_result();
         </div>
 
         <div class="project-desc">
-            <?= mb_substr(strip_tags($row['description']),0,120) ?>...
+            <?= mb_substr(strip_tags($row['description']), 0, 120) ?>...
         </div>
 
+        <!-- FIXED READ MORE LINK -->
         <a class="btn"
-   href="/pradip/project/<?= urlencode($row['slug']) ?>">
-    Read More
-</a>
-
-
-
+           href="/pradip/project/<?= urlencode($slug) ?>">
+            Read More
+        </a>
 
     </div>
 
@@ -103,6 +79,33 @@ $result = $stmt->get_result();
 <?php endwhile; ?>
 
 </div>
+
+<!-- PAGINATION -->
+<?php if($totalPages > 1): ?>
+
+<div class="pagination">
+
+    <!-- PREV -->
+    <?php if($page > 1): ?>
+        <a href="?page=<?= $page - 1 ?>">← Prev</a>
+    <?php endif; ?>
+
+    <!-- PAGE NUMBERS -->
+    <?php for($i = 1; $i <= $totalPages; $i++): ?>
+        <a href="?page=<?= $i ?>"
+           class="<?= ($i == $page) ? 'active' : '' ?>">
+            <?= $i ?>
+        </a>
+    <?php endfor; ?>
+
+    <!-- NEXT -->
+    <?php if($page < $totalPages): ?>
+        <a href="?page=<?= $page + 1 ?>">Next →</a>
+    <?php endif; ?>
+
+</div>
+
+<?php endif; ?>
 
 </section>
 

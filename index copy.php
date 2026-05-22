@@ -1,29 +1,25 @@
 <?php include 'config.php'; ?>
 <?php include 'header.php'; ?>
-<?php
-$settingsRaw = $conn->query("SELECT setting_key, setting_value FROM site_settings");
 
-$settings = [];
-
-while($row = $settingsRaw->fetch_assoc()){
-    $settings[$row['setting_key']] = $row['setting_value'];
-}
-?>
 <!-- HERO SECTION -->
 <section class="hero-modern">
 
     <div class="hero-content">
 
         <span class="hero-badge">
-    <?= htmlspecialchars($settings['hero_badge'] ?? '') ?>
-</span>
-        <h1>
-    <?= htmlspecialchars($settings['hero_title'] ?? '') ?>
-</h1>
+            Electrical Engineer • Ropeway Systems • Industrial Maintenance
+        </span>
 
-<p class="hero-text">
-    <?= htmlspecialchars($settings['hero_text'] ?? '') ?>
-</p>
+        <h1>
+            <?php echo htmlspecialchars($profile['name']); ?>
+        </h1>
+
+        <p class="hero-text">
+            Specialized in electrical engineering, cable car operations,
+            industrial automation, preventive maintenance, and power systems.
+            Currently working at Maulakalika Cable Car ensuring safe and reliable
+            transportation systems.
+        </p>
 
         <div class="hero-buttons">
             <a href="projects.php" class="btn">View Projects</a>
@@ -43,22 +39,22 @@ while($row = $settingsRaw->fetch_assoc()){
     <div class="stats-grid">
 
         <div class="stat-card">
-           <h2><?= $settings['experience_years'] ?? 0 ?>+</h2>
+            <h2>5+</h2>
             <p>Years Experience</p>
         </div>
 
         <div class="stat-card">
-            <h2><?= $settings['repairs'] ?? 0 ?>+</h2>
+            <h2>100+</h2>
             <p>Electrical Repairs</p>
         </div>
 
         <div class="stat-card">
-            <h2><?= $settings['operations'] ?? 0 ?>+</h2>
+            <h2>50+</h2>
             <p>Maintenance Operations</p>
         </div>
 
         <div class="stat-card">
-            <h2><?= $settings['reliability'] ?? 0 ?>%</h2>
+            <h2>99%</h2>
             <p>System Reliability</p>
         </div>
 
@@ -74,13 +70,17 @@ while($row = $settingsRaw->fetch_assoc()){
         <div>
             <h1 class="page-title">About Me</h1>
 
-           <p class="text-block">
-               <?= htmlspecialchars($settings['about_text_1'] ?? '') ?>
+            <p class="text-block">
+                I am an Electrical Engineer focused on power systems,
+                industrial maintenance, electrical safety, ropeway systems,
+                and automation technologies.
             </p>
 
-           <p class="text-block">
-                 <?= htmlspecialchars($settings['about_text_2'] ?? '') ?>
-           </p>
+            <p class="text-block">
+                My experience includes preventive maintenance,
+                troubleshooting electrical faults, maintaining cable car
+                infrastructure, and managing operational safety systems.
+            </p>
         </div>
 
         <div class="about-box">
