@@ -943,6 +943,13 @@ body.dark .topbar{
 <i class="fa fa-briefcase"></i> Experience
 </a>
 
+<a class="<?= strpos($_SERVER['REQUEST_URI'],'navigation')!==false?'active':'' ?>"
+   href="/pradip/admin/navigation/index.php">
+
+   <i class="fa fa-bars"></i> Navigation
+
+</a>
+
 <a class="<?= strpos($_SERVER['REQUEST_URI'],'profile')!==false?'active':'' ?>" href="/pradip/admin/profile/index.php">
 <i class="fa fa-user"></i> Profile
 </a>
