@@ -1,3 +1,28 @@
+<script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    if (document.getElementById("editor")) {
+
+        CKEDITOR.replace("editor", {
+            height: 300,
+            removeButtons: ""
+        });
+
+    }
+
+});
+
+
+
+
+
+
+
+
+
+
+
 // SCROLL REVEAL + GRID ACTIVATION
 const elements = document.querySelectorAll(".reveal, .grid");
 

@@ -8,6 +8,7 @@ $settings = [];
 while($row = $settingsRaw->fetch_assoc()){
     $settings[$row['setting_key']] = $row['setting_value'];
 }
+$areas = $conn->query("SELECT * FROM core_areas ORDER BY sort_order ASC");
 ?>
 <!-- HERO SECTION -->
 <section class="hero-modern">
@@ -87,13 +88,10 @@ while($row = $settingsRaw->fetch_assoc()){
             <h3>Core Engineering Areas</h3>
 
             <ul>
-                <li>Power Distribution Systems</li>
-                <li>Industrial Electrical Maintenance</li>
-                <li>PLC & Control Systems</li>
-                <li>Cable Car Electrical Systems</li>
-                <li>Fault Diagnosis</li>
-                <li>Safety & Inspection</li>
-            </ul>
+    <?php while($a = $areas->fetch_assoc()): ?>
+        <li><?= htmlspecialchars($a['title']) ?></li>
+    <?php endwhile; ?>
+</ul>
         </div>
 
     </div>
@@ -183,31 +181,35 @@ while($row = $settingsRaw->fetch_assoc()){
 </section>
 
 <!-- EXPERIENCE -->
+<!-- EXPERIENCE -->
 <section class="page">
 
     <h1 class="page-title">Professional Experience</h1>
 
     <div class="timeline">
 
-        <div class="timeline-item">
-            <h3>Electrical Engineer</h3>
-            <span>Maulakalika Cable Car</span>
+        <?php
+        $exp = $conn->query("SELECT * FROM experience ORDER BY sort_order ASC, id DESC");
 
-            <p>
-                Managing ropeway electrical systems, preventive maintenance,
-                troubleshooting, and operational safety inspections.
-            </p>
-        </div>
+        while($e = $exp->fetch_assoc()):
+        ?>
 
         <div class="timeline-item">
-            <h3>Technical Instructor</h3>
-            <span>Kathmandu Technical School</span>
+
+            <h3><?= htmlspecialchars($e['position']) ?></h3>
+
+            <span>
+                <?= htmlspecialchars($e['company']) ?>
+                (<?= htmlspecialchars($e['start_year']) ?> - <?= htmlspecialchars($e['end_year']) ?>)
+            </span>
 
             <p>
-                Training students in electrical systems,
-                industrial controls, and engineering principles.
+                <?= htmlspecialchars($e['description']) ?>
             </p>
+
         </div>
+
+        <?php endwhile; ?>
 
     </div>
 

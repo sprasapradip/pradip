@@ -3,6 +3,8 @@ ErrorDocument 404 /pradip/404.php
 RewriteEngine On
 
 RewriteRule ^blog/([a-zA-Z0-9-]+)$ blog-single.php?slug=$1 [L,QSA]
+
+# PROJECT
 RewriteRule ^project/([a-zA-Z0-9-]+)/?$ project-single.php?slug=$1 [L,QSA]
 
 # If file or folder doesn't exist → go to 404

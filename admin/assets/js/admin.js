@@ -77,32 +77,6 @@ document.addEventListener("click", function(e){
 });
 
 
-
-
-<script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
-
-    CKEDITOR.replace('editor', {
-        height: 300,
-        removeButtons: '',
-    });
-
-function previewImage(event){
-    let reader = new FileReader();
-    reader.onload = function(){
-        let img = document.getElementById('preview');
-        img.src = reader.result;
-        img.style.display = 'block';
-    }
-    reader.readAsDataURL(event.target.files[0]);
-}
-
-
-
-
-
-
-
-
 /* ================= ACTION MENU ================= */
 
 document.querySelectorAll('.action-btn').forEach(btn => {

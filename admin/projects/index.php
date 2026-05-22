@@ -93,7 +93,11 @@ include __DIR__ . '/../layout/header.php';
 <section class="admin-page">
 
 <h1>Projects</h1>
-
+<div style="margin:15px 0;">
+    <a href="create.php" class="btn">
+        + Add Project
+    </a>
+</div>
 
 <div class="table-wrapper">
 
@@ -136,17 +140,31 @@ include __DIR__ . '/../layout/header.php';
 
     <div class="action-menu">
 
-        <a class="preview" href="/project-single.php?slug=<?= urlencode($row['slug'] ?? '') ?>" target="_blank">
-            Preview
+        <!-- PREVIEW -->
+        <a class="preview"
+           href="/pradip/project-single.php?slug=<?= urlencode($row['slug'] ?? '') ?>"
+           target="_blank">
+            👁 Preview
         </a>
 
-        <a class="edit" href="edit.php?id=<?= $row['id'] ?>">
-            Edit
+        <!-- EDIT -->
+        <a class="edit"
+           href="edit.php?id=<?= $row['id'] ?>">
+            ✏ Edit
         </a>
 
-        <form method="POST" onsubmit="return confirm('Delete project?')">
-            <input type="hidden" name="delete_id" value="<?= $row['id'] ?>">
-            <button class="delete" type="submit">Delete</button>
+        <!-- DELETE -->
+        <form method="POST"
+              onsubmit="return confirm('Delete project?')">
+
+            <input type="hidden"
+                   name="delete_id"
+                   value="<?= $row['id'] ?>">
+
+            <button class="delete" type="submit">
+                🗑 Delete
+            </button>
+
         </form>
 
     </div>
