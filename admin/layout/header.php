@@ -17,7 +17,7 @@ $current = basename($_SERVER['PHP_SELF']);
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Admin Dashboard</title>
-
+<link rel="stylesheet" href="/pradip/admin/assets/css/header.css">
 <link rel="stylesheet" href="/pradip/admin/assets/css/admin.css">
 <link rel="stylesheet" href="/pradip/admin/assets/css/blogs.css">
 <link rel="stylesheet" href="/pradip/admin/assets/css/messages.css">
@@ -158,71 +158,4 @@ $current = basename($_SERVER['PHP_SELF']);
 
 <!-- CONTENT -->
 <main class="content">
-<script src="/pradip/admin/assets/js/admin.js"></script>
-
-
-<script> 
-document.addEventListener("DOMContentLoaded", function () {
-
-    const toggle = document.getElementById("settingsToggle");
-    const group = document.getElementById("settingsGroup");
-
-    if (!toggle || !group) return;
-
-    toggle.addEventListener("click", function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-        group.classList.toggle("open");
-    });
-
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-
-    const profileBox = document.getElementById("profileBox");
-    const avatarBtn = document.getElementById("avatarBtn");
-
-    if (avatarBtn && profileBox) {
-
-        avatarBtn.addEventListener("click", function (e) {
-            e.stopPropagation();
-            profileBox.classList.toggle("active");
-        });
-
-        document.addEventListener("click", function () {
-            profileBox.classList.remove("active");
-        });
-
-    }
-
-});
-
-
-
-document.addEventListener("DOMContentLoaded", function () {
-
-    const search = document.getElementById("adminSearch");
-
-    if (!search) return;
-
-    search.addEventListener("keyup", function () {
-
-        let value = this.value.toLowerCase();
-
-        document.querySelectorAll(".nav a").forEach(function (item) {
-
-            let text = item.textContent.toLowerCase();
-
-            if (text.includes(value)) {
-                item.style.display = "flex";
-            } else {
-                item.style.display = "none";
-            }
-
-        });
-
-    });
-
-});
-</script>
-
+<script src="/pradip/admin/assets/js/header.js"></script>

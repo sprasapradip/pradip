@@ -1,0 +1,15 @@
+.profile-menu {
+    display: none;
+}
+
+.profile.active .profile-menu {
+    display: block;
+}
+
+.nav-child {
+    display: none;
+}
+
+.nav-group.open .nav-child {
+    display: block;
+}

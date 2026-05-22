@@ -207,3 +207,131 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 });
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    /* ================= MOBILE SIDEBAR ================= */
+    const menuToggle = document.getElementById("menuToggle");
+    const sidebar = document.getElementById("sidebar");
+
+    if (menuToggle && sidebar) {
+        menuToggle.addEventListener("click", function () {
+            sidebar.classList.toggle("show");
+        });
+    }
+
+    /* ================= SETTINGS TOGGLE ================= */
+    const settingsToggle = document.getElementById("settingsToggle");
+    const settingsGroup = document.getElementById("settingsGroup");
+
+    if (settingsToggle && settingsGroup) {
+        settingsToggle.addEventListener("click", function (e) {
+            e.preventDefault();
+            settingsGroup.classList.toggle("open");
+        });
+    }
+
+    /* ================= PROFILE DROPDOWN ================= */
+    const profile = document.getElementById("profileBox");
+    const avatar = document.getElementById("avatarBtn");
+
+    if (profile && avatar) {
+
+        avatar.addEventListener("click", function (e) {
+            e.stopPropagation();
+            profile.classList.toggle("active");
+        });
+
+        document.addEventListener("click", function (e) {
+            if (!profile.contains(e.target)) {
+                profile.classList.remove("active");
+            }
+        });
+    }
+
+    /* ================= SEARCH FILTER ================= */
+    const search = document.getElementById("adminSearch");
+
+    if (search) {
+        search.addEventListener("input", function () {
+
+            let value = this.value.toLowerCase();
+
+            document.querySelectorAll(".nav a").forEach(function (item) {
+
+                let text = item.textContent.toLowerCase();
+
+                item.style.display = text.includes(value) ? "flex" : "none";
+            });
+        });
+    }
+
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const toggle = document.getElementById("settingsToggle");
+    const group = document.getElementById("settingsGroup");
+
+    if (!toggle || !group) return;
+
+    toggle.addEventListener("click", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        group.classList.toggle("open");
+    });
+
+});
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const profile = document.getElementById("profileBox");
+    const avatar = document.getElementById("avatarBtn");
+
+    if (!profile || !avatar) return;
+
+    // TOGGLE ON CLICK
+    avatar.addEventListener("click", function (e) {
+        e.stopPropagation();
+        profile.classList.toggle("active");
+    });
+
+    // CLOSE ONLY WHEN CLICK OUTSIDE
+    document.addEventListener("click", function (e) {
+        if (!profile.contains(e.target)) {
+            profile.classList.remove("active");
+        }
+    });
+
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const search = document.getElementById("adminSearch");
+
+    if (!search) return;
+
+    search.addEventListener("keyup", function () {
+
+        let value = this.value.toLowerCase();
+
+        document.querySelectorAll(".nav a").forEach(function (item) {
+
+            let text = item.textContent.toLowerCase();
+
+            if (text.includes(value)) {
+                item.style.display = "flex";
+            } else {
+                item.style.display = "none";
+            }
+
+        });
+
+    });
+
+});
